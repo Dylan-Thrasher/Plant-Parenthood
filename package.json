@@ -1,0 +1,25 @@
+{
+  "name": "plant-parenthood",
+  "version": "1.0.0",
+  "description": "A plant caretaking application for users to be able to compile and view information on the plants they own.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Dylan-Thrasher/Plant-Parenthood.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Dylan-Thrasher/Plant-Parenthood/issues"
+  },
+  "homepage": "https://github.com/Dylan-Thrasher/Plant-Parenthood#readme",
+  "dependencies": {
+    "express": "^4.19.2",
+    "express-handlebars": "^7.1.2",
+    "pg": "^8.11.3"
+  }
+}
