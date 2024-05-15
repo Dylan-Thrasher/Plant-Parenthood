@@ -6,20 +6,20 @@
 
 <div class="row mt-4">
   <div class="col-md-6">
-    <h3>Create a New Project:</h3>
+    <h3>Create a New Plant:</h3>
 
-    <form class="form new-project-form">
+    <form class="form new-plant-form">
       <div class="form-group">
-        <label for="project-name">project name:</label>
-        <input class="form-input" type="text" id="project-name" name="project-name" />
+        <label for="plant-name">plant name:</label>
+        <input class="form-input" type="text" id="plant-name" name="plant-name" />
       </div>
       <div class="form-group">
-        <label for="project-funding">needed funding ($):</label>
-        <input class="form-input" type="number" id="project-funding" name="project-funding" />
+        <label for="plant-funding">needed funding ($):</label>
+        <input class="form-input" type="number" id="plant-funding" name="plant-funding" />
       </div>
       <div class="form-group">
-        <label for="project-desc">description:</label>
-        <textarea class="form-input" id="project-desc" name="project-desc"></textarea>
+        <label for="plant-desc">description:</label>
+        <textarea class="form-input" id="plant-desc" name="plant-desc"></textarea>
       </div>
       <div class="form-group">
         <button type="submit" class="btn btn-primary">Create</button>
@@ -27,17 +27,17 @@
     </form>
   </div>
 
-  {{#if projects.length}}
-  <div class="col-md-6 project-list">
-    <h3>Current Projects:</h3>
+  {{#if plants.length}}
+  <div class="col-md-6 plant-list">
+    <h3>Current Plants:</h3>
 
-    {{#each projects as |project|}}
+    {{#each plants as |plant|}}
     <div class="row mb-2">
       <div class="col-md-8">
-        <h4><a href="/project/{{project.id}}">{{project.name}}</a></h4>
+        <h4><a href="/plant/{{plant.id}}">{{plant.name}}</a></h4>
       </div>
       <div class="col-md-4">
-        <button class="btn btn-sm btn-danger" data-id="{{project.id}}">DELETE</button>
+        <button class="btn btn-sm btn-danger" data-id="{{plant.id}}">DELETE</button>
       </div>
     </div>
     {{/each}}
