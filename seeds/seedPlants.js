@@ -1,13 +1,10 @@
 const fs = require('fs');
-const sequelize = require('../config/connection');
-const { Plant } = require('../models');
-
-// Path to plants.json
-const plantsFilePath = path.join(__dirname, 'plants.json');
+const path = require('path');    //imports the Node.js path
+const plantsFilePath = path.join(__dirname, 'plants.json');   // Path to plants.json
 
 // Function to read JSON file
 const readJSONFile = (filePath) => {
- // return new Promise((resolve, reject) => {
+  //return new Promise((resolve, reject) => {
     fs.readFile("./plants.json", 'utf8', (err, data) => {
       if (err) {
         reject(err);
@@ -16,7 +13,7 @@ const readJSONFile = (filePath) => {
         return JSON.parse(data);
       }
     });
- // });
+  //});
 };
 
 const seedPlants = async () => {
@@ -25,13 +22,18 @@ const seedPlants = async () => {
     const plantsData = await readJSONFile(plantsFilePath);
 
     // Sync the database
-    await sequelize.sync({ force: true });
-
-
-    console.log('');
-  } catch (error) {
-    console.error(':', error);
-  }
+    const seedPlants = async () => {
+      try {
+          const plantsData = await readJSONFile(plantsFilePath);
+          console.log(plantsData); // This will print the parsed JSON data to the console
+          // Add your database seeding logic here
+      } catch (err) {
+          console.error(err);
+      }
+};
+} catch (err) {
+  console.error(err);
+}
 };
 
 // Execute the seeding function
