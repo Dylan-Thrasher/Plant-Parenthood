@@ -35,4 +35,22 @@ router.delete('/:id', withAuth, async (req, res) => {
   }
 });
 
+router.get('/test', async(req, res) => {
+  try{
+    let watering = 'Average';
+    let sunlight = 'full sun';
+    let cycle = 'Perennial';
+    const plants = await Plant.findAll({
+      where: {
+        watering: 'Average'
+      }
+  });
+  console.log(plants);
+  res.status(200).json(plants);
+  }catch(err){
+    res.status(500).json(err);
+  }
+});
+
+
 module.exports = router;
