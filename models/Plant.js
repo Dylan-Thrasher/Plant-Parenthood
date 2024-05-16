@@ -10,27 +10,27 @@ Plant.init({
         autoIncrement: true
     },
     common_name: {
-        type: DataTypes.STRING,
+        type: DataTypes.STRING(1000),
         allowNull: false
     },
     scientific_name: {
-        type: DataTypes.ARRAY(DataTypes.STRING),
+        type: DataTypes.ARRAY(DataTypes.STRING(1000)),
         allowNull: false
     },
     other_name: {
-        type: DataTypes.ARRAY(DataTypes.STRING),
+        type: DataTypes.ARRAY(DataTypes.STRING(1000)),
         allowNull: true
     },
     cycle: {
-        type: DataTypes.STRING,
+        type: DataTypes.STRING(1000),
         allowNull: false
     },
     watering: {
-        type: DataTypes.STRING,
+        type: DataTypes.STRING(1000),
         allowNull: false
     },
     sunlight: {
-        type: DataTypes.ARRAY(DataTypes.STRING),
+        type: DataTypes.ARRAY(DataTypes.STRING(1000)),
         allowNull: false
     },
     license: {
@@ -38,33 +38,41 @@ Plant.init({
         allowNull: true
     },
     license_name: {
-        type: DataTypes.STRING,
+        type: DataTypes.STRING(1000),
         allowNull: true
     },
     license_url: {
-        type: DataTypes.STRING,
+        type: DataTypes.STRING(1000),
         allowNull: true
     },
     original_url: {
-        type: DataTypes.STRING,
+        type: DataTypes.STRING(1000),
         allowNull: true
     },
     regular_url: {
-        type: DataTypes.STRING,
+        type: DataTypes.STRING(1000),
         allowNull: true
     },
     medium_url: {
-        type: DataTypes.STRING,
+        type: DataTypes.STRING(1000),
         allowNull: true
     },
     small_url: {
-        type: DataTypes.STRING,
+        type: DataTypes.STRING(1000),
         allowNull: true
     },
     thumbnail: {
-        type: DataTypes.STRING,
+        type: DataTypes.STRING(1000),
         allowNull: true
-    }
+    },
+    //links the user data table with a foreign key
+    user_id: {
+        type: DataTypes.INTEGER,
+        references: {
+          model: 'user',
+          key: 'id',
+        },
+      },
 },
 {
     sequelize,
