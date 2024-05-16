@@ -18,16 +18,13 @@ User.hasMany(Collection, {
 });
 
 Collection.belongsTo(User, {
-  foreignKey: 'user_id'
-});
-
-Collection.hasMany(Plant, {
-  foreignKey: 'plant_id',
+  foreignKey: 'user_id',
   onDelete: 'CASCADE'
 });
 
-Plant.belongsTo(Collection, {
-  foreignKey: 'plant_id'
+Collection.belongsTo(Plant, {
+  foreignKey: 'plant_id',
+  onDelete: 'CASCADE'
 });
 
 module.exports = { User, Plant, Collection };
