@@ -65,14 +65,6 @@ Plant.init({
         type: DataTypes.STRING,
         allowNull: true
     },
-    //links the user data table with a foreign key
-    user_id: {
-        type: DataTypes.INTEGER,
-        references: {
-          model: 'user',
-          key: 'id',
-        },
-      },
 },
 {
     sequelize,
