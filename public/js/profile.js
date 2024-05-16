@@ -37,11 +37,19 @@ const delButtonHandler = async (event) => {
     }
   }
 };
+const logout = async () => {
+  const response = await fetch('/api/users/logout', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+  });
 
-document
-  .querySelector('.new-project-form')
-  .addEventListener('submit', newFormHandler);
+  if (response.ok) {
+    document.location.replace('/');
+  } else {
+    alert(response.statusText);
+  }
+};
 
-document
-  .querySelector('.project-list')
-  .addEventListener('click', delButtonHandler);
+
+
+document.querySelector('#logoutBtn').addEventListener('click', logout);

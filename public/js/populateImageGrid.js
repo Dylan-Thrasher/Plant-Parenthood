@@ -3533,12 +3533,6 @@ const plantsArr = [
 
 const hoverAnimString = `transition ease-in-out duration-100 hover:translate-y-1 hover:scale-[110%] antialiased hover:subpixel-antialiased`
 
-const showFilter = () => {
-    debugger;
-    let filter = $('#filter');
-    if(filter.is(':hidden')) filter.show();
-    else filter.hide();
-}
 //const fs = require('fs');
 const populateImageGrid = () => {
 
