@@ -1,6 +1,9 @@
 const router = require('express').Router();
 const { Plant , User } = require('../models');
 const withAuth = require('../utils/auth');
+
+const {log} = new (require('../utils/logger'))
+
 router.get('/', async (req, res) => {
   console.log('get root')
   try {
@@ -8,7 +11,8 @@ router.get('/', async (req, res) => {
     const plantData = await Plant.findAll();
     // Serialize data so the template can read it
     const plants = plantData.map((plant) => plant.get({ plain: true }));
-    console.log('plants', plants)
+    log(plants, 'white', 'bgGreen');
+    log(plants.length, 'green', 'bgWhite');
     // Pass serialized data and session flag into template
     res.render('homepage', { 
       plants 
