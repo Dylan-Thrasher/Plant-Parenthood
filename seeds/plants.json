@@ -1,6 +1,6 @@
 [
     {
-        "id": 1, /* this is the perenual id, use this id to pull plant details with a fetch */
+        "id": 1, 
         "common_name": "European Silver Fir",
         "scientific_name": [
             "Abies alba"

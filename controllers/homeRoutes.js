@@ -3,10 +3,11 @@ const { Plant , User } = require('../models');
 const withAuth = require('../utils/auth');
 
 router.get('/', async (req, res) => {
+  console.log('get root')
   try {
     // Get all plants and JOIN with user data
     const plantData = await Plant.findAll({
-      include: [
+     include: [
         {
           model: User,
           attributes: ['name'],
@@ -16,11 +17,11 @@ router.get('/', async (req, res) => {
 
     // Serialize data so the template can read it
     const plants = plantData.map((plant) => plant.get({ plain: true }));
-
+    console.log('plants', plants)
     // Pass serialized data and session flag into template
     res.render('homepage', { 
-      plants, 
-      logged_in: req.session.logged_in 
+      plants 
+     
     });
   } catch (err) {
     res.status(500).json(err);
