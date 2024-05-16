@@ -4,6 +4,7 @@ const { User, Plant } = require('../models');
 const userData = require('./userData.json');
 const plantData = require('./plants.json');
 
+// must be run in order to create users and register information from userData.json
 const seedDatabase = async () => {
   await sequelize.sync({ force: true });
 
