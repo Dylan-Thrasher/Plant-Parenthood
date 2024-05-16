@@ -63,7 +63,7 @@ Plant.init({
     },
     default_image_thumbnail: {
         type: DataTypes.STRING,
-        allowNull: false
+        allowNull: true
     },
     //links the user data table with a foreign key
     user_id: {

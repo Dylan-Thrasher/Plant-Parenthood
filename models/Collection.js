@@ -13,7 +13,7 @@ Collection.init({
         type: DataTypes.BOOLEAN,
         allowNull: false
     },
-    owned: {
+    plant_name: {
       type: DataTypes.STRING,
       allowNull: false
   },
