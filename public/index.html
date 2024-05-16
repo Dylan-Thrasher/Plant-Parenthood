@@ -7,13 +7,39 @@
 
     <!--<link href="./css/output.css" rel="stylesheet">-->
     <script src="https://cdn.tailwindcss.com"></script>
+    <link
+  href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900&display=swap"
+  rel="stylesheet" />
+<link
+  rel="stylesheet"
+  href="https://cdn.jsdelivr.net/npm/tw-elements/css/tw-elements.min.css" />
+<script src="https://cdn.tailwindcss.com/3.3.0"></script>
+<script>
+  tailwind.config = {
+    darkMode: "class",
+    theme: {
+      fontFamily: {
+        sans: ["Roboto", "sans-serif"],
+        body: ["Roboto", "sans-serif"],
+        mono: ["ui-monospace", "monospace"],
+      },
+    },
+    corePlugins: {
+      preflight: false,
+    },
+  };
+</script>
     <link rel="icon" type="image/x-icon" href="./assets/images/icons8-potted-plant-windows-11-color-16.png">
+
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="../utils/toolBox.js"></script>
+    <script src="../utils/populateImageGrid.js"></script>
     <title>Plant Parenthood</title>
 </head>
 
 <body class="bg-[url('./assets/images/forrest-log.jpg') text-green-900 ">
-    <div class="flex flex-col min-h-screen  bg-[#e8f2ca]">
-        <header class="flex justify-between flex-row flex-wrap text-center ">
+    <div class="flex flex-col min-h-screen bg-[#e8f2ca]">
+        <header class="sticky top-0 flex justify-between flex-row flex-wrap text-center px-4 bg-[#e8f2ca]">
             <nav class="flex flex-row flex-wrap">
                 <button class="p-2"><img class="h-4 m-auto" src="./assets/images/icons8-leaf-48.png"
                         alt="A dark green leaf icon">Plants</button>
@@ -40,40 +66,18 @@
                     <div class="w-full filter-none p-4 text-5xl">All Plants</div>
                 </div>
             </div>
-            <!-- plants grid -->
-            <div
+<!-- filter -->
+<button id="filterBtn" class="p-2"><img class="h-4 m-auto" src="./assets/images/icons8-login-48.png"
+    alt="A dark green login icon represented by an arrow leading into a rounded square">Login</button>
+    <div id="filter" class="w-full h-52">poo</div>
+
+
+
+            <!-- results grid -->
+            <div id="resultsGrid"
                 class=" grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-6 gap-6 w-full p-4 justify-center">
-                <div class="flex flex-wrap justify-center text-center">
-                    <img class="rounded-md"
-                        src="https://perenual.com/storage/species_image/1_abies_alba/thumbnail/1536px-Abies_alba_SkalitC3A9.jpg">
-                    <div class="w-full pt-2 text-s ">Euorpean Silver Fir</div>
-                </div>
-                <div class="flex flex-wrap justify-center text-center">
-                    <img class="rounded-md"
-                        src="https://perenual.com/storage/species_image/1_abies_alba/thumbnail/1536px-Abies_alba_SkalitC3A9.jpg">
-                    <div class="w-full pt-2 text-s ">Euorpean Silver Fir</div>
-                </div>
-                <div class="flex flex-wrap justify-center text-center">
-                    <img class="rounded-md"
-                        src="https://perenual.com/storage/species_image/1_abies_alba/thumbnail/1536px-Abies_alba_SkalitC3A9.jpg">
-                    <div class="w-full pt-2 text-s ">Euorpean Silver Fir</div>
-                </div>
-                <div class="flex flex-wrap justify-center text-center">
-                    <img class="rounded-md"
-                        src="https://perenual.com/storage/species_image/1_abies_alba/thumbnail/1536px-Abies_alba_SkalitC3A9.jpg">
-                    <div class="w-full pt-2 text-s ">Euorpean Silver Fir</div>
-                </div>
-                <div class="flex flex-wrap justify-center text-center">
-                    <img class="rounded-md"
-                        src="https://perenual.com/storage/species_image/1_abies_alba/thumbnail/1536px-Abies_alba_SkalitC3A9.jpg">
-                    <div class="w-full pt-2 text-s ">Euorpean Silver Fir</div>
-                </div>
-                <div class="flex flex-wrap justify-center text-center">
-                    <img class="rounded-md"
-                        src="https://perenual.com/storage/species_image/1_abies_alba/thumbnail/1536px-Abies_alba_SkalitC3A9.jpg">
-                    <div class="w-full pt-2 text-s ">Euorpean Silver Fir</div>
-                </div>
-                
+               
+
 
             </div>
         </main>
@@ -81,10 +85,19 @@
             <div class="p-4">
                 <div class="text-xs">Plant Parenthood © 2024</div>
 
-            <div class="text-[0.5em]">Icons provided by <a target="_blank" href="https://icons8.com">Icons8</a></div>
+                <div class="text-[0.5em]">Icons provided by <a target="_blank" href="https://icons8.com">Icons8</a>
+                </div>
             </div>
         </footer>
     </div>
 </body>
+
+<script>
+   $(()=>{
+    $('#filter').hide();
+    $('#filterBtn').on('click', showFilter);
+   })
+   populateImageGrid();
+</script>
 
 </html>
