@@ -24,7 +24,10 @@ Collection.belongsTo(User, {
 
 Collection.belongsTo(Plant, {
   foreignKey: 'plant_id',
-  onDelete: 'CASCADE'
+  onDelete: 'CASCADE',
+  // specifying which information carries over from Plant model
+  targetKey: 'id',
+  attributes: ['common_name', 'scientific_name', 'other_name']
 });
 
 module.exports = { User, Plant, Collection };
