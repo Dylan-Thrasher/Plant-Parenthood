@@ -34,5 +34,18 @@ router.delete('/:id', withAuth, async (req, res) => {
     res.status(500).json(err);
   }
 });
-
+router.get('/test', async(req, res) => {
+  try{
+    let watering = 'Average';
+    let sunlight = 'full sun';
+    let cycle = 'Perennial';
+    const plants = await Plant.findAll({
+    
+  });
+  console.log(plants);
+  res.status(200).json(plants);
+  }catch(err){
+    res.status(500).json(err);
+  }
+});
 module.exports = router;

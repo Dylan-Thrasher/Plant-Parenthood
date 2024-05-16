@@ -39,31 +39,31 @@ Plant.init({
     },
     default_image_license_name: {
         type: DataTypes.STRING,
-        allowNull: false
+        allowNull: true
     },
     default_image_license_url: {
         type: DataTypes.STRING,
-        allowNull: false
+        allowNull: true
     },
     default_image_original_url: {
         type: DataTypes.STRING,
-        allowNull: false
+        allowNull: true
     },
     default_image_regular_url: {
         type: DataTypes.STRING,
-        allowNull: false
+        allowNull:true
     },
     default_image_medium_url: {
         type: DataTypes.STRING,
-        allowNull: false
+        allowNull: true
     },
     default_image_small_url: {
         type: DataTypes.STRING,
-        allowNull: false
+        allowNull: true
     },
     default_image_thumbnail: {
         type: DataTypes.STRING,
-        allowNull: false
+        allowNull: true
     },
     //links the user data table with a foreign key
     user_id: {
