@@ -10,59 +10,59 @@ Plant.init({
         autoIncrement: true
     },
     common_name: {
-        type: DataTypes.STRING,
+        type: DataTypes.STRING(1000),
         allowNull: false
     },
     scientific_name: {
-        type: DataTypes.ARRAY(DataTypes.STRING),
+        type: DataTypes.ARRAY(DataTypes.STRING(1000)),
         allowNull: false
     },
     other_name: {
-        type: DataTypes.ARRAY(DataTypes.STRING),
+        type: DataTypes.ARRAY(DataTypes.STRING(1000)),
         allowNull: true
     },
     cycle: {
-        type: DataTypes.STRING,
+        type: DataTypes.STRING(1000),
         allowNull: false
     },
     watering: {
-        type: DataTypes.STRING,
+        type: DataTypes.STRING(1000),
         allowNull: false
     },
     sunlight: {
-        type: DataTypes.ARRAY(DataTypes.STRING),
+        type: DataTypes.ARRAY(DataTypes.STRING(1000)),
         allowNull: false
     },
-    default_image_license: {
+    license: {
         type: DataTypes.INTEGER,
         allowNull: true
     },
-    default_image_license_name: {
-        type: DataTypes.STRING,
+    license_name: {
+        type: DataTypes.STRING(1000),
         allowNull: true
     },
-    default_image_license_url: {
-        type: DataTypes.STRING,
+    license_url: {
+        type: DataTypes.STRING(1000),
         allowNull: true
     },
-    default_image_original_url: {
-        type: DataTypes.STRING,
+    original_url: {
+        type: DataTypes.STRING(1000),
         allowNull: true
     },
-    default_image_regular_url: {
-        type: DataTypes.STRING,
+    regular_url: {
+        type: DataTypes.STRING(1000),
         allowNull: true
     },
-    default_image_medium_url: {
-        type: DataTypes.STRING,
+    medium_url: {
+        type: DataTypes.STRING(1000),
         allowNull: true
     },
-    default_image_small_url: {
-        type: DataTypes.STRING,
+    small_url: {
+        type: DataTypes.STRING(1000),
         allowNull: true
     },
-    default_image_thumbnail: {
-        type: DataTypes.STRING,
+    thumbnail: {
+        type: DataTypes.STRING(1000),
         allowNull: true
     },
 },
