@@ -33,37 +33,37 @@ Plant.init({
         type: DataTypes.ARRAY(DataTypes.STRING),
         allowNull: false
     },
-    default_image_license: {
+    license: {
         type: DataTypes.INTEGER,
-        allowNull: false
+        allowNull: true
     },
-    default_image_license_name: {
+    license_name: {
         type: DataTypes.STRING,
-        allowNull: false
+        allowNull: true
     },
-    default_image_license_url: {
+    license_url: {
         type: DataTypes.STRING,
-        allowNull: false
+        allowNull: true
     },
-    default_image_original_url: {
+    original_url: {
         type: DataTypes.STRING,
-        allowNull: false
+        allowNull: true
     },
-    default_image_regular_url: {
+    regular_url: {
         type: DataTypes.STRING,
-        allowNull: false
+        allowNull: true
     },
-    default_image_medium_url: {
+    medium_url: {
         type: DataTypes.STRING,
-        allowNull: false
+        allowNull: true
     },
-    default_image_small_url: {
+    small_url: {
         type: DataTypes.STRING,
-        allowNull: false
+        allowNull: true
     },
-    default_image_thumbnail: {
+    thumbnail: {
         type: DataTypes.STRING,
-        allowNull: false
+        allowNull: true
     }
 },
 {

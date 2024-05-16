@@ -1,20 +1,11 @@
 const router = require('express').Router();
 const { Plant , User } = require('../models');
 const withAuth = require('../utils/auth');
-
 router.get('/', async (req, res) => {
   console.log('get root')
   try {
     // Get all plants and JOIN with user data
-    const plantData = await Plant.findAll({
-     include: [
-        {
-          model: User,
-          attributes: ['name'],
-        },
-      ],
-    });
-
+    const plantData = await Plant.findAll();
     // Serialize data so the template can read it
     const plants = plantData.map((plant) => plant.get({ plain: true }));
     console.log('plants', plants)
