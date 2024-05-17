@@ -4,11 +4,6 @@ const sequelize = require('../config/connection'); // Assuming you have a sequel
 class Plant extends Model {}
 
 Plant.init({
-    id: {
-        type: DataTypes.INTEGER,
-        primaryKey: true,
-        autoIncrement: true
-    },
     common_name: {
         type: DataTypes.STRING(1000),
         allowNull: false

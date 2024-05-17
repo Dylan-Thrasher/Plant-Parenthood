@@ -12,7 +12,7 @@ const loginFormHandler = async (event) => {
       body: JSON.stringify({ email, password }),
       headers: { 'Content-Type': 'application/json' },
     });
-
+    debugger;
     if (response.ok) {
       // If successful, redirect the browser to the profile page
       document.location.replace('/profile');
@@ -47,6 +47,8 @@ const signupFormHandler = async (event) => {
 document
   .querySelector('.login-form')
   .addEventListener('submit', loginFormHandler);
+
+  
 
 document
   .querySelector('.signup-form')

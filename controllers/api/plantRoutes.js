@@ -2,7 +2,8 @@ const router = require('express').Router();
 const { Plant } = require('../../models');
 const withAuth = require('../../utils/auth');
 
-router.post('/', withAuth, async (req, res) => {
+router.post('/?', withAuth, async (req, res) => {
+  console.log('trying to make a plant')
   try {
     const newPlant = await Plant.create({
       ...req.body,

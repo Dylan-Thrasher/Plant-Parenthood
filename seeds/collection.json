@@ -1,23 +1,85 @@
 [
     {
-        "id": 1,
-        "owned":true,
+        
+        "owned": true,
+        "plant_name": "awerwe",
+        "user_id": 1,
+        "plant_id": 1,
+        "common_name": "European Silver Fir",
+        "regular_url": "https:\/\/perenual.com\/storage\/species_image\/1_abies_alba\/regular\/1536px-Abies_alba_SkalitC3A9.jpg"
+    },
+    {
+        
+        "owned": true,
+        "plant_name": "343435325",
+        "user_id": 1,
+        "plant_id": 3,
+        "common_name": "White Fir",
+        "regular_url": "https:\/\/perenual.com\/storage\/species_image\/3_abies_concolor\/regular\/52292935430_f4f3b22614_b.jpg"
+    },
+    {
+        
+        "owned": false,
+        "plant_name": "Tarantinweeeeeeeeeeo",
+        "user_id": 2,
+        "plant_id": 2,
+        "common_name": "Pyramidalis Silver Fir",
+        "regular_url": "https:\/\/perenual.com\/storage\/species_image\/2_abies_alba_pyramidalis\/regular\/49255769768_df55596553_b.jpg"
+    },
+    {
+        
+        "owned": true,
+        "plant_name": "Harrrrrrr",
+        "user_id":1,
+        "plant_id": 1,
+        "common_name": "European Silver Fir",
+        "regular_url": "https:\/\/perenual.com\/storage\/species_image\/1_abies_alba\/regular\/1536px-Abies_alba_SkalitC3A9.jpg"
+    
+    },
+    {
+        
+        "owned": true,
+        "plant_name": "Marrrrrrrrrrrr",
+        "user_id": 3,
+        "plant_id": 3,
+        "common_name": "White Fir",
+        "regular_url": "https:\/\/perenual.com\/storage\/species_image\/3_abies_concolor\/regular\/52292935430_f4f3b22614_b.jpg"
+    },
+    {
+        
+        "owned": false,
+        "plant_name": "Tarantinoooooooooooooo",
+        "user_id": 3,
+        "plant_id": 2,
+        "common_name": "Pyramidalis Silver Fir",
+        "regular_url": "https:\/\/perenual.com\/storage\/species_image\/2_abies_alba_pyramidalis\/regular\/49255769768_df55596553_b.jpg"
+    },
+    {
+        
+        "owned": true,
         "plant_name": "Har",
-        "user_id": 0,
-        "plant_id": 1
+        "user_id": 1,
+        "plant_id": 1,
+        "common_name": "European Silver Fir",
+        "regular_url": "https:\/\/perenual.com\/storage\/species_image\/1_abies_alba\/regular\/1536px-Abies_alba_SkalitC3A9.jpg"
+    
     },
     {
-        "id": 3,
-        "owned":true,
+        
+        "owned": true,
         "plant_name": "Mar",
-        "user_id": 0,
-        "plant_id": 3
+        "user_id": 1,
+        "plant_id": 3,
+        "common_name": "White Fir",
+        "regular_url": "https:\/\/perenual.com\/storage\/species_image\/3_abies_concolor\/regular\/52292935430_f4f3b22614_b.jpg"
     },
     {
-        "id": 2,
+        
         "owned": false,
         "plant_name": "Tarantino",
-        "user_id": 1,
-        "plant_id": 2
+        "user_id": 3,
+        "plant_id": 2,
+        "common_name": "Pyramidalis Silver Fir",
+        "regular_url": "https:\/\/perenual.com\/storage\/species_image\/2_abies_alba_pyramidalis\/regular\/49255769768_df55596553_b.jpg"
     }
 ]

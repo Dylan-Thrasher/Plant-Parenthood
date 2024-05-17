@@ -3,6 +3,22 @@
 const logStrings = { storeErr: "Storage Error: " }
 
 
+const toggleSearchHide = (ev) => {
+   
+    let hidden = $('#search');
+  
+    if(hidden.is(':hidden')) hidden.show();
+    else hidden.hide();
+}
+
+const toggleFilterHide = (ev) => {
+   
+    let  hidden = $('#filter')    
+    
+    if(hidden.is(':hidden')) hidden.show();
+    else hidden.hide();
+}
+
 // chars we want to remove from strings for key generation
 const badKeyChars = ['-', ':', '.', '\\', '[', ']', '{', '}'];
 // generates a key based on js Date obj passed

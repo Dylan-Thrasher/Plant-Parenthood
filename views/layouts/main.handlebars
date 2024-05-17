@@ -28,7 +28,7 @@
   <link rel="icon" type="image/x-icon" href="./assets/images/icons8-potted-plant-windows-11-color-16.png">
 
   <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-
+  <script src="./js/toolbox.js"></script>
   <title>Plant Parenthood</title>
 </head>
 
@@ -49,9 +49,12 @@
         <a href="/login"><button class="p-2"><img class="h-4 m-auto" src="./assets/images/icons8-login-48.png"
               alt="A dark green login icon represented by an arrow leading into a rounded square">Login</button>
         </a>
-
-        <button class="p-2"><img class="h-4 m-auto" src="./assets/images/icons8-search-48.png"
+        <form id="search" class="hidden rounded-lg bg-[#B7D55D] px-2 py-1">
+          <input type="search" class="h-full w-96 p-2" value="" placeholder="Search for plants">
+        </form>
+        <button id="searchBtn" class="p-2"><img class="h-4 m-auto" src="./assets/images/icons8-search-48.png"
             alt="A dark green search icon represented by a magnifying glass">Search</button>
+            
       </nav>
     </header>
     {{{body}}}
@@ -64,6 +67,12 @@
       </div>
     </div>
   </footer>
+  <script>
+    
+    $('#searchBtn').on('click', toggleSearchHide);
+  </script>
+  {{!-- search js to link search results and population section --}}
+  <script src="./js/search.js"></script>
 </body>
 
 </html>

@@ -1,8 +1,8 @@
 const router = require('express').Router();
-const { Plant , User, Collection } = require('../models');
+const { Plant, User, Collection } = require('../models');
 const withAuth = require('../utils/auth');
 
-const {log} = new (require('../utils/logger'))
+const { log } = new (require('../utils/logger'))
 
 router.get('/', async (req, res) => {
   console.log('get root')
@@ -14,35 +14,32 @@ router.get('/', async (req, res) => {
     log(plants, 'white', 'bgGreen');
     log(plants.length, 'green', 'bgWhite');
     // Pass serialized data and session flag into template
-    res.render('homepage', { 
-      plants 
-     
+    res.render('homepage', {
+      plants
+
     });
   } catch (err) {
     res.status(500).json(err);
   }
 });
-
+let current_plant;
 // navs to plants and gets data from associated id
-router.get('/plant/:id', async (req, res) => {
+
+
+router.get('/plant', async (req, res) => {
   try {
-    const plantData = await Plant.findByPk(req.params.id, {
-      include: [
-        {
-          model: User,
-          attributes: ['name'],
-        },
-      ],
-    });
+    const plantData = await Plant.findByPk(req.query.id);
 
     const plant = plantData.get({ plain: true });
-
+    current_plant = plant;
+    log(plant)
     res.render('plant', {
       ...plant,
       logged_in: req.session.logged_in
     });
   } catch (err) {
-    res.status(500).json(err);
+    res.redirect('/profile');
+//    res.status(500).json(err);
   }
 });
 
@@ -60,21 +57,34 @@ router.get('/profile', withAuth, async (req, res) => {
       where: {
         user_id: req.session.user_id
       },
-      // include: [{
-      //   model: User,
-      //   where: {
-      //     id: req.session.user_id
-      //   }
-      // }],
+      include: [{
+        model: Plant,
+        attributes: ['common_name', 'regular_url']
+      }],
     });
 
-    const collections = collectionData.map((collection) => collection.get({ plain: true }));
 
+
+    let collections = collectionData.map((collection) => collection.get({ plain: true }));
+    // collections.filter
+    log(collections, 'white', 'bgGray')
+    //collections = collections.filter((collection)=> collection.user_id != req.session.user_id )
     res.render('profile', {
       collections,
       user,
       logged_in: true
     });
+
+    // Collection.findByPk(collectionId, {
+    //   include: [{
+    //     model: Plant,
+    //     attributes: ['common_name', 'regular_url']
+    //   }]
+    // }).then(collection => {
+    //   console.log(collection.Plant.common_name); // Accessing common_name from the associated Plant
+    //   console.log(collection.Plant.regular_url); // Accessing regular_url from the associated Plant
+    // });
+
   } catch (err) {
     res.status(500).json(err);
   }
@@ -88,6 +98,22 @@ router.get('/login', (req, res) => {
   }
 
   res.render('login');
+});
+
+//post method for adding an item to the user's collection
+router.post('/add-to-collection', withAuth, async (req, res) => {
+  try {
+    const userId = req.session.user_id;
+    const collectionAddition = {
+      ...req.body,
+      user_id: userId
+    };
+  const newItem = await Collection.create(collectionAddition);
+  res.status(201).json(newItem);
+  } catch (err) {
+    console.error('Error adding item to collection:', err);
+    res.status(500).json({ error: 'Could not add item to collection' });
+  }
 });
 
 module.exports = router;

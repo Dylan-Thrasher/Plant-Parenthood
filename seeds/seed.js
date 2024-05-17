@@ -13,18 +13,18 @@ const seedDatabase = async () => {
     individualHooks: true,
     returning: true,
   });
-  console.log('plantData:', plantData);
+ // console.log('plantData:', plantData);
   for (const plant of plantData) {
     await Plant.create({
       ...plant,
-      user_id: users[Math.floor(Math.random() * users.length)].id,
+      user_id: plant.user_id,
     });
   }
   console.log('collectionData:', collectionData);
   for (const collection of collectionData) {
     await Collection.create({
       ...collection,
-      user_id: users[Math.floor(Math.random() * users.length)].id,
+      user_id: collection.user_id,
     });
   }
 
