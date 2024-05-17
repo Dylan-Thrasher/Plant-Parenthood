@@ -22,21 +22,17 @@ router.get('/', async (req, res) => {
     res.status(500).json(err);
   }
 });
-
+let current_plant;
 // navs to plants and gets data from associated id
-router.get('/plant/:id', async (req, res) => {
+
+
+router.get('/plant', async (req, res) => {
   try {
-    const plantData = await Plant.findByPk(req.params.id, {
-      include: [
-        {
-          model: User,
-          attributes: ['name'],
-        },
-      ],
-    });
+    const plantData = await Plant.findByPk(req.query.id);
 
     const plant = plantData.get({ plain: true });
-
+    current_plant = plant;
+    log(plant)
     res.render('plant', {
       ...plant,
       logged_in: req.session.logged_in
@@ -57,19 +53,19 @@ router.get('/profile', withAuth, async (req, res) => {
 
     const user = userData.get({ plain: true });
     const collectionData = await Collection.findAll({
-    
+
       include: [{
-       model: User,
+        model: User,
         where: {
-           id: req.session.user_id
+          id: req.session.user_id
         }
-       }],
-      });
+      }],
+    });
 
 
 
     let collections = collectionData.map((collection) => collection.get({ plain: true }));
-   // collections.filter
+    // collections.filter
     log(collections, 'white', 'bgGray')
     //collections = collections.filter((collection)=> collection.user_id != req.session.user_id )
     res.render('profile', {
