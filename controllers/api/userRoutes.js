@@ -21,21 +21,30 @@ router.post('/', async (req, res) => {
 });
 
 router.post('/edit', async (req, res) => {
-  console.log('updating user', 'red');
-  //log(req.body, 'red', 'bgWhite');
+  console.log('============================');
+  console.log('updating user');
+  log(req.body, 'red', 'bgWhite');
   try {
-    const userData = await User.update({
-    //  {name: req.body.}
+    const user = await User.findByPk(req.session.user_id)
+    user.name = req.body.newName;
+    user.password = req.body.newPass;
+    user.save();
+    res.status(200).json(user);
+    /*
+    const userData = await user.update({
+     name: req.body.newName
     });
     log(userData, 'white', 'bgRed');
     console.log(userData);
+    
     req.session.save(() => {
       req.session.user_id = userData.id;
       req.session.logged_in = true;
 
       res.status(200).json(userData);
-    });
+    });*/
   } catch (err) {
+    console.error(err)
     res.status(400).json(err);
   }
 });
@@ -46,6 +55,8 @@ router.post('/login', async (req, res) => {
     const userData = await User.findOne({ where: { email: req.body.email } });
     console.log(userData);
     if (!userData) {
+      
+      log('bad userData', 'red', 'bgWhite');
       res
         .status(400)
         .json({ message: 'Incorrect email or password, please try again' });
@@ -55,6 +66,7 @@ router.post('/login', async (req, res) => {
     const validPassword = await userData.checkPassword(req.body.password);
 
     if (!validPassword) {
+      log('bad pass', 'red', 'bgWhite');
       res
         .status(400)
         .json({ message: 'Incorrect email or password, please try again' });
