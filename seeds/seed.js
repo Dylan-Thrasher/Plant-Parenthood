@@ -1,8 +1,9 @@
 const sequelize = require('../config/connection');
-const { User, Plant } = require('../models');
+const { User, Plant, Collection } = require('../models');
 
 const userData = require('./userData.json');
 const plantData = require('./plants.json');
+const collectionData = require('./collection.json')
 
 // must be run in order to create users and register information from userData.json
 const seedDatabase = async () => {
@@ -16,6 +17,13 @@ const seedDatabase = async () => {
   for (const plant of plantData) {
     await Plant.create({
       ...plant,
+      user_id: users[Math.floor(Math.random() * users.length)].id,
+    });
+  }
+  console.log('collectionData:', collectionData);
+  for (const collection of collectionData) {
+    await Collection.create({
+      ...collection,
       user_id: users[Math.floor(Math.random() * users.length)].id,
     });
   }

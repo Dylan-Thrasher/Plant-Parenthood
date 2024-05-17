@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { Plant , User } = require('../models');
+const { Plant , User, Collection } = require('../models');
 const withAuth = require('../utils/auth');
 
 const {log} = new (require('../utils/logger'))
@@ -56,9 +56,23 @@ router.get('/profile', withAuth, async (req, res) => {
     });
 
     const user = userData.get({ plain: true });
+    const collectionData = await Collection.findAll({
+      where: {
+        user_id: req.session.user_id
+      },
+      // include: [{
+      //   model: User,
+      //   where: {
+      //     id: req.session.user_id
+      //   }
+      // }],
+    });
+
+    const collections = collectionData.map((collection) => collection.get({ plain: true }));
 
     res.render('profile', {
-      ...user,
+      collections,
+      user,
       logged_in: true
     });
   } catch (err) {
