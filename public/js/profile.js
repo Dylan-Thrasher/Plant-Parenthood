@@ -73,6 +73,9 @@ const editButtons = document.querySelectorAll('.btn-edit')
   })
   */
 
+  const handleEdit= () => {
+  console.log('trying to edit');}
+
 const logout = async () => {
   const response = await fetch('/api/users/logout', {
     method: 'POST',
@@ -92,3 +95,8 @@ document.querySelector('#logoutBtn').addEventListener('click', logout);
 document
   .querySelector('.collection-list')
   .addEventListener('click', delButtonHandler);
+
+  $(()=>{
+    $('[id=btn-edit]').on('click', handleEdit);
+    debugger;
+})
