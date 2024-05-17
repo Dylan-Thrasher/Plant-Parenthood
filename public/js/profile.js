@@ -38,11 +38,33 @@ const delButtonHandler = async (event) => {
   }
 };
 
+const saveBtnHandler = async (ev) =>{
+  const newName = $('#name-edit').val();
+  const newEmail = $('#email-edit').val();
+  const newPass = $('#password-edit').val();
+  
+  if(newName && newEmail && newPass) {
+    const response = await fetch('/api/users', {
+      method: 'POST',
+      body: JSON.stringify({ newName, newEmail, newPass }),
+      headers: { 'Content-Type': 'application/json' },
+    });
+
+    if (response.ok) {
+      //document.location.replace('/profile');
+    } else {
+      alert(response.statusText);
+    }
+  }
+
+  
+}
+
 const editButtons = document.querySelectorAll('.btn-edit')
   editButtons.forEach(button => {
-    const newPlantName = prompt('Enter the new plant name:');
+    const newPlantName ='Enter the new plant name:';
     if (newPlantName !== null)
-      const collectionId = button.dataset.id;
+   //   const collectionId = button.dataset.id;
 
     fetch('/updatePlantName/${collectionId}')
   })
@@ -61,7 +83,7 @@ const logout = async () => {
 };
 
 
-document.querySelector('#save-btn').addEventListener('click', save);
+document.querySelector('#save-btn').addEventListener('click', saveBtnHandler);
 document.querySelector('#logoutBtn').addEventListener('click', logout);
 document
   .querySelector('.collection-list')

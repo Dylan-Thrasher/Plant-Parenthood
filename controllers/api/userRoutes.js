@@ -1,10 +1,12 @@
 const router = require('express').Router();
 const { User } = require('../../models');
-
+const {log} = new (require ('../../utils/logger'))
 router.post('/', async (req, res) => {
+  log('addign new user', 'red');
   try {
     const userData = await User.create(req.body);
-
+    log(userData, 'white', 'bgRed');
+    console.log(userData);
     req.session.save(() => {
       req.session.user_id = userData.id;
       req.session.logged_in = true;
@@ -17,7 +19,7 @@ router.post('/', async (req, res) => {
 });
 
 router.post('/login', async (req, res) => {
-  console.log('attempting log in')
+  log('attempting log in', 'red');
   try {
     const userData = await User.findOne({ where: { email: req.body.email } });
     console.log(userData);
