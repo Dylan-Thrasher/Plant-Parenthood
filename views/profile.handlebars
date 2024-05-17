@@ -1,55 +1,79 @@
-<div class="row">
-  <div class="col-auto">
-    <h2>Welcome, {{user.name}}!</h2>
+<main class='w-full flex flex-row flex-wrap justify-center items-center'>
+
+  <div class="row mt-4 w-full flex flex-row flex-wrap justify-center">
+
+    </div>
+  <!-- banner for profile -->
+  <div class="w-full px-4 ">
+    <div class="rounded-lg h-52 w-full bg-center bg-cover bg-[url('./assets/images/image0.jpeg')] text-yellow-100">
+      <div class="w-full filter-none p-4 text-5xl">Welcome, {{user.name}}</div>
+    </div>
   </div>
-</div>
+      <!-- user info form -->
+      <form class="form edit-form flex flex-row flex-wrap p-2 w-96 rounded-lg bg-[#B7D55D] ">
+        <div class="form-group w-full bg-white p-2 rounded-t-lg">
+          <label for="name-edit">name:</label>
+          <input class="form-input" type="text" id="name-edit" value="{{user.name}}" disabled />
+        </div>
+        <div class="form-group w-full bg-white p-2">
+          <label for="email-edit">email:</label>
+          <input class="form-input" type="text" id="email-edit" value="{{user.email}}" disabled />
+        </div>
+        <div class="form-group w-full bg-white p-2 rounded-b-lg">
+          <label for="password-edit">password:</label>
+          <input class="form-input" type="password" id="password-edit" placeholder="*********" disabled />
+        </div>
+        <div class="form-group w-full flex flex-row flex-wrap justify-center pt-2">
+          <button class="p-2" type='submit'><img class="h-8 m-auto" src="./assets/images/icons8-save-48.png"
+              alt="A dark green save icon">Save</button>
+                 <button id="logoutBtn" class="p-2"><img class="h-8 m-auto" src="./assets/images/icons8-logout-48.png"
+            alt="A dark green logout icon">Logout</button>
 
-<div class="row mt-4">
-  <div class="col-md-6">
-    <h3>Your Plants</h3>
+        </div>
+      </form>
 
-   <form class="form edit-form flex flex-row flex-wrap p-2 w-96 rounded-lg bg-[#B7D55D]">
-      <div class="form-group w-full bg-white p-2 rounded-t-lg">
-        <label for="name-edit">name:</label>
-        <input class="form-input" type="text" id="name-edit" />
+
+      
+     
+
+      {{#if collections.length}}
+      <div class="col-md-6 plant-list">
+        <h3>Current Plants:</h3>
+
+        {{#each collections as |collection|}}
+        <div class="row mb-2">
+          <div class="col-md-8">
+            <h4><a href="/plant/{{collection.id}}">{{collection.plant_name}}</a></h4>
+          </div>
+          <div class="col-md-4">
+            <button class="btn btn-sm btn-danger" data-id="{{collection.id}}">DELETE</button>
+          </div>
+        </div>
+        {{/each}}
       </div>
-      <div class="form-group w-full bg-white p-2">
-        <label for="email-edit">email:</label>
-        <input class="form-input" type="text" id="email-edit" />
-      </div>
-      <div class="form-group w-full bg-white p-2 rounded-b-lg">
-        <label for="password-edit">password:</label>
-        <input class="form-input" type="password" id="password-edit" />
-      </div>
-      <div class="form-group w-full flex flex-row flex-wrap justify-center pt-2">
-       <button class="p-2" type='submit'><img class="h-4 m-auto" src="./assets/images/icons8-save-48.png"
-            alt="A dark green save icon">Signup</button>
-      </div>
-    </form>
+      {{/if}}
+    
+  
 
 
-  <nav class="flex flex-row flex-wrap">
-        <button id="logoutBtn" class="p-2"><img class="h-4 m-auto" src="./assets/images/icons8-logout-48.png"
-            alt="A dark green leaf icon">Plants</button>
 
-      </nav>
 
-  {{#if collections.length}}
-  <div class="col-md-6 plant-list">
-    <h3>Current Plants:</h3>
 
+  <!-- results grid -->
+  <h3>Your Plants</h3>
+  <div id="resultsGrid"
+    class=" grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-6 gap-6 w-full p-4 justify-center">
     {{#each collections as |collection|}}
-    <div class="row mb-2">
-      <div class="col-md-8">
-        <h4><a href="/plant/{{collection.id}}">{{collection.plant_name}}</a></h4>
-      </div>
-      <div class="col-md-4">
-        <button class="btn btn-sm btn-danger" data-id="{{collection.id}}">DELETE</button>
-      </div>
+    <div id="plantId{{collection.id}}"
+      class="flex flex-wrap justify-center text-center transition ease-in-out duration-100 hover:translate-y-1 hover:scale-[110%] antialiased hover:subpixel-antialiased">
+      <img id="plantId{{collection.id}}" class="rounded-md" src={{collection.regular_url}} alt="Image of {{plant.common_name}}" />
+
+      <div class="w-full pt-2 text-s ">{{collection.common_name}}</div>
     </div>
     {{/each}}
-  </div>
-  {{/if}}
-</div>
 
+
+  </div>
+
+</main>
 <script src="./js/profile.js"></script>

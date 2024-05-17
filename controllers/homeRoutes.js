@@ -1,8 +1,8 @@
 const router = require('express').Router();
-const { Plant , User, Collection } = require('../models');
+const { Plant, User, Collection } = require('../models');
 const withAuth = require('../utils/auth');
 
-const {log} = new (require('../utils/logger'))
+const { log } = new (require('../utils/logger'))
 
 router.get('/', async (req, res) => {
   console.log('get root')
@@ -14,9 +14,9 @@ router.get('/', async (req, res) => {
     log(plants, 'white', 'bgGreen');
     log(plants.length, 'green', 'bgWhite');
     // Pass serialized data and session flag into template
-    res.render('homepage', { 
-      plants 
-     
+    res.render('homepage', {
+      plants
+
     });
   } catch (err) {
     res.status(500).json(err);
@@ -57,19 +57,21 @@ router.get('/profile', withAuth, async (req, res) => {
 
     const user = userData.get({ plain: true });
     const collectionData = await Collection.findAll({
-      where: {
-        user_id: req.session.user_id
-      },
-      // include: [{
-      //   model: User,
-      //   where: {
-      //     id: req.session.user_id
-      //   }
-      // }],
-    });
+    
+      include: [{
+       model: User,
+        where: {
+           id: req.session.user_id
+        }
+       }],
+      });
 
-    const collections = collectionData.map((collection) => collection.get({ plain: true }));
 
+
+    let collections = collectionData.map((collection) => collection.get({ plain: true }));
+   // collections.filter
+    log(collections, 'white', 'bgGray')
+    //collections = collections.filter((collection)=> collection.user_id != req.session.user_id )
     res.render('profile', {
       collections,
       user,
