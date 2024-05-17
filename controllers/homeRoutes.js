@@ -38,7 +38,8 @@ router.get('/plant', async (req, res) => {
       logged_in: req.session.logged_in
     });
   } catch (err) {
-    res.status(500).json(err);
+    res.redirect('/profile');
+//    res.status(500).json(err);
   }
 });
 
