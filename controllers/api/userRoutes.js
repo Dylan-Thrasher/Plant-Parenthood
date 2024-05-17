@@ -21,11 +21,13 @@ router.post('/', async (req, res) => {
 });
 
 router.post('/edit', async (req, res) => {
-  console.log('updating user', 'red');
-  //log(req.body, 'red', 'bgWhite');
+  console.log('============================');
+  console.log('updating user');
+  log(req.body, 'red', 'bgWhite');
   try {
-    const userData = await User.update({
-    //  {name: req.body.}
+    const user = await User.findByPk(req.session.user_id)
+    const userData = await user.update({
+     name: req.body.newName
     });
     log(userData, 'white', 'bgRed');
     console.log(userData);
@@ -36,6 +38,7 @@ router.post('/edit', async (req, res) => {
       res.status(200).json(userData);
     });
   } catch (err) {
+    console.error(err)
     res.status(400).json(err);
   }
 });
