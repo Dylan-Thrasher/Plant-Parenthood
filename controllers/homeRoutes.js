@@ -57,19 +57,19 @@ router.get('/profile', withAuth, async (req, res) => {
 
     const user = userData.get({ plain: true });
     const collectionData = await Collection.findAll({
-    
-      include: [{
-       model: User,
         where: {
-           id: req.session.user_id
-        }
-       }],
-      });
+          user_id: req.session.user_id
+        },
+      include: [{
+        model: Plant,
+        attributes: ['common_name', 'regular_url']
+      }],
+    });
 
 
 
     let collections = collectionData.map((collection) => collection.get({ plain: true }));
-   // collections.filter
+    // collections.filter
     log(collections, 'white', 'bgGray')
     //collections = collections.filter((collection)=> collection.user_id != req.session.user_id )
     res.render('profile', {
@@ -77,6 +77,17 @@ router.get('/profile', withAuth, async (req, res) => {
       user,
       logged_in: true
     });
+
+    // Collection.findByPk(collectionId, {
+    //   include: [{
+    //     model: Plant,
+    //     attributes: ['common_name', 'regular_url']
+    //   }]
+    // }).then(collection => {
+    //   console.log(collection.Plant.common_name); // Accessing common_name from the associated Plant
+    //   console.log(collection.Plant.regular_url); // Accessing regular_url from the associated Plant
+    // });
+
   } catch (err) {
     res.status(500).json(err);
   }

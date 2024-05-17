@@ -27,7 +27,7 @@ Collection.belongsTo(Plant, {
   onDelete: 'CASCADE',
   // specifying which information carries over from Plant model
   targetKey: 'id',
-  attributes: ['common_name', 'scientific_name', 'other_name']
+  attributes: ['common_name', 'regular_url']
 });
 
 module.exports = { User, Plant, Collection };
