@@ -8,24 +8,24 @@
   <div class="col-md-6">
     <h3>Your Plants</h3>
 
-    <form class="form new-plant-form">
-      <div class="form-group">
-        <label for="plant-name">plant name:</label>
-        <input class="form-input" type="text" id="plant-name" name="plant-name" />
+   <form class="form edit-form flex flex-row flex-wrap p-2 w-96 rounded-lg bg-[#B7D55D]">
+      <div class="form-group w-full bg-white p-2 rounded-t-lg">
+        <label for="name-edit">name:</label>
+        <input class="form-input" type="text" id="name-edit" />
       </div>
-      <div class="form-group">
-        <label for="plant-funding">needed funding ($):</label>
-        <input class="form-input" type="number" id="plant-funding" name="plant-funding" />
+      <div class="form-group w-full bg-white p-2">
+        <label for="email-edit">email:</label>
+        <input class="form-input" type="text" id="email-edit" />
       </div>
-      <div class="form-group">
-        <label for="plant-desc">description:</label>
-        <textarea class="form-input" id="plant-desc" name="plant-desc"></textarea>
+      <div class="form-group w-full bg-white p-2 rounded-b-lg">
+        <label for="password-edit">password:</label>
+        <input class="form-input" type="password" id="password-edit" />
       </div>
-      <div class="form-group">
-        <button type="submit" class="btn btn-primary">Create</button>
+      <div class="form-group w-full flex flex-row flex-wrap justify-center pt-2">
+       <button class="p-2" type='submit'><img class="h-4 m-auto" src="./assets/images/icons8-save-48.png"
+            alt="A dark green save icon">Signup</button>
       </div>
     </form>
-  </div>
 
 
   <nav class="flex flex-row flex-wrap">
