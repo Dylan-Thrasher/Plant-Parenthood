@@ -7,6 +7,7 @@ router.post('/', withAuth, async (req, res) => {
   
   req.body.user_id = req.session.user_id;
   console.log(req.body)
+  req.body.user_id = req.session.user_id
   try {
     const newCollection = await Collection.create({
       ...req.body

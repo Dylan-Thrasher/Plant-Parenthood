@@ -37,6 +37,16 @@ const delButtonHandler = async (event) => {
     }
   }
 };
+
+const editButtons = document.querySelectorAll('.btn-edit')
+  editButtons.forEach(button => {
+    const newPlantName = prompt('Enter the new plant name:');
+    if (newPlantName !== null)
+      const collectionId = button.dataset.id;
+
+    fetch('/updatePlantName/${collectionId}')
+  })
+
 const logout = async () => {
   const response = await fetch('/api/users/logout', {
     method: 'POST',
@@ -51,7 +61,7 @@ const logout = async () => {
 };
 
 
-
+document.querySelector('#save-btn').addEventListener('click', save);
 document.querySelector('#logoutBtn').addEventListener('click', logout);
 document
   .querySelector('.collection-list')
