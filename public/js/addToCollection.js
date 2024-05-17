@@ -1,12 +1,5 @@
-document.getElementById('addtoCollectionBtn').addEventListener('click', function() {
-    const itemData = {
-        //item data to be passed on here
-    }
-    addtoCollection(itemData);
-});
-
 function addtoCollection(itemData) {
-    fetch('/add-to-collection', {
+    fetch('/api/collection', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -26,3 +19,18 @@ function addtoCollection(itemData) {
         console.error('Error adding item to collection:', error);
     })
 }
+
+
+document.getElementById('addtoCollectionBtn').addEventListener('click', function() {
+   
+    
+    const itemData = {
+        //item data to be passed on here
+        'plant_id': $('#plant-id').val().trim(),
+        'regular_url': $('#regular-url').val().trim(),
+        'common_name': $('#common-name').val().trim(),
+    } 
+    debugger
+    addtoCollection(itemData);
+});
+

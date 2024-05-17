@@ -1,4 +1,4 @@
-const searchInput = document.getElementById('searchInput');
+const searchInput = document.getElementById('searchBtn');
 const plantCards = document.querySelectorAll('#plantCard');
 
 searchInput.addEventListener('input', () => {

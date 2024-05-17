@@ -13,18 +13,24 @@
 
   <div class="row mt-4 w-full flex flex-row flex-wrap justify-center rounded-lg p-10">
     <img class="rounded-lg" src="{{original_url}}" alt="Image of {{common_name}}">
-    <div class="p-2">
-      <div>Cycle:{{cycle}}</div>
+    <form class="form signup-form flex flex-row flex-wrap p-2 w-96 rounded-lg bg-[#B7D55D]">
+      <input class="form-input" type="text" id="cycle" value="{{cycle}}" disabled/>
 
-      <div>Watering:{{watering}}</div>
+      <input class="form-input" type="text" id="watering" value="{{watering}}" disabled/>
       
-      <div>Sunlight:{{sunlight}}</div>
+      <input class="form-input" type="text" id="sunlight" value="{{sunlight}}" disabled/>
+
+      <input class="form-input" type="text" id="plant-id" value="{{id}}" disabled/>
+
+      <input class="form-input" type="text" id="regular-url" value="{{regular_url}}" disabled/>
+
+      <input class="form-input" type="text" id="common-name" value="{{common_name}}" disabled/>
 
  {{!-- added button to allow for updating collection --}}
-      <button class="p-2" type='submit'><img class="h-8 m-auto" src="./assets/images/icons8-save-48.png"
+      <button class="p-2" type='post' id="addtoCollectionBtn"><img class="h-8 m-auto" src="./assets/images/icons8-save-48.png"
           alt="A dark green save icon">Add to Collection</button>
-    </div>
+    </form>
 
   </div>
 </main>
-<script src="../public/js/addToCollection.js"></script>
+<script src="./js/addToCollection.js"></script>
