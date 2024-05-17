@@ -1,6 +1,6 @@
 <div class="row">
   <div class="col-auto">
-    <h2>Welcome, {{name}}!</h2>
+    <h2>Welcome, {{user.name}}!</h2>
   </div>
 </div>
 
@@ -27,17 +27,17 @@
     </form>
   </div>
 
-  {{#if plants.length}}
+  {{#if collections.length}}
   <div class="col-md-6 plant-list">
     <h3>Current Plants:</h3>
 
-    {{#each plants as |plant|}}
+    {{#each collections as |collection|}}
     <div class="row mb-2">
       <div class="col-md-8">
-        <h4><a href="/plant/{{plant.id}}">{{plant.name}}</a></h4>
+        <h4><a href="/plant/{{collection.id}}">{{collection.plant_name}}</a></h4>
       </div>
       <div class="col-md-4">
-        <button class="btn btn-sm btn-danger" data-id="{{plant.id}}">DELETE</button>
+        <button class="btn btn-sm btn-danger" data-id="{{collection.id}}">DELETE</button>
       </div>
     </div>
     {{/each}}

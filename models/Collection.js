@@ -1,5 +1,5 @@
 const { Model, DataTypes } = require('sequelize');
-const sequelize = require('../config/connection'); // Assuming you have a sequelize connection
+const sequelize = require('../config/connection'); 
 
 class Collection extends Model {}
 
@@ -9,18 +9,14 @@ Collection.init({
         primaryKey: true,
         autoIncrement: true
     },
-    common_name: {
-        type: DataTypes.STRING,
+    owned: {
+        type: DataTypes.BOOLEAN,
         allowNull: false
     },
-    scientific_name: {
-        type: DataTypes.ARRAY(DataTypes.STRING),
-        allowNull: false
-    },
-    other_name: {
-        type: DataTypes.ARRAY(DataTypes.STRING),
-        allowNull: true
-    },
+    plant_name: {
+      type: DataTypes.STRING,
+      allowNull: false
+  },
     //links the user data table with a foreign key
     user_id: {
         type: DataTypes.INTEGER,

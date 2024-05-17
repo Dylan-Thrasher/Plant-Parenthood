@@ -10,69 +10,61 @@ Plant.init({
         autoIncrement: true
     },
     common_name: {
-        type: DataTypes.STRING,
+        type: DataTypes.STRING(1000),
         allowNull: false
     },
     scientific_name: {
-        type: DataTypes.ARRAY(DataTypes.STRING),
+        type: DataTypes.ARRAY(DataTypes.STRING(1000)),
         allowNull: false
     },
     other_name: {
-        type: DataTypes.ARRAY(DataTypes.STRING),
+        type: DataTypes.ARRAY(DataTypes.STRING(1000)),
         allowNull: true
     },
     cycle: {
-        type: DataTypes.STRING,
+        type: DataTypes.STRING(1000),
         allowNull: false
     },
     watering: {
-        type: DataTypes.STRING,
+        type: DataTypes.STRING(1000),
         allowNull: false
     },
     sunlight: {
-        type: DataTypes.ARRAY(DataTypes.STRING),
+        type: DataTypes.ARRAY(DataTypes.STRING(1000)),
         allowNull: false
     },
-    default_image_license: {
+    license: {
         type: DataTypes.INTEGER,
-        allowNull: false
+        allowNull: true
     },
-    default_image_license_name: {
-        type: DataTypes.STRING,
-        allowNull: false
+    license_name: {
+        type: DataTypes.STRING(1000),
+        allowNull: true
     },
-    default_image_license_url: {
-        type: DataTypes.STRING,
-        allowNull: false
+    license_url: {
+        type: DataTypes.STRING(1000),
+        allowNull: true
     },
-    default_image_original_url: {
-        type: DataTypes.STRING,
-        allowNull: false
+    original_url: {
+        type: DataTypes.STRING(1000),
+        allowNull: true
     },
-    default_image_regular_url: {
-        type: DataTypes.STRING,
-        allowNull: false
+    regular_url: {
+        type: DataTypes.STRING(1000),
+        allowNull: true
     },
-    default_image_medium_url: {
-        type: DataTypes.STRING,
-        allowNull: false
+    medium_url: {
+        type: DataTypes.STRING(1000),
+        allowNull: true
     },
-    default_image_small_url: {
-        type: DataTypes.STRING,
-        allowNull: false
+    small_url: {
+        type: DataTypes.STRING(1000),
+        allowNull: true
     },
-    default_image_thumbnail: {
-        type: DataTypes.STRING,
-        allowNull: false
+    thumbnail: {
+        type: DataTypes.STRING(1000),
+        allowNull: true
     },
-    //links the user data table with a foreign key
-    user_id: {
-        type: DataTypes.INTEGER,
-        references: {
-          model: 'user',
-          key: 'id',
-        },
-      },
 },
 {
     sequelize,
