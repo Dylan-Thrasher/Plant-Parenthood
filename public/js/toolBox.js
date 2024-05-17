@@ -3,10 +3,18 @@
 const logStrings = { storeErr: "Storage Error: " }
 
 
+const toggleSearchHide = (ev) => {
+   
+    let hidden = $('#search');
+  
+    if(hidden.is(':hidden')) hidden.show();
+    else hidden.hide();
+}
 
-const toggleEleHidden = (ev) => {
-    debugger;
-    let hidden = $(`#${ele}`);
+const toggleFilterHide = (ev) => {
+   
+    let  hidden = $('#filter')    
+    
     if(hidden.is(':hidden')) hidden.show();
     else hidden.hide();
 }

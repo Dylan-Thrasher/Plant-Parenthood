@@ -8,25 +8,29 @@
       <!-- banner for main -->
       <div class="w-full px-4 ">
         <div
-          class="rounded-lg h-52 w-full bg-center bg-cover bg-[url('./assets/images/forrest-log.jpg')] text-yellow-100">
+          class="rounded-lg h-52 w-full bg-center bg-cover bg-[url('./assets/images/forrest-log.jpg')] text-yellow-200">
           <div class="w-full filter-none p-4 text-5xl">All Plants</div>
         </div>
       </div>
       <!-- search and filter -->
-      
+
       <button id="filterBtn" class="p-2"><img class="h-4 m-auto" src="./assets/images/icons8-filter-48.png"
           alt="A dark green login icon represented by an arrow leading into a rounded square">Filter</button>
-          <!-- search filter card -->
-      <div id="filter" class="w-full flex flex-row flex-wrap justify-between items-center px-4">
+      <!-- search filter card -->
+      <div id="filter" class="w-full flex flex-row flex-wrap justify-center items-center px-4">
         <form class="rounded-lg bg-[#B7D55D] p-2">
-        <input type="checkbox" class="px-4" id="cycleFilter" value="Cycle"><label
-          for="cycleFilter" class="px-2" >Cycle</label>
-        <input type="checkbox" class="px-4" id="wateringFilter" value="Watering"><label for="wateringFilter" class="px-2" >Watering</label>
-        <input type="checkbox" class="px-4" id="sunlightFilter" value="Sunlight"><label for="sunlightFilter" class="px-2" >Sunlight</label>
-        <input type="checkbox" class="px-4" id="sortAZ" value="Sort A-Z"><label for="sortAZ" class="px-2" >Sort A-Z</label>
-        <input type="checkbox" class="px-4" id="sortAZ" value="Sort Z-A"><label for="sortAZ" class="px-2" >Sort A-Z</label>
+          <input type="checkbox" class="px-4" id="cycleFilter" value="Cycle"><label for="cycleFilter"
+            class="px-2">Cycle</label>
+          <input type="checkbox" class="px-4" id="wateringFilter" value="Watering"><label for="wateringFilter"
+            class="px-2">Watering</label>
+          <input type="checkbox" class="px-4" id="sunlightFilter" value="Sunlight"><label for="sunlightFilter"
+            class="px-2">Sunlight</label>
+          <input type="checkbox" class="px-4" id="sortAZ" value="Sort A-Z"><label for="sortAZ" class="px-2">Sort
+            A-Z</label>
+          <input type="checkbox" class="px-4" id="sortAZ" value="Sort Z-A"><label for="sortAZ" class="px-2">Sort
+            A-Z</label>
         </form>
-        
+
       </div>
 
 
@@ -35,12 +39,14 @@
       <div id="resultsGrid"
         class=" grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-6 gap-6 w-full p-4 justify-center">
         {{#each plants as |plant|}}
-        <div id="plantCard" class="flex flex-wrap justify-center text-center transition ease-in-out duration-100 hover:translate-y-1 hover:scale-[110%] antialiased hover:subpixel-antialiased">
-          <img id="{{plant.id}}" class="rounded-md" src={{plant.regular_url}}
-            alt="Image of {{plant.common_name}}" />
+        {{#if plant.regular_url}}
+        <div id="plantCard"
+          class="flex flex-wrap justify-center text-center transition ease-in-out duration-100 hover:translate-y-1 hover:scale-[110%] antialiased hover:subpixel-antialiased">
+          <img id="{{plant.id}}" class="rounded-md" src={{plant.regular_url}} alt="Image of {{plant.common_name}}" />
 
           <div class="w-full pt-2 text-s ">{{plant.common_name}}</div>
         </div>
+        {{/if}}
         {{/each}}
 
 
@@ -52,7 +58,7 @@
 <script>
   $(() => {
     $('#filter').hide();
-    $('#filterBtn').on('click', toggleEleHidden);
+    $('#filterBtn').on('click', toggleFilterHide);
   })
 </script>
 <script src="./js/imageGrid.js"></script>
