@@ -42,7 +42,7 @@
 
 
   <!-- results grid -->
-  <div class="flex flex-row flex-wrap">
+  <div class="flex flex-row flex-wrap collection-list">
     <h3 class="pl-6 pt-4">Your Plants</h3>
     <div id="resultsGrid"
       class=" grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-6 gap-6 w-full p-4 justify-center">
@@ -53,8 +53,12 @@
         class="flex flex-wrap justify-center text-center transition ease-in-out duration-100 hover:translate-y-1 hover:scale-[110%] antialiased hover:subpixel-antialiased">
         <img id="{{collection.plant_id}}" class="rounded-md" src={{collection.regular_url}}
           alt="Image of {{collection.common_name}}" />
-
+        <div class="w-full pt-2 text-s ">{{collection.plant_name}} the</div>
         <div class="w-full pt-2 text-s ">{{collection.common_name}}</div>
+        
+        <div class="col-md-4">
+        <button class="btn btn-sm btn-danger" data-id="{{collection.id}}">DELETE</button>
+      </div>
       </div>
       {{/if}}
 
