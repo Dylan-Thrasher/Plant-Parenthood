@@ -3,8 +3,30 @@ const { User } = require('../../models');
 const {log} = new (require ('../../utils/logger'))
 router.post('/', async (req, res) => {
   log('addign new user', 'red');
+  if(req.body.isUpdate) log('updating', 'red', 'bgWhite');
+  log('addign new user', 'red');
   try {
     const userData = await User.create(req.body);
+    log(userData, 'white', 'bgRed');
+    console.log(userData);
+    req.session.save(() => {
+      req.session.user_id = userData.id;
+      req.session.logged_in = true;
+
+      res.status(200).json(userData);
+    });
+  } catch (err) {
+    res.status(400).json(err);
+  }
+});
+
+router.post('/edit', async (req, res) => {
+  console.log('updating user', 'red');
+  //log(req.body, 'red', 'bgWhite');
+  try {
+    const userData = await User.update({
+    //  {name: req.body.}
+    });
     log(userData, 'white', 'bgRed');
     console.log(userData);
     req.session.save(() => {

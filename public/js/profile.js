@@ -46,12 +46,14 @@ const saveBtnHandler = async (ev) =>{
   if(newName && newEmail && newPass) {
     const response = await fetch('/api/users', {
       method: 'POST',
-      body: JSON.stringify({ newName, newEmail, newPass }),
+      body: JSON.stringify({ newName, newEmail, newPass, isUpdate: true }),
       headers: { 'Content-Type': 'application/json' },
     });
 
     if (response.ok) {
-      //document.location.replace('/profile');
+      console.log('it worked?')
+      debugger;
+      document.location.replace('/profile');
     } else {
       alert(response.statusText);
     }
@@ -59,7 +61,7 @@ const saveBtnHandler = async (ev) =>{
 
   
 }
-
+/*
 const editButtons = document.querySelectorAll('.btn-edit')
   editButtons.forEach(button => {
     const newPlantName ='Enter the new plant name:';
@@ -68,6 +70,7 @@ const editButtons = document.querySelectorAll('.btn-edit')
 
     fetch('/updatePlantName/${collectionId}')
   })
+  */
 
 const logout = async () => {
   const response = await fetch('/api/users/logout', {
