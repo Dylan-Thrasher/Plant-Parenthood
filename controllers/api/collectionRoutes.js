@@ -4,10 +4,10 @@ const withAuth = require('../../utils/auth');
 
 router.post('/plant', withAuth, async (req, res) => {
   console.log(req.body)
+  req.body.user_id = req.session.user_id
   try {
     const newCollection = await Collection.create({
       ...req.body,
-      user_id: req.session.user_id,
     });
 
     res.status(200).json(newCollection);
