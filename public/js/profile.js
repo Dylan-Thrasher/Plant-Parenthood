@@ -40,14 +40,14 @@ const delButtonHandler = async (event) => {
 
 const saveBtnHandler = async (ev) =>{
   ev.preventDefault()
-  const newName = $('#name-edit').val();
-  const newEmail = $('#email-edit').val();
-  const newPass = $('#password-edit').val();
+  const newName = $('#name-edit').val().trim();
+  const newEmail = $('#email-edit').val().trim();
+  const newPass = $('#password-edit').val().trim();
   console.log(newName)
   if(newName) {
     const response = await fetch('/api/users/edit', {
       method: 'POST',
-      body: JSON.stringify({ newName }),
+      body: JSON.stringify({ newName, newPass }),
       headers: { 'Content-Type': 'application/json' },
     });
 
