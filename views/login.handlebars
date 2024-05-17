@@ -1,39 +1,42 @@
-<div class="row">
-  <div class="col-md-6">
+<div class="w-full min-h-96 flex flex-row flex-wrap justify-center items-center">
+  <div class="flex flex-col flex-wrap items-center p-4">
     <h2>Login</h2>
 
-    <form class="form login-form">
-      <div class="form-group">
+   <form class="form login-form flex flex-row flex-wrap p-2 w-96 rounded-lg bg-[#B7D55D]">
+      
+      <div class="form-group w-full bg-white rounded-t-lg p-2">
         <label for="email-login">email:</label>
         <input class="form-input" type="text" id="email-login" />
       </div>
-      <div class="form-group">
+      <div class="form-group w-full bg-white p-2 rounded-b-lg">
         <label for="password-login">password:</label>
         <input class="form-input" type="password" id="password-login" />
       </div>
-      <div class="form-group">
-        <button class="btn btn-primary" type="submit">login</button>
+      <div class="form-group w-full flex flex-row flex-wrap justify-center pt-2">
+       <button class="p-2" type='submit'><img class="h-4 m-auto" src="./assets/images/icons8-login-48.png"
+            alt="A dark green login icon">Login</button>
       </div>
     </form>
   </div>
-  <div class="col-md-6">
+  <div class="flex flex-col flex-wrap items-center p-4">
     <h2>Signup</h2>
 
-    <form class="form signup-form">
-      <div class="form-group">
+    <form class="form signup-form flex flex-row flex-wrap p-2 w-96 rounded-lg bg-[#B7D55D]">
+      <div class="form-group w-full bg-white p-2 rounded-t-lg">
         <label for="name-signup">name:</label>
         <input class="form-input" type="text" id="name-signup" />
       </div>
-      <div class="form-group">
+      <div class="form-group w-full bg-white p-2">
         <label for="email-signup">email:</label>
         <input class="form-input" type="text" id="email-signup" />
       </div>
-      <div class="form-group">
+      <div class="form-group w-full bg-white p-2 rounded-b-lg">
         <label for="password-signup">password:</label>
         <input class="form-input" type="password" id="password-signup" />
       </div>
-      <div class="form-group">
-        <button class="btn btn-primary" type="submit">signup</button>
+      <div class="form-group w-full flex flex-row flex-wrap justify-center pt-2">
+       <button class="p-2" type='submit'><img class="h-4 m-auto" src="./assets/images/icons8-registration-48.png"
+            alt="A dark green login icon">Signup</button>
       </div>
     </form>
   </div>

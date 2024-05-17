@@ -30,7 +30,6 @@
   <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 
   <script src="./js/toolBox.js"></script>
-  <script src="./js/populateImageGrid.js"></script>
   <title>Plant Parenthood</title>
 </head>
 
@@ -45,11 +44,13 @@
           <div class="w-full filter-none p-4 text-5xl">All Plants</div>
         </div>
       </div>
-      <!-- filter -->
+      <!-- search and filter -->
+      
       <button id="filterBtn" class="p-2"><img class="h-4 m-auto" src="./assets/images/icons8-filter-48.png"
           alt="A dark green login icon represented by an arrow leading into a rounded square">Filter</button>
-      <div id="filter" class="w-full flex flex-row flex-wrap justify-center">
-        <form class="rounded-lg bg-gray-200 p-2">
+          <!-- search filter card -->
+      <div id="filter" class="w-full flex flex-row flex-wrap justify-between items-center px-4">
+        <form class="rounded-lg bg-[#B7D55D] p-2">
         <input type="checkbox" class="px-4" id="cycleFilter" value="Cycle"><label
           for="cycleFilter" class="px-2" >Cycle</label>
         <input type="checkbox" class="px-4" id="wateringFilter" value="Watering"><label for="wateringFilter" class="px-2" >Watering</label>
@@ -57,6 +58,7 @@
         <input type="checkbox" class="px-4" id="sortAZ" value="Sort A-Z"><label for="sortAZ" class="px-2" >Sort A-Z</label>
         <input type="checkbox" class="px-4" id="sortAZ" value="Sort Z-A"><label for="sortAZ" class="px-2" >Sort A-Z</label>
         </form>
+        
       </div>
 
 
@@ -81,12 +83,9 @@
 </body>
 <script>
   $(() => {
-
-
     $('#filter').hide();
-    $('#filterBtn').on('click', showFilter);
+    $('#filterBtn').on('click', toggleEleHidden);
   })
-  //populateImageGrid();
 </script>
 
 </html>
