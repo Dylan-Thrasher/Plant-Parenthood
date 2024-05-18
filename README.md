@@ -7,15 +7,15 @@ A plant caretaking application for users to be able to compile and view informat
 
 ##IMAGES
 ### Homepage
-![homepage](public/assets/image/homepage.png)
+![homepage](./public/assets/images/homepage.png)
 
 ### Login/Signup
-![login](public/assets/image/login.png)
-![login2](public/assets/image/login2.png)
+![login](./public/assets/images/login.png)
+![login2](./public/assets/images/login2.png)
 
 
 ### Add to Collection
-![addColllection](public/assets/image/addColllection.png)
+![addCollection](./public/assets/image/addCollection.png)
 
 
 #Goal
