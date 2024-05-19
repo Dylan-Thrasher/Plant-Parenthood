@@ -103,19 +103,19 @@ router.get('/login', (req, res) => {
 });
 
 //post method for adding an item to the user's collection
-router.post('/add-to-collection', withAuth, async (req, res) => {
-  try {
-    const userId = req.session.user_id;
-    const collectionAddition = {
-      ...req.body,
-      user_id: userId
-    };
-    const newItem = await Collection.create(collectionAddition);
-    res.status(201).json(newItem);
-  } catch (err) {
-    console.error('Error adding item to collection:', err);
-    res.status(500).json({ error: 'Could not add item to collection' });
-  }
-});
+// router.post('/add-to-collection', withAuth, async (req, res) => {
+//   try {
+//     const userId = req.session.user_id;
+//     const collectionAddition = {
+//       ...req.body,
+//       user_id: userId
+//     };
+//     const newItem = await Collection.create(collectionAddition);
+//     res.status(201).json(newItem);
+//   } catch (err) {
+//     console.error('Error adding item to collection:', err);
+//     res.status(500).json({ error: 'Could not add item to collection' });
+//   }
+// });
 
 module.exports = router;
