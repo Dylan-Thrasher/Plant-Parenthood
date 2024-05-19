@@ -7,7 +7,7 @@ router.post('/', async (req, res) => {
   // if isUpdate is true in req.body then the server will tell us
   // this may be where the unexpected behavior when updating a user forced a password change occurs? - Charles
   if(req.body.isUpdate) log('updating', 'red', 'bgWhite');
-  log('addign new user', 'red');
+  log('adding new user', 'red');
   try {
     const userData = await User.create(req.body);
     log(userData, 'white', 'bgRed');
