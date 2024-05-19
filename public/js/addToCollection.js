@@ -9,18 +9,18 @@ function addToCollection(itemData) {
         },
         body: JSON.stringify(itemData)
     })
-    .then(response => {
-        if (!response.ok) {
-            throw new Error('Failed to add item to Collection');
-        }
-        return response.json();
-    })
-    .then(data => {
-        console.log('Item added to Collection:', data);
-    })
-    .catch(error => {
-        console.error('Error adding item to collection:', error);
-    })
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Failed to add item to Collection');
+            }
+            return response.json();
+        })
+        .then(data => {
+            console.log('Item added to Collection:', data);
+        })
+        .catch(error => {
+            console.error('Error adding item to collection:', error);
+        })
 }
 
 const saveCollectionHandler = async (ev) => {
@@ -31,24 +31,24 @@ const saveCollectionHandler = async (ev) => {
     console.log(newName)
     debugger;
     if (newName) {
-      const response = await fetch('/api/collection/save', {
-        method: 'POST',
-        body: JSON.stringify({ newName , id}),
-        headers: { 'Content-Type': 'application/json' },
-      });
-  
-      if (response.ok) {
-        // updating worked, nav to profile
-        console.log('it worked?')
-        
-    $('[id=plantName]').prop('disabled', true);
+        const response = await fetch('/api/collection/save', {
+            method: 'POST',
+            body: JSON.stringify({ newName, id }),
+            headers: { 'Content-Type': 'application/json' },
+        });
 
-        //document.location.replace('/profile');
-      } else {
-        alert(response.statusText);
-      }
+        if (response.ok) {
+            // updating worked, nav to profile
+            console.log('it worked?')
+
+            $('[id=plantName]').prop('disabled', true);
+
+            //document.location.replace('/profile');
+        } else {
+            alert(response.statusText);
+        }
     }
-    
+
 }
 
 const editCollectionHandler = (ev) => {
@@ -61,8 +61,21 @@ const editCollectionHandler = (ev) => {
 
 
 
-$(()=> {
+
+$(() => {
     $('#saveCollectionBtn').on('click', saveCollectionHandler);
-    #('#addToCollectionBtn').on('click', addToCollection)
+    $('#addToCollectionBtn').on('click', function (ev) {
+        //prevent event defaults
+        ev.preventDefault();
+        // uses jQuery selection to build itemData to pass to addToCollections
+        const itemData = {
+            //item data to be passed on here
+            'plant_id': $('#plant-id').val().trim(),
+            'regular_url': $('#regular-url').val().trim(),
+            'common_name': $('#common-name').val().trim(),
+        }
+        debugger
+        addToCollection(itemData);
+    })
     $('#editCollectionBtn').on('click', editCollectionHandler);
 })
