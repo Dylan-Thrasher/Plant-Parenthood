@@ -39,7 +39,9 @@ const saveCollectionHandler = async (ev) => {
       if (response.ok) {
         // updating worked, nav to profile
         console.log('it worked?')
-        debugger;
+        
+    $('[id=plantName]').prop('disabled', true);
+
         //document.location.replace('/profile');
       } else {
         alert(response.statusText);
@@ -49,24 +51,27 @@ const saveCollectionHandler = async (ev) => {
 }
 
 const editCollectionHandler = (ev) => {
+    ev.preventDefault();
+    let id = ev.currentTarget.name;
+    window.location.href = `/collection?id=${id}&edit=true`;
 
 }
 
-// This needs to ported to jquery - Charles
-// Adds click event listener to addToCollectionBtn
-/*
-document.getElementById('addToCollectionBtn').addEventListener('click', function() {
-    // uses jQuery selection to build itemData to pass to addToCollections
-    const itemData = {
-        //item data to be passed on here
-        'plant_id': $('#plant-id').val().trim(),
-        'regular_url': $('#regular-url').val().trim(),
-        'common_name': $('#common-name').val().trim(),
-    } 
-    debugger
-    addToCollection(itemData);
-});
-*/
+const toggleSearchHide = (ev) => {
+   
+    let hidden = $('#search');
+  
+    if(hidden.is(':hidden')) hidden.show();
+    else hidden.hide();
+}
+// changes the hidden state based on current state
+const toggleFilterHide = (ev) => {
+   
+    let  hidden = $('#filter')    
+    
+    if(hidden.is(':hidden')) hidden.show();
+    else hidden.hide();
+}
 
 $(()=> {
     $('#saveCollectionBtn').on('click', saveCollectionHandler);
