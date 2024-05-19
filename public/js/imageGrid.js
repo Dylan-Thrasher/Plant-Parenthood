@@ -2,16 +2,19 @@
 // Handles clicking images on the homepage view
 const handleImageClick = (ev) => {
     ev.preventDefault();
+    // we use the name html attribute in homepage to track the plant id
     let id = ev.target.name;
-    debugger;
+   
     window.location.href = `/plant?id=${id}`;
    
 }
 
 const handleCollectionClick = (ev) => {
     ev.preventDefault();
+    
+    // we use the name html attribute in profile view to track the collection id
     let id = ev.target.name;
-    debugger;
+   
     window.location.href = `/collection?id=${id}&edit=false`;
    
 }
@@ -21,7 +24,6 @@ const handleEditClick = (ev => {
     ev.preventDefault();
     // we use the name html attribute in profile view to track the collection id
     let id = ev.target.name;
-    debugger;
     window.location.href = `/collection?id=${id}&edit=true`;
 })
 
