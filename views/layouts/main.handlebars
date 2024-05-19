@@ -28,7 +28,7 @@
   <link rel="icon" type="image/x-icon" href="./assets/images/icons8-potted-plant-windows-11-color-16.png">
 
   <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-  <script src="./js/toolbox.js"></script>
+
   <title>Plant Parenthood</title>
 </head>
 
@@ -47,13 +47,17 @@
       <!-- right nav -->
       <nav class="flex flex-row text-center">
         {{!-- buttons with icon and text on same line - needs text alignment fix
-                  <button class="flex flex-row flex-wrap p-4 text-center"><img class="h-6 m-auto pr-1" src="./assets/images/icons8-login-48.png" alt="A dark green login icon represented by an arrow leading into a rounded square">Login</button>
-                <button class="flex flex-row flex-wrap p-4 text-center"><img class="h-6 m-auto pr-1" src="./assets/images/icons8-search-48.png" alt="A dark green search icon represented by a magnifying glass">Search</button>
-              --}}
-              {{!-- 
-                if the user is logged in, display the profile btn and nav to profile on click 
-                THIS IS NOT BEHAVING AS EXPECTED AND NEEDS INVESTIGATION ON ALL VIEWS -Charles
-                --}}
+        <button class="flex flex-row flex-wrap p-4 text-center"><img class="h-6 m-auto pr-1"
+            src="./assets/images/icons8-login-48.png"
+            alt="A dark green login icon represented by an arrow leading into a rounded square">Login</button>
+        <button class="flex flex-row flex-wrap p-4 text-center"><img class="h-6 m-auto pr-1"
+            src="./assets/images/icons8-search-48.png"
+            alt="A dark green search icon represented by a magnifying glass">Search</button>
+        --}}
+        {{!--
+        if the user is logged in, display the profile btn and nav to profile on click
+        THIS IS NOT BEHAVING AS EXPECTED AND NEEDS INVESTIGATION ON ALL VIEWS -Charles
+        --}}
         {{#if logged_in}}
         <a href="/login"><button class="p-2"><img class="h-4 m-auto" src="./assets/images/icons8-account-48.png"
               alt="A dark green login icon represented by an arrow leading into a rounded square">Account</button>
@@ -71,13 +75,13 @@
 
       </nav>
     </header>
-    {{!-- 
-      {{{body}}} will be the part of the page that updates when users nav to new views
-      for instance when landing on the site for the first time, {{{body}}} will be the contents of
-      homepage.handlebars
-      
-      When users click on a plant in the gride displayed on homepage view, {{{body}}} will be the contents of 
-      plant.handlebars with the associated relevant data - Charles
+    {{!--
+    {{{body}}} will be the part of the page that updates when users nav to new views
+    for instance when landing on the site for the first time, {{{body}}} will be the contents of
+    homepage.handlebars
+
+    When users click on a plant in the gride displayed on homepage view, {{{body}}} will be the contents of
+    plant.handlebars with the associated relevant data - Charles
     --}}
     {{{body}}}
   </div>
@@ -85,7 +89,7 @@
   <footer class="h-32 mt-auto bg-cover bg-bottom bg-[url('./assets/images/forrest-log.jpg')] text-yellow-200">
     <div class="p-4">
       <div class="text-xs">Plant Parenthood © 2024</div>
-{{!-- ICONS ATTRIBUTION NEEDS ATTENTION!!!!!! -Charles --}}
+      {{!-- ICONS ATTRIBUTION NEEDS ATTENTION!!!!!! -Charles --}}
       <div class="text-[0.5em]">Icons provided by <a target="_blank" href="https://icons8.com">Icons8</a>
       </div>
     </div>
@@ -94,14 +98,15 @@
     // jQuery to add the click event to searchBtn with toggleSearchHide as the handler
     $('#searchBtn').on('click', toggleSearchHide);
   </script>
-  {{!-- 
-    search js to link search results and population section.
+  {{!--
+  search js to link search results and population section.
 
-    Should we port the functions from imageGrid.js to search.js?
-    imageGrid.js is being used by two views, but both of those views
-    will also utilize search.js - Charles
+  Should we port the functions from imageGrid.js to search.js?
+  imageGrid.js is being used by two views, but both of those views
+  will also utilize search.js - Charles
   --}}
   <script src="./js/search.js"></script>
 </body>
+<script src="./js/imageGrid.js"></script>
 
 </html>

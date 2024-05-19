@@ -57,21 +57,7 @@ const editCollectionHandler = (ev) => {
 
 }
 
-const toggleSearchHide = (ev) => {
-   
-    let hidden = $('#search');
-  
-    if(hidden.is(':hidden')) hidden.show();
-    else hidden.hide();
-}
-// changes the hidden state based on current state
-const toggleFilterHide = (ev) => {
-   
-    let  hidden = $('#filter')    
-    
-    if(hidden.is(':hidden')) hidden.show();
-    else hidden.hide();
-}
+
 
 $(()=> {
     $('#saveCollectionBtn').on('click', saveCollectionHandler);
