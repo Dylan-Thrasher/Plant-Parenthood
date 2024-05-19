@@ -1,6 +1,7 @@
 
 // sends POST request to server to add a plant to user's collection
 function addToCollection(itemData) {
+    debugger;
     fetch('/api/collection', {
         method: 'POST',
         headers: {
@@ -53,6 +54,7 @@ const saveCollectionHandler = async (ev) => {
 const editCollectionHandler = (ev) => {
     ev.preventDefault();
     let id = ev.currentTarget.name;
+    debeugger;
     window.location.href = `/collection?id=${id}&edit=true`;
 
 }
@@ -61,6 +63,6 @@ const editCollectionHandler = (ev) => {
 
 $(()=> {
     $('#saveCollectionBtn').on('click', saveCollectionHandler);
-    
+    #('#addToCollectionBtn').on('click', addToCollection)
     $('#editCollectionBtn').on('click', editCollectionHandler);
 })
