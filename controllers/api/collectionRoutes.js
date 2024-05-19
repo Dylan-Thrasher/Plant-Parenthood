@@ -3,7 +3,7 @@ const { Collection } = require('../../models');
 const withAuth = require('../../utils/auth');
 
 // Creates a new plant to add to the user's collection
-// We probably should haev named the collection table collection-plant or soemthing - Charles
+// We probably should have named the collection table collection-plant or something - Charles
 /*
   COLLECTION EXPLAINED - TLDR
   Collection is the model used to represent a user's SINGLE plant
