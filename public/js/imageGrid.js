@@ -4,7 +4,7 @@ const handleImageClick = (ev) => {
     ev.preventDefault();
     // we use the name html attribute in homepage to track the plant id
     let id = ev.target.name;
-   
+
     window.location.href = `/plant?id=${id}`;
    
 }
@@ -14,8 +14,8 @@ const handleCollectionClick = (ev) => {
     
     // we use the name html attribute in profile view to track the collection id
     let id = ev.target.name;
-   
-    window.location.href = `/collection?id=${id}git `;
+    
+    window.location.href = `/collection?id=${id}`;
    
 }
 
