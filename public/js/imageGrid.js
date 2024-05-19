@@ -15,7 +15,7 @@ const handleCollectionClick = (ev) => {
     // we use the name html attribute in profile view to track the collection id
     let id = ev.target.name;
    
-    window.location.href = `/collection?id=${id}&edit=false`;
+    window.location.href = `/collection?id=${id}git `;
    
 }
 

@@ -36,8 +36,8 @@ router.get('/collection', async (req, res) => {
     const edit = req.query.edit;
     const plant = plantData.get({ plain: true });
     current_plant = plant;
-
-    res.render('plant', {
+    log(plant, 'white', 'bgBrightGreen');
+    res.render('collection', {
       ...plant,
       edit,
       logged_in: req.session.logged_in
@@ -70,6 +70,7 @@ router.get('/plant', async (req, res) => {
     
       logged_in: req.session.logged_in
     });
+    res.status(200).json(plant);
   } catch (err) {
     error(err);
     res.redirect('/profile');
