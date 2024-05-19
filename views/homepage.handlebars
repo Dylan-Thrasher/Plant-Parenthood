@@ -39,9 +39,9 @@
         class=" grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-6 gap-6 w-full p-4 justify-center">
         {{#each plants as |plant|}}
         {{#if plant.regular_url}}
-        <div id=""
+        <div id="plantCard" name="{{plant.common_name}}"
           class="flex flex-wrap justify-center text-center transition ease-in-out duration-100 hover:translate-y-1 hover:scale-[110%] antialiased hover:subpixel-antialiased">
-          <img id="plantCard" name="{{plant.id}}" class="rounded-md" src={{plant.regular_url}} alt="Image of {{plant.common_name}}" />
+          <img id="plantImg" name="{{plant.id}}" class="rounded-md" src={{plant.regular_url}} alt="Image of {{plant.common_name}}" />
 
           <div class="w-full pt-2 text-s ">{{plant.common_name}}</div>
         </div>
