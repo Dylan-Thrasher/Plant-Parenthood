@@ -25,7 +25,7 @@ router.post('/', withAuth, async (req, res) => {
     res.status(400).json(err);
   }
 });
-// Delete a collection from the user
+// Delete a collection from Collection table by user_id
 // This worked as expected during demo, have not tested since - Charles
 router.delete('/:id', withAuth, async (req, res) => {
   try {

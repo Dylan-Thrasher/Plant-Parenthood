@@ -2,7 +2,7 @@
 // strings we want to reuse for console logging
 const logStrings = { storeErr: "Storage Error: " }
 
-
+// changes the hidden state based on current state
 const toggleSearchHide = (ev) => {
    
     let hidden = $('#search');
@@ -10,7 +10,7 @@ const toggleSearchHide = (ev) => {
     if(hidden.is(':hidden')) hidden.show();
     else hidden.hide();
 }
-
+// changes the hidden state based on current state
 const toggleFilterHide = (ev) => {
    
     let  hidden = $('#filter')    

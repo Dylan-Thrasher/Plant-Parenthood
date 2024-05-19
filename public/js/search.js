@@ -12,3 +12,7 @@ searchInput.addEventListener('input', () => {
     }
   })
 })*/
+
+/*
+  port this shit to jquery - Charles
+*/ 

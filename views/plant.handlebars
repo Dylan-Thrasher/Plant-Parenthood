@@ -29,7 +29,7 @@
       <input class="form-input" type="text" id="common-name" value="{{common_name}}" />
 
       {{!-- added button to allow for updating collection --}}
-      <button class="p-2" type='post' id="addtoCollectionBtn"><img class="h-8 m-auto"
+      <button class="p-2" type='post' id="addToCollectionBtn"><img class="h-8 m-auto"
           src="./assets/images/icons8-save-48.png" alt="A dark green save icon">Add to Collection</button>
     </form>
     {{else}}
@@ -50,7 +50,7 @@
         <input class="form-input" type="text" id="common-name" value="{{common_name}}" disabled />
 
         {{!-- added button to allow for updating collection --}}
-        <button class="p-2" type='post' id="addtoCollectionBtn"><img class="h-8 m-auto"
+        <button class="p-2" type='post' id="addToCollectionBtn"><img class="h-8 m-auto"
             src="./assets/images/icons8-save-48.png" alt="A dark green save icon">Add to Collection</button>
       </form>
 
@@ -59,4 +59,5 @@
 
   </div>
 </main>
+<!-- Yo, if this is working as expected on render, then this is the answer to my question.  Scripts ref'd in a specific handlebar must be linked in that handlebar. - Charles -->
 <script src="./js/addToCollection.js"></script>

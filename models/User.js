@@ -3,11 +3,16 @@ const bcrypt = require('bcrypt');
 const sequelize = require('../config/connection');
 
 class User extends Model {
+  // hash that pass
   checkPassword(loginPw) {
     return bcrypt.compareSync(loginPw, this.password);
   }
 }
-
+// The user model contains a id, name, email, and password
+/*
+  Each User'd id is used to tie rows in the Collection table to the user
+  password is hashed for user security
+*/
 User.init(
   {
     id: {

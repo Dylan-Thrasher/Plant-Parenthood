@@ -2,7 +2,9 @@ const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../config/connection'); // Assuming you have a sequelize connection
 
 class Plant extends Model {}
-
+/*
+  Each Plant id is used to  populate image grids and basic plant detail views with data
+*/
 Plant.init({
     common_name: {
         type: DataTypes.STRING(1000),
