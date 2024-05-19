@@ -3,7 +3,7 @@ const { Collection } = require('../../models');
 const withAuth = require('../../utils/auth');
 
 router.post('/', withAuth, async (req, res) => {
-  console.log('where iin collectionrouts post')
+  console.log('were in collectionrouts post')
   
   req.body.user_id = req.session.user_id;
   console.log(req.body)

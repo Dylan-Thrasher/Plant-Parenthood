@@ -1,3 +1,4 @@
+
 <main class='w-full flex flex-row flex-wrap justify-center items-center'>
 
   <div class="row mt-4 w-full flex flex-row flex-wrap justify-center">
@@ -49,9 +50,9 @@
       {{#each collections as |collection|}}
 
       {{#if collection.regular_url}}
-      <div id="plantCard"
+      <div id=""
         class="flex flex-wrap justify-center text-center transition ease-in-out duration-100 hover:translate-y-1 hover:scale-[110%] antialiased hover:subpixel-antialiased">
-        <img id="{{collection.plant_id}}" class="rounded-md" src={{collection.regular_url}}
+        <img id="plantCard" class="rounded-md" src={{collection.regular_url}}
           alt="Image of {{collection.common_name}}" />
         <div class="w-full pt-2 text-s ">{{collection.plant_name}} the</div>
         <div class="w-full pt-2 text-s ">{{collection.common_name}}</div>

@@ -3,8 +3,9 @@
 const handleClick = (ev) => {
     ev.preventDefault();
     let id = ev.target.id;
-    window.location.href = `/plant?id=${id}`;
     debugger;
+    window.location.href = `/plant?id=${id}`;
+   
 }
 
 $(()=>{
