@@ -1,7 +1,7 @@
 const router = require('express').Router();
 const { Plant, User, Collection } = require('../models');
 const withAuth = require('../utils/auth');
-// the best simple cli debug enhancer ive ever written
+// the best simple cli debug enhancer I've ever written
 const { log, error } = new (require('../utils/logger'))
 
 //Nav to homepage - there is an issue with passing proper login state that needs to be fixed
@@ -80,7 +80,7 @@ router.get('/profile', withAuth, async (req, res) => {
     let collections = collectionData.map((collection) => collection.get({ plain: true }));
   
     log(collections, 'white', 'bgGray')
-    // renders profile view to client with user's collections, user data. and logged_in: true 
+    // renders profile view to client with user's collections, user data, and logged_in: true 
     res.render('profile', {
       collections,
       user,
@@ -102,7 +102,7 @@ router.get('/login', (req, res) => {
   res.render('login');
 });
 
-//post method for adding an item to the user's collection
+//post method for adding an item to the user's collection (removed for redundancy)
 // router.post('/add-to-collection', withAuth, async (req, res) => {
 //   try {
 //     const userId = req.session.user_id;
