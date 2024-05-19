@@ -22,8 +22,39 @@ function addToCollection(itemData) {
     })
 }
 
+const saveCollectionHandler = async (ev) => {
+    ev.preventDefault()
+    debugger;
+    const newName = $('#plantName').val().trim();
+    const id = ev.currentTarget.name;
+    console.log(newName)
+    debugger;
+    if (newName) {
+      const response = await fetch('/api/collection/save', {
+        method: 'POST',
+        body: JSON.stringify({ newName , id}),
+        headers: { 'Content-Type': 'application/json' },
+      });
+  
+      if (response.ok) {
+        // updating worked, nav to profile
+        console.log('it worked?')
+        debugger;
+        //document.location.replace('/profile');
+      } else {
+        alert(response.statusText);
+      }
+    }
+    
+}
+
+const editCollectionHandler = (ev) => {
+
+}
+
 // This needs to ported to jquery - Charles
 // Adds click event listener to addToCollectionBtn
+/*
 document.getElementById('addToCollectionBtn').addEventListener('click', function() {
     // uses jQuery selection to build itemData to pass to addToCollections
     const itemData = {
@@ -35,4 +66,10 @@ document.getElementById('addToCollectionBtn').addEventListener('click', function
     debugger
     addToCollection(itemData);
 });
+*/
 
+$(()=> {
+    $('#saveCollectionBtn').on('click', saveCollectionHandler);
+    
+    $('#editCollectionBtn').on('click', editCollectionHandler);
+})

@@ -31,6 +31,5 @@ $(()=>{
     
     $('[id=plantCard]').on('click', handleImageClick);
     $('[id=collectionCard]').on('click', handleCollectionClick);
-    $('[id=edit-btn]').on('click', handleEditClick);
-    debugger;
+    $('[id=edit-btn]').on('click', handleEditClick); 
 })
