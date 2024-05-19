@@ -51,9 +51,9 @@ const delButtonHandler = async (event) => {
 // NEED RND: WHY WAS THIS FORCING A PASSWORD UPDATE EVEN WHEN WE DID NOT PASS newPass? - Charles
 const saveBtnHandler = async (ev) => {
   ev.preventDefault()
-  const newName = $('#name-edit').val().trim();
-  const newEmail = $('#email-edit').val().trim();
-  const newPass = $('#password-edit').val().trim();
+  const newName = $('#nameEdit').val().trim();
+  const newEmail = $('#emailEdit').val().trim();
+  const newPass = $('#passwordEdit').val().trim();
   console.log(newName)
   if (newName) {
     const response = await fetch('/api/users/edit', {

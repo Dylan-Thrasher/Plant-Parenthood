@@ -14,16 +14,16 @@
   <!-- TODO: Add mustaches and if/else to handle edit/nonediting states -->
   <form class="form edit-form flex flex-row flex-wrap p-2 w-96 rounded-lg bg-[#B7D55D] ">
     <div class="form-group w-full bg-white p-2 rounded-t-lg">
-      <label for="name-edit">name:</label>
-      <input class="form-input" type="text" id="name-edit" value="{{user.name}}" />
+      <label for="nameEdit">name:</label>
+      <input class="form-input" type="text" id="nameEdit" value="{{user.name}}" />
     </div>
     <div class="form-group w-full bg-white p-2">
-      <label for="email-edit">email:</label>
-      <input class="form-input" type="text" id="email-edit" value="{{user.email}}" disabled />
+      <label for="emailEdit">email:</label>
+      <input class="form-input" type="text" id="emailEdit" value="{{user.email}}" disabled />
     </div>
     <div class="form-group w-full bg-white p-2 rounded-b-lg">
-      <label for="password-edit">password:</label>
-      <input class="form-input" type="password" id="password-edit" placeholder="*********"  />
+      <label for="passwordEdit">password:</label>
+      <input class="form-input" type="password" id="passwordEdit" placeholder="*********"  />
     </div>
     <div class="form-group w-full flex flex-row flex-wrap justify-center pt-2">
       <button class="p-2" type='submit' id="save-btn"><img class="h-8 m-auto" src="./assets/images/icons8-save-48.png"
