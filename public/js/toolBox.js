@@ -2,22 +2,8 @@
 // strings we want to reuse for console logging
 const logStrings = { storeErr: "Storage Error: " }
 
+// changes the hidden state based on current state
 
-const toggleSearchHide = (ev) => {
-   
-    let hidden = $('#search');
-  
-    if(hidden.is(':hidden')) hidden.show();
-    else hidden.hide();
-}
-
-const toggleFilterHide = (ev) => {
-   
-    let  hidden = $('#filter')    
-    
-    if(hidden.is(':hidden')) hidden.show();
-    else hidden.hide();
-}
 
 // chars we want to remove from strings for key generation
 const badKeyChars = ['-', ':', '.', '\\', '[', ']', '{', '}'];

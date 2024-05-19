@@ -1,9 +1,10 @@
 const router = require('express').Router();
 const { Plant, User, Collection } = require('../models');
 const withAuth = require('../utils/auth');
+// the best simple cli debug enhancer ive ever written
+const { log, error } = new (require('../utils/logger'))
 
-const { log } = new (require('../utils/logger'))
-
+//Nav to homepage - there is an issue with passing proper login state that needs to be fixed
 router.get('/', async (req, res) => {
   console.log('get root')
   try {
@@ -15,7 +16,8 @@ router.get('/', async (req, res) => {
     log(plants.length, 'green', 'bgWhite');
     // Pass serialized data and session flag into template
     res.render('homepage', {
-      plants
+      plants,
+      logged_in: req.session.logged_in
 
     });
   } catch (err) {
@@ -25,21 +27,54 @@ router.get('/', async (req, res) => {
 let current_plant;
 // navs to plants and gets data from associated id
 
-
-router.get('/plant', async (req, res) => {
+router.get('/collection', async (req, res) => {
   try {
-    const plantData = await Plant.findByPk(req.query.id);
 
+    log(req.query.edit, 'green', 'bgWhite');
+    const plantData = await Collection.findByPk(req.query.id);
+    // req.query.edit is only ever passed when navigating to a plant from the profile!
+    const edit = req.query.edit;
     const plant = plantData.get({ plain: true });
     current_plant = plant;
-    log(plant)
-    res.render('plant', {
+    log(plant, 'white', 'bgBrightGreen');
+    res.render('collection', {
       ...plant,
+      edit,
       logged_in: req.session.logged_in
     });
   } catch (err) {
+    error(err);
     res.redirect('/profile');
-//    res.status(500).json(err);
+    //    res.status(500).json(err);
+  }
+});
+
+/* Handles client navigating to a specific plant 
+  Client URL query for /plant is ?id=NUMBER&edit=BOOL
+  id=NUMBER defines which plant id to pull from DB/api, if naving from profile id will refer to collection_id
+  edit=BOOL defines whether we should allow this plant to be edited: 
+    currently only enabled when naving from profile with specific plant selected
+    n
+ */
+router.get('/plant', async (req, res) => {
+  try {
+
+     const plantData = await Plant.findByPk(req.query.id);
+    // req.query.edit is only ever passed when navigating to a plant from the profile!
+
+    const plant = plantData.get({ plain: true });
+    current_plant = plant;
+
+    res.render('plant', {
+      ...plant,
+    
+      logged_in: req.session.logged_in
+    });
+  
+  } catch (err) {
+    error(err);
+    res.redirect('/profile');
+    //    res.status(500).json(err);
   }
 });
 
@@ -53,6 +88,7 @@ router.get('/profile', withAuth, async (req, res) => {
     });
 
     const user = userData.get({ plain: true });
+    // gets collections from DB by user_id
     const collectionData = await Collection.findAll({
       where: {
         user_id: req.session.user_id
@@ -63,27 +99,15 @@ router.get('/profile', withAuth, async (req, res) => {
       }],
     });
 
-
-
     let collections = collectionData.map((collection) => collection.get({ plain: true }));
-    // collections.filter
+  
     log(collections, 'white', 'bgGray')
-    //collections = collections.filter((collection)=> collection.user_id != req.session.user_id )
+    // renders profile view to client with user's collections, user data. and logged_in: true 
     res.render('profile', {
       collections,
       user,
-      logged_in: true
+      logged_in: true // THIS PROBABLY NEEDS TO BE CHANGED!!!!!!!
     });
-
-    // Collection.findByPk(collectionId, {
-    //   include: [{
-    //     model: Plant,
-    //     attributes: ['common_name', 'regular_url']
-    //   }]
-    // }).then(collection => {
-    //   console.log(collection.Plant.common_name); // Accessing common_name from the associated Plant
-    //   console.log(collection.Plant.regular_url); // Accessing regular_url from the associated Plant
-    // });
 
   } catch (err) {
     res.status(500).json(err);
@@ -108,8 +132,8 @@ router.post('/add-to-collection', withAuth, async (req, res) => {
       ...req.body,
       user_id: userId
     };
-  const newItem = await Collection.create(collectionAddition);
-  res.status(201).json(newItem);
+    const newItem = await Collection.create(collectionAddition);
+    res.status(201).json(newItem);
   } catch (err) {
     console.error('Error adding item to collection:', err);
     res.status(500).json({ error: 'Could not add item to collection' });

@@ -1,7 +1,8 @@
 const router = require('express').Router();
 const { Plant } = require('../../models');
 const withAuth = require('../../utils/auth');
-
+// Creates a plant to add to the Plant table 
+// I'm confused here - Do we want this?? - Charles
 router.post('/?', withAuth, async (req, res) => {
   console.log('trying to make a plant')
   try {
@@ -16,6 +17,7 @@ router.post('/?', withAuth, async (req, res) => {
   }
 });
 
+// Delelets a plant - IS THIS DELETING A PLANT FROM OUR STATIC PLANT TABLE??? - Charles
 router.delete('/:id', withAuth, async (req, res) => {
   try {
     const plantData = await Plant.destroy({
@@ -36,6 +38,7 @@ router.delete('/:id', withAuth, async (req, res) => {
   }
 });
 
+// ??
 router.get('/test', async(req, res) => {
   try{
     let watering = 'Average';

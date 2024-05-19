@@ -1,6 +1,6 @@
 const searchInput = document.getElementById('searchBtn');
 const plantCards = document.querySelectorAll('#plantCard');
-
+/*
 searchInput.addEventListener('input', () => {
   const searchValue = searchInput.value.toLowerCase().trim();
   plantCards.forEach(card => {
@@ -11,4 +11,8 @@ searchInput.addEventListener('input', () => {
       card.style.display = 'none';
     }
   })
-})
+})*/
+
+/*
+  port this shit to jquery - Charles
+*/ 

@@ -1,0 +1,54 @@
+<main class='w-full flex flex-row flex-wrap justify-center items-center'>
+
+
+    <!-- we could nav here with ?edit=true or some other param to enable editing. no need for a sep edit view -->
+    <!-- banner for profile -->
+    <div class="w-full px-4 ">
+        <div class="rounded-lg h-52 w-full bg-center bg-cover bg-[url({{regular_url}})] text-yellow-200">
+            <div class="w-full filter-none p-4 text-5xl">{{common_name}}</div>
+            {{!-- <div class="text 3xl pl-8 w-full">or</div>
+            <div class="w-full filter-none p-4 text-5xl">{{scientific_name}}</div>--}}
+        </div>
+    </div>
+    {{#if edit}}
+
+    <!-- If we are in editing mode, enable the inputs -->
+    <div class="row mt-4 w-full flex flex-row flex-wrap justify-center rounded-lg p-10">
+        <img class="rounded-lg" src="{{regular_url}}" alt="Image of {{common_name}}">
+        <form class="form signup-form flex flex-row flex-wrap p-2 w-96 rounded-lg bg-[#B7D55D]">
+            <input class="form-input" type="text" id="plantName" value="{{plant_name}}" />
+
+            <input class="form-input" type="text" id="commonName" value="{{common_name}}" disabled/>
+
+
+            {{!-- added button to allow for updating collection --}}
+            <button class="p-2" name="{{id}}" id="saveCollectionBtn"><img class="h-8 m-auto"
+                    src="./assets/images/icons8-save-48.png" alt="A dark green save icon">Save Changes</button>
+        </form>
+    </div>
+    {{else}}
+    <!-- We are not editing, diable inputs -->
+    <div class="row mt-4 w-full flex flex-row flex-wrap justify-center rounded-lg p-10">
+        <img class="rounded-lg" src="{{regular_url}}" alt="Image of {{common_name}}">
+        <form class="form signup-form flex flex-row flex-wrap p-2 w-96 rounded-lg bg-[#B7D55D]">
+            <input class="form-input" type="text" id="plantName" value="{{plant_name}}" disabled />
+
+            <input class="form-input" type="text" id="commonName" value="{{common_name}}" disabled />
+
+            {{!--
+            <input class="form-input" type="text" id="regular-url" value="{{regular_url}}" disabled />
+
+            <input class="form-input" type="text" id="common-name" value="{{common_name}}" disabled />
+            --}}
+            {{!-- added button to allow for updating collection --}}
+            <button class="p-2" name="{{id}}" id="editCollectionBtn"><img class="h-8 m-auto"
+                    src="./assets/images/icons8-save-48.png" alt="A dark green save icon">Edit</button>
+        </form>
+
+    </div>
+    {{/if}}
+
+    </div>
+</main>
+<!-- Yo, if this is working as expected on render, then this is the answer to my question.  Scripts ref'd in a specific handlebar must be linked in that handlebar. - Charles -->
+<script src="./js/addToCollection.js"></script>
