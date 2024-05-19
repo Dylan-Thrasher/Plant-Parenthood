@@ -32,7 +32,7 @@ const signupFormHandler = async (event) => {
 
   // name email and password must be defined 
   if (name && email && password) {
-    const response = await fetch('/api/users', {
+    const response = await fetch('/api/users/', {
       method: 'POST',
       body: JSON.stringify({ name, email, password }),
       headers: { 'Content-Type': 'application/json' },

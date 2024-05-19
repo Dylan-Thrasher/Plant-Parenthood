@@ -6,7 +6,9 @@ const {log} = new (require ('../../utils/logger'))
 router.post('/', async (req, res) => {
   // if isUpdate is true in req.body then the server will tell us
   // this may be where the unexpected behavior when updating a user forced a password change occurs? - Charles
-  if(req.body.isUpdate) log('updating', 'red', 'bgWhite');
+ 
+  log('Post Body', 'white', 'bgBlue');
+  log(req.body, 'blue', 'bgWhite');
   log('addign new user', 'red');
   try {
     const userData = await User.create(req.body);
