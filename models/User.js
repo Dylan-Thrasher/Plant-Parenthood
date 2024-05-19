@@ -8,7 +8,7 @@ class User extends Model {
     return bcrypt.compareSync(loginPw, this.password);
   }
 }
-// The user model contains a id, name, email, and password
+// The user model contains an id, name, email, and password
 /*
   Each User'd id is used to tie rows in the Collection table to the user
   password is hashed for user security
