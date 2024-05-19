@@ -2,7 +2,7 @@ const router = require('express').Router();
 const { Plant, User, Collection } = require('../models');
 const withAuth = require('../utils/auth');
 
-const { log } = new (require('../utils/logger'))
+const { log, error } = new (require('../utils/logger'))
 
 router.get('/', async (req, res) => {
   console.log('get root')
@@ -29,16 +29,20 @@ let current_plant;
 
 router.get('/plant', async (req, res) => {
   try {
+    
+    log(req.query.edit, 'green', 'bngWhite');
     const plantData = await Plant.findByPk(req.query.id);
-
+    const edit = req.query.edit;
     const plant = plantData.get({ plain: true });
     current_plant = plant;
-    log(plant)
+  
     res.render('plant', {
       ...plant,
+      edit,
       logged_in: req.session.logged_in
     });
   } catch (err) {
+    error(err);
     res.redirect('/profile');
 //    res.status(500).json(err);
   }
