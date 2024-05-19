@@ -13,9 +13,11 @@ function addToCollection(itemData) {
             if (!response.ok) {
                 throw new Error('Failed to add item to Collection');
             }
+            prompt(response.json());
             return response.json();
         })
         .then(data => {
+           document.location.replace('/profile')
             console.log('Item added to Collection:', data);
         })
         .catch(error => {
