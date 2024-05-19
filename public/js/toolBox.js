@@ -26,10 +26,10 @@ function keyGenerator(date) {
     // creates a key string with unique characters everytime because it is based on time
     let key = date.toISOString();
     /*
-        use a for each loop with an inline function declartion to remove 
-        unwated characters from our key.
+        use a for each loop with an inline function declaration to remove 
+        unwanted characters from our key.
 
-        here is the foreach displayed as a for loop
+        here is the for each displayed as a for loop
 
         for (let i = 0; i < badKeyChars.length; i++) {
             key = key.replaceAll(badChars[i], '');
@@ -49,7 +49,7 @@ function focusElementbyId(id) {
 }
 
 // local storage wrapper to return the parsed stored data
-// enclosed in a try catch incase we fail retrieval.
+// enclosed in a try catch in case we fail retrieval.
 // if we fail, log the error and return null
 function getItem(store) {
     try {
@@ -65,7 +65,7 @@ function getItem(store) {
 // local storage wrapper to format and store data
 function setItem(store, val) {
     
-    //inline conditional to veryify wether val is a string or object, then formats and stores
+    //inline conditional to verify whether val is a string or object, then formats and stores
     /*
         if (true) {
             //execute if true
@@ -73,7 +73,7 @@ function setItem(store, val) {
             //execute if false
         }
 
-        inline conditionals consolidate if statments!
+        inline conditionals consolidate if statements!
 
         varName = (conditional) ? [if true] trueCode() : [if false] falseCode());
         val (our variable) = typeof(val) === 'object' (our conditional) ? JSON.stringify(val) (val is an object!) : val (val is not an object);
