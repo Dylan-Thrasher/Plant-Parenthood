@@ -24,7 +24,7 @@ router.get('/', async (req, res) => {
     res.status(500).json(err);
   }
 });
-let current_plant;
+let currentPlant;
 // navs to plants and gets data from associated id
 
 
@@ -42,7 +42,7 @@ router.get('/plant', async (req, res) => {
     const plantData = await Plant.findByPk(req.query.id);
     const edit = req.query.edit;
     const plant = plantData.get({ plain: true });
-    current_plant = plant;
+    currentPlant = plant;
 
     res.render('plant', {
       ...plant,
