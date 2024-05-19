@@ -12,23 +12,23 @@
           <div class="w-full filter-none p-4 text-5xl">All Plants</div>
         </div>
       </div>
-      <!-- search and filter -->
+      <!-- sort -->
 
       <button id="filterBtn" class="p-2"><img class="h-4 m-auto" src="./assets/images/icons8-filter-48.png"
-          alt="A dark green login icon represented by an arrow leading into a rounded square">Filter</button>
-      <!-- search filter card -->
+          alt="A dark green login icon represented by an arrow leading into a rounded square">Sort</button>
+      <!-- search sort card -->
       <div id="filter" class="w-full flex flex-row flex-wrap justify-center items-center px-4">
-        <form class="rounded-lg bg-[#B7D55D] p-2">
+        <div class="flex flex-row flex-wrap rounded-lg bg-[#B7D55D] p-2">
           <!--<input type="checkbox" class="px-4" id="cycleFilter" value="Cycle"><label for="cycleFilter"
             class="px-2">Cycle</label>-->
-          <input type="checkbox" class="px-4" id="wateringFilter" value="Watering"><label for="wateringFilter"
+         <!-- <input type="checkbox" class="px-4" id="wateringFilter" value="Watering"><label for="wateringFilter"
             class="px-2">Watering</label>
-
-          <input type="checkbox" class="px-4" id="sortAZ" value="Sort A-Z"><label for="sortAZ" class="px-2">Sort
-            A-Z</label>
-          <input type="checkbox" class="px-4" id="sortAZ" value="Sort Z-A"><label for="sortAZ" class="px-2">Sort
-            A-Z</label>
-        </form>
+-->
+          <button class="px-4 flex " id="sortAZ">Sort<img src="./assets/images/icons8-sort-48.png" class="px-2 h-6">
+            </button>
+          <button class="px-4 flex  " id="sortZA">Sort<img src="./assets/images/icons8-sort-alpha-up-48.png" class="px-2 h-6">
+            </button>
+        </div>
 
       </div>
 
