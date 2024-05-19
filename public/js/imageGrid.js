@@ -2,9 +2,17 @@
 // Handles clicking images on the homepage view
 const handleImageClick = (ev) => {
     ev.preventDefault();
-    let id = ev.target.id;
+    let id = ev.target.name;
     debugger;
     window.location.href = `/plant?id=${id}`;
+   
+}
+
+const handleCollectionClick = (ev) => {
+    ev.preventDefault();
+    let id = ev.target.name;
+    debugger;
+    window.location.href = `/collection?id=${id}&edit=false`;
    
 }
 
@@ -14,11 +22,13 @@ const handleEditClick = (ev => {
     // we use the name html attribute in profile view to track the collection id
     let id = ev.target.name;
     debugger;
-    window.location.href = `/plant?id=${id}&edit=true`;
+    window.location.href = `/collection?id=${id}&edit=true`;
 })
 
 $(()=>{
+    
     $('[id=plantCard]').on('click', handleImageClick);
+    $('[id=collectionCard]').on('click', handleCollectionClick);
     $('[id=edit-btn]').on('click', handleEditClick);
     debugger;
 })

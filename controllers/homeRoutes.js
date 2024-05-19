@@ -27,6 +27,27 @@ router.get('/', async (req, res) => {
 let current_plant;
 // navs to plants and gets data from associated id
 
+router.get('/collection', async (req, res) => {
+  try {
+
+    log(req.query.edit, 'green', 'bgWhite');
+    const plantData = await Collection.findByPk(req.query.id);
+    // req.query.edit is only ever passed when navigating to a plant from the profile!
+    const edit = req.query.edit;
+    const plant = plantData.get({ plain: true });
+    current_plant = plant;
+
+    res.render('plant', {
+      ...plant,
+      edit,
+      logged_in: req.session.logged_in
+    });
+  } catch (err) {
+    error(err);
+    res.redirect('/profile');
+    //    res.status(500).json(err);
+  }
+});
 
 /* Handles client navigating to a specific plant 
   Client URL query for /plant is ?id=NUMBER&edit=BOOL
@@ -38,15 +59,15 @@ let current_plant;
 router.get('/plant', async (req, res) => {
   try {
 
-    log(req.query.edit, 'green', 'bngWhite');
-    const plantData = await Plant.findByPk(req.query.id);
-    const edit = req.query.edit;
+     const plantData = await Plant.findByPk(req.query.id);
+    // req.query.edit is only ever passed when navigating to a plant from the profile!
+
     const plant = plantData.get({ plain: true });
     current_plant = plant;
 
     res.render('plant', {
       ...plant,
-      edit,
+    
       logged_in: req.session.logged_in
     });
   } catch (err) {

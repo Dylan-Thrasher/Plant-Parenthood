@@ -34,15 +34,6 @@
     </div>
   </form>
 
-
-
-
-
-
-
-
-
-
   <!-- results grid -->
   <div class="flex flex-row flex-wrap collection-list">
     <h3 class="pl-6 pt-4">Your Plants</h3>
@@ -53,7 +44,8 @@
       {{#if collection.regular_url}}
       <div id=""
         class="flex flex-wrap justify-center text-center transition ease-in-out duration-100 hover:translate-y-1 hover:scale-[110%] antialiased hover:subpixel-antialiased">
-        <img id="plantCard" class="rounded-md" src={{collection.regular_url}}
+        {{! the image id is used to tie click event listeners to handle naving with proper params}}
+        <img id="collectionCard" class="rounded-md" name="{{collection.id}}" src={{collection.regular_url}}
           alt="Image of {{collection.common_name}}" />
         <div class="w-full pt-2 text-s ">{{collection.plant_name}} the</div>
         <div class="w-full pt-2 text-s ">{{collection.common_name}}</div>
