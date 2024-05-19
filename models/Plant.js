@@ -3,7 +3,7 @@ const sequelize = require('../config/connection'); // Assuming you have a sequel
 
 class Plant extends Model {}
 /*
-  Each Plant id is used to  populate image grids and basic plant detail views with data
+  Each Plant id is used to populate image grids and basic plant detail views with data
 */
 Plant.init({
     common_name: {
