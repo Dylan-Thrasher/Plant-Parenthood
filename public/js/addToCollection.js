@@ -28,9 +28,9 @@ document.getElementById('addToCollectionBtn').addEventListener('click', function
     // uses jQuery selection to build itemData to pass to addToCollections
     const itemData = {
         //item data to be passed on here
-        'plant_id': $('#plant-id').val().trim(),
-        'regular_url': $('#regular-url').val().trim(),
-        'common_name': $('#common-name').val().trim(),
+        'plant_id': $('#plantId').val().trim(),
+        'regular_url': $('#regularUrl').val().trim(),
+        'common_name': $('#commonName').val().trim(),
     } 
     debugger
     addToCollection(itemData);

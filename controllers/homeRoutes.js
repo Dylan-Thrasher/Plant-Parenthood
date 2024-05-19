@@ -12,8 +12,8 @@ router.get('/', async (req, res) => {
     const plantData = await Plant.findAll();
     // Serialize data so the template can read it
     const plants = plantData.map((plant) => plant.get({ plain: true }));
-    log(plants, 'white', 'bgGreen');
-    log(plants.length, 'green', 'bgWhite');
+    // log(plants, 'white', 'bgGreen'); < commented out for better readability in troubleshooting
+    // log(plants.length, 'green', 'bgWhite'); < commented out for better readability in troubleshooting
     // Pass serialized data and session flag into template
     res.render('homepage', {
       plants,
@@ -38,7 +38,7 @@ let currentPlant;
 router.get('/plant', async (req, res) => {
   try {
 
-    log(req.query.edit, 'green', 'bngWhite');
+    log(req.query.edit, 'green', 'bgWhite');
     const plantData = await Plant.findByPk(req.query.id);
     const edit = req.query.edit;
     const plant = plantData.get({ plain: true });
