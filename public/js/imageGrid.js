@@ -19,6 +19,6 @@ const handleEditClick = (ev => {
 
 $(()=>{
     $('[id=plantCard]').on('click', handleImageClick);
-    $('[id=edit-btn]').on('click', handleEditClick);
+    $('[id=editBtn]').on('click', handleEditClick);
     debugger;
 })
