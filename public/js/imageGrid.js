@@ -1,6 +1,6 @@
 
-
-const handleClick = (ev) => {
+// Handles clicking images on the homepage view
+const handleImageClick = (ev) => {
     ev.preventDefault();
     let id = ev.target.id;
     debugger;
@@ -8,6 +8,7 @@ const handleClick = (ev) => {
    
 }
 
+// Handles clicking the edit button for a plant on the users plant grid on the profile view
 const handleEditClick = (ev => {
     ev.preventDefault();
     // we use the name html attribute in profile view to track the collection id
@@ -17,7 +18,7 @@ const handleEditClick = (ev => {
 })
 
 $(()=>{
-    $('[id=plantCard]').on('click', handleClick);
+    $('[id=plantCard]').on('click', handleImageClick);
     $('[id=edit-btn]').on('click', handleEditClick);
     debugger;
 })

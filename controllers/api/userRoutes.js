@@ -20,6 +20,8 @@ router.post('/', async (req, res) => {
   }
 });
 
+// editing the user's data, for some reason passwords were being forced to update.
+// PLEASE INVESTIGATE - Charles
 router.post('/edit', async (req, res) => {
   console.log('============================');
   console.log('updating user');
@@ -49,6 +51,7 @@ router.post('/edit', async (req, res) => {
   }
 });
 
+// Handle login POST requests
 router.post('/login', async (req, res) => {
   log('attempting log in', 'red');
   try {
@@ -85,6 +88,7 @@ router.post('/login', async (req, res) => {
   }
 });
 
+// Logs the user out
 router.post('/logout', (req, res) => {
   if (req.session.logged_in) {
     req.session.destroy(() => {

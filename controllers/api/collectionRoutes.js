@@ -2,6 +2,13 @@ const router = require('express').Router();
 const { Collection } = require('../../models');
 const withAuth = require('../../utils/auth');
 
+// Creates a new plant to add to the user's collection
+// We probably should haev named the collection table collection-plant or soemthing - Charles
+/*
+  COLLECTION EXPLAINED - TLDR
+  Collection is the model used to represent a user's SINGLE plant
+  user_id in the model is used to tie each row to an id in the User table.
+*/
 router.post('/', withAuth, async (req, res) => {
   console.log('were in collectionrouts post')
   
@@ -18,7 +25,8 @@ router.post('/', withAuth, async (req, res) => {
     res.status(400).json(err);
   }
 });
-
+// Delete a collection from the user
+// This worked as expected during demo, have not tested since - Charles
 router.delete('/:id', withAuth, async (req, res) => {
   try {
     const collectionData = await Collection.destroy({

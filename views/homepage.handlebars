@@ -5,7 +5,7 @@
   <div class="flex flex-col min-h-screen bg-[#e8f2ca]">
 
     <main class='w-full flex flex-row flex-wrap justify-center items-center'>
-      <!-- banner for main -->
+      <!-- banner for homepage -->
       <div class="w-full px-4 ">
         <div
           class="rounded-lg h-52 w-full bg-center bg-cover bg-[url('./assets/images/forrest-log.jpg')] text-yellow-200">
@@ -19,7 +19,7 @@
       <!-- search filter card -->
       <div id="filter" class="w-full flex flex-row flex-wrap justify-center items-center px-4">
         <form class="rounded-lg bg-[#B7D55D] p-2">
-         <!--<input type="checkbox" class="px-4" id="cycleFilter" value="Cycle"><label for="cycleFilter"
+          <!--<input type="checkbox" class="px-4" id="cycleFilter" value="Cycle"><label for="cycleFilter"
             class="px-2">Cycle</label>-->
           <input type="checkbox" class="px-4" id="wateringFilter" value="Watering"><label for="wateringFilter"
             class="px-2">Watering</label>
@@ -54,9 +54,14 @@
 
   </div>
 </body>
- {{!-- search js to link search results and population section --}}
+{{!--
+search js to link search results and population section
+search.hs not here when writing comments, could this be source of bad behvaior? -Charles
+--}}
 
 <script>
+
+  // jQuery to add the click event to filterBtn with toggleFilterHide as the handler
   $(() => {
     $('#filter').hide();
     $('#filterBtn').on('click', toggleFilterHide);
