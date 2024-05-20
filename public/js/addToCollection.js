@@ -56,7 +56,6 @@ const saveCollectionHandler = async (ev) => {
 const editCollectionHandler = (ev) => {
     ev.preventDefault();
     let id = ev.currentTarget.name;
-    debeugger;
     window.location.href = `/collection?id=${id}&edit=true`;
 
 }
