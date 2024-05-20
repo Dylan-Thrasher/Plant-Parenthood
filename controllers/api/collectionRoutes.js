@@ -29,11 +29,9 @@ router.post('/save', async (req, res) => {
 });
 
 router.post('/', withAuth, async (req, res) => {
-  console.log('were in collectionrouts post')
-  
+  log('adding to collection', 'white', 'bgBlue');
   req.body.user_id = req.session.user_id;
-  console.log(req.body)
-  req.body.user_id = req.session.user_id
+  log(req.body, 'white', 'bgBlue');
   try {
     const newCollection = await Collection.create({
       ...req.body

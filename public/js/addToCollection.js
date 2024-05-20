@@ -13,7 +13,7 @@ function addToCollection(itemData) {
             if (!response.ok) {
                 throw new Error('Failed to add item to Collection');
             }
-            prompt(response.json());
+        //    prompt(response.json());
             return response.json();
         })
         .then(data => {
