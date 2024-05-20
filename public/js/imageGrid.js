@@ -30,7 +30,7 @@ const handleEditClick = (ev => {
 
 const handleZASort = (ev) => {
     ev.preventDefault();
-    
+
     $('[id=sortZA').prop('checked', true);
     $('[id=sortAZ').prop('checked', false);
     sortZA();
@@ -54,7 +54,7 @@ const sortZA = () => {
 
 const handleAZSort = (ev) => {
     ev.preventDefault();
-    
+
     $('[id=sortAZ').prop('checked', true);
     $('[id=sortZA').prop('checked', false);
     sortAZ();
@@ -78,12 +78,41 @@ const sortAZ = () => {
 }
 
 const toggleSearchHide = (ev) => {
-   
+
     let hidden = $('#search');
-  
-    if(hidden.is(':hidden')) hidden.show();
+
+    if (hidden.is(':hidden')) hidden.show();
     else hidden.hide();
-  }
+}
+
+const handleSearchInput = (ev) => {
+    ev.preventDefault();
+    let searchTerm = $('#searchBar').val().trim().toLowerCase();
+    let grid = $('#resultsGrid');
+    let entries = grid.children();
+    for(let i = 0; i < entries.length; i++) {
+        if(!entries[i].attributes[1].value.toLowerCase().includes(searchTerm)) {
+            entries[i].style.display = 'none';
+        } else  entries[i].style.display = 'block';
+    }/*
+    entries.forEach((entry) => {
+        if(!entry.name.toLowerCase().includes(searchTerm)) {
+            $(`#${entry.id}`).hide();
+        } else  $(`#${entry.id}`).show();
+    })*/
+
+
+    debugger;
+}
+
+// changes the hidden state based on current state
+const toggleFilterHide = (ev) => {
+
+    let hidden = $('#filter')
+
+    if (hidden.is(':hidden')) hidden.show();
+    else hidden.hide();
+}
 
 $(() => {
 
@@ -92,4 +121,11 @@ $(() => {
     $('[id=edit-btn]').on('click', handleEditClick);
     $('[id=sortAZ]').on('click', handleAZSort);
     $('[id=sortZA]').on('click', handleZASort);
+    let search = $('#searchBar');
+    debugger;
+    $('#searchBar').on('keypress', function (event) {
+        if (event.key === "Enter") {
+            handleSearchInput(event);
+        }
+    })
 })
