@@ -1,9 +1,14 @@
 const router = require('express').Router();
 const { User } = require('../../models');
 const {log} = new (require ('../../utils/logger'))
+
+//Creating a new user and adding OR updating an existing user to the DB
 router.post('/', async (req, res) => {
-  log('addign new user', 'red');
-  if(req.body.isUpdate) log('updating', 'red', 'bgWhite');
+  // if isUpdate is true in req.body then the server will tell us
+  // this may be where the unexpected behavior when updating a user forced a password change occurs? - Charles
+ 
+  log('Post Body', 'white', 'bgBlue');
+  log(req.body, 'blue', 'bgWhite');
   log('addign new user', 'red');
   try {
     const userData = await User.create(req.body);
@@ -20,6 +25,8 @@ router.post('/', async (req, res) => {
   }
 });
 
+// editing the user's data, for some reason passwords were being forced to update.
+// PLEASE INVESTIGATE - Charles
 router.post('/edit', async (req, res) => {
   console.log('============================');
   console.log('updating user');
@@ -49,6 +56,7 @@ router.post('/edit', async (req, res) => {
   }
 });
 
+// Handle login POST requests
 router.post('/login', async (req, res) => {
   log('attempting log in', 'red');
   try {
@@ -85,6 +93,7 @@ router.post('/login', async (req, res) => {
   }
 });
 
+// Logs the user out
 router.post('/logout', (req, res) => {
   if (req.session.logged_in) {
     req.session.destroy(() => {
