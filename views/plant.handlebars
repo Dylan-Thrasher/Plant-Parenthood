@@ -37,16 +37,22 @@
     <div class="row mt-4 w-full flex flex-row flex-wrap justify-center rounded-lg p-10">
       <img class="rounded-lg" src="{{original_url}}" alt="Image of {{common_name}}">
       <form class="form signup-form flex flex-row flex-wrap p-2 w-96 rounded-lg bg-[#B7D55D]">
+        <label for="cycle" class="form-label">Lifecycle: </label>
         <input class="form-input" type="text" id="cycle" value="{{cycle}}" disabled />
 
+        <label for="watering" class="form-label">Watering Frequency: </label>
         <input class="form-input" type="text" id="watering" value="{{watering}}" disabled />
 
+        <label for="sunlight" class="form-label">Sunlight needed: </label>
         <input class="form-input" type="text" id="sunlight" value="{{sunlight}}" disabled />
 
-        <input class="form-input" type="text" id="plant-id" value="{{id}}" disabled />
+        <label for="plant-id" class="form-label hidden">Perenual Reference ID: </label>
+        <input class="form-input hidden" type="text" id="plant-id" value="{{id}}" disabled />
 
-        <input class="form-input" type="text" id="regular-url" value="{{regular_url}}" disabled />
+        <label for="regular-url" class="form-label hidden">Image link: </label>
+        <input class="form-input hidden" type="text" id="regular-url" value="{{regular_url}}" disabled />
 
+        <label for="common-name" class="form-label">Common name: </label>
         <input class="form-input" type="text" id="common-name" value="{{common_name}}" disabled />
 
         {{!-- added button to allow for updating collection --}}
