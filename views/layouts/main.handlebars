@@ -67,9 +67,9 @@
               alt="A dark green login icon represented by an arrow leading into a rounded square">Login</button>
         </a>
         {{/if}}
-        <form id="search" class="hidden rounded-lg bg-[#B7D55D] px-2 py-1">
-          <input type="search" class="h-full w-96 p-2" value="" placeholder="Search for plants">
-        </form>
+        <div id="search" class="hidden rounded-lg bg-[#B7D55D] px-2 py-1">
+          <input id="searchBar" type="text" class="h-full w-96 p-2" value="" placeholder="Search for plants">
+        </div>
         <button id="searchBtn" class="p-2"><img class="h-4 m-auto" src="./assets/images/icons8-search-48.png"
             alt="A dark green search icon represented by a magnifying glass">Search</button>
 
@@ -105,7 +105,7 @@
   imageGrid.js is being used by two views, but both of those views
   will also utilize search.js - Charles
   --}}
-  <script src="./js/search.js"></script>
+  
 </body>
-
+<script src="./js/search.js"></script>
 </html>
