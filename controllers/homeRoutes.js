@@ -126,6 +126,8 @@ router.get('/login', (req, res) => {
 
 //post method for adding an item to the user's collection
 router.post('/add-to-collection', withAuth, async (req, res) => {
+  log('adding to collection', 'white', 'bgBlue');
+  log(req.body, 'white', 'bgBlue');
   try {
     const userId = req.session.user_id;
     const collectionAddition = {
