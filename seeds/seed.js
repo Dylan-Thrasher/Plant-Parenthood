@@ -2,7 +2,7 @@ const sequelize = require('../config/connection');
 const { User, Plant, Collection } = require('../models');
 
 const userData = require('./userData.json');
-const plantData = require('./plants.json');
+const plantData = require('./data.json');
 const collectionData = require('./collection.json')
 
 // must be run in order to create users and register information from userData.json
