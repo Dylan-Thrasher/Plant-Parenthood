@@ -23,7 +23,7 @@ const handleCollectionImageClick = (ev) => {
 const handleEditClick = (ev => {
     ev.preventDefault();
     // we use the name html attribute in profile view to track the collection id
-    let id = ev.target.name;
+    let id = ev.currentTarget.name;
     window.location.href = `/collection?id=${id}&edit=true`;
 })
 
