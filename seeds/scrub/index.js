@@ -1,7 +1,10 @@
+require('dotenv').config();
 const axios = require('axios');
 const fs = require('fs');
+const apik = process.env.KEY;
 
-const _url = `https://perenual.com/api/species-list?key=sk-HKLg6642324530c635451`;
+
+const _url = `https://perenual.com/api/species-list?key=${apik}`;
 let dataString = ``;
 
 const getPage = async (url) => {
