@@ -4,7 +4,7 @@
 
   </div>
   <!-- banner for profile -->
-  <div class="w-full px-4 ">
+  <div class="w-full px-4 pb-4">
     <div class="rounded-lg h-52 w-full bg-center bg-cover bg-[url('./assets/images/image0.jpeg')] text-yellow-100">
       <div class="w-full filter-none p-4 text-5xl">Welcome, {{user.name}}</div>
     </div>
@@ -33,45 +33,52 @@
     </div>
   </form>
   <!-- sort -->
-
-  <button id="filterBtn" class="p-2 w-full"><img class="h-4 m-auto" src="./assets/images/icons8-filter-48.png"
-      alt="A dark green login icon represented by an arrow leading into a rounded square">Sort</button>
-  <!-- search sort card -->
-  <div id="filter" class="w-full flex flex-row flex-wrap justify-center items-center px-4">
-    <div class="flex flex-row flex-wrap rounded-lg bg-[#B7D55D] p-2">
-      <!--<input type="checkbox" class="px-4" id="cycleFilter" value="Cycle"><label for="cycleFilter"
+  <div class="w-full flex flex-row flex-wrap justify-center p-2">
+    <button id="filterBtn" class="p-1"><img class="h-4 m-auto" src="./assets/images/icons8-filter-48.png"
+        alt="A dark green login icon represented by an arrow leading into a rounded square">Sort</button>
+    <div id="filter" class="w-fit flex flex-row flex-wrap justify-center px-4 hidden">
+      <div class="flex flex-row flex-wrap w-fit justify-center rounded-lg bg-[#B7D55D] p-2">
+        <!--<input type="checkbox" class="px-4" id="cycleFilter" value="Cycle"><label for="cycleFilter"
             class="px-2">Cycle</label>-->
-      <!-- <input type="checkbox" class="px-4" id="wateringFilter" value="Watering"><label for="wateringFilter"
+        <!-- <input type="checkbox" class="px-4" id="wateringFilter" value="Watering"><label for="wateringFilter"
             class="px-2">Watering</label>
 -->
-      <button class="px-4 flex " id="sortAZ">Sort<img src="./assets/images/icons8-sort-48.png" class="px-2 h-6">
-      </button>
-      <button class="px-4 flex  " id="sortZA">Sort<img src="./assets/images/icons8-sort-alpha-up-48.png"
-          class="px-2 h-6">
-      </button>
+        <button class="px-4 flex " id="sortAZ">Sort<img src="./assets/images/icons8-sort-48.png" class="px-2 h-6">
+        </button>
+        <button class="px-4 flex  " id="sortZA">Sort<img src="./assets/images/icons8-sort-alpha-up-48.png"
+            class="px-2 h-6">
+        </button>
+      </div>
     </div>
+    <!-- search sort card -->
+
 
   </div>
   <!-- results grid -->
-  <div class="flex flex-row flex-wrap collection-list">
-    <h3 class="pl-6 pt-4">Your Plants</h3>
+  <div class="flex flex-row flex-wrap collection-list justify-center">
+    <h3 class="ml-6 p-2 bg-[#B7D55D] rounded-lg">Your Plants</h3>
     <div id="resultsGrid"
-      class=" grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-6 gap-6 w-full p-4 justify-center">
+      class=" grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-6 gap-6 w-full p-4 justify-center  place-items-center">
       {{#each collections as |collection|}}
 
       {{#if collection.regular_url}}
       <div id="collectionCard" name="{{collection.common_name}}"
-        class="flex flex-wrap justify-center text-center transition ease-in-out duration-100 hover:translate-y-1 hover:scale-[110%] antialiased hover:subpixel-antialiased">
+        class=" rounded-lg bg-[#BFD872] flex flex-wrap justify-center text-center transition ease-in-out duration-100 hover:translate-y-1 hover:scale-[110%] antialiased hover:subpixel-antialiased">
         {{! the image id is used to tie click event listeners to handle naving with proper params}}
         <img id="collectionImg" class="rounded-md" name="{{collection.id}}" src={{collection.regular_url}}
           alt="Image of {{collection.common_name}}" />
-        <div class="w-full pt-2 text-s ">{{collection.plant_name}} the</div>
-        <div class="w-full pt-2 text-s ">{{collection.common_name}}</div>
+        {{#if collection.plant_name}}
+        <div class="w-full pt-2 text-s font-bold">{{collection.plant_name}} <div class="font-medium text-xs">the</div></div>
 
-        <div class="col-md-4">
-          <button class="btn btn-sm btn-edit" id="edit-btn" name="{{collection.id}}">EDIT</button>
+        {{/if}}
+        <div class="w-full pt-2 text-m font-semibold ">{{collection.common_name}}</div>
+
+        <div class="col-md-4 ">
+          <button class="btn btn-sm btn-edit p-2" id="edit-btn" name="{{collection.id}}"><img class="h-8 m-auto" src="./assets/images/icons8-edit-48.png"
+          alt="A dark green edit icon">EDIT</button>
           {{!-- button added in order to delete --}}
-          <button class="btn btn-sm btn-danger" data-id="{{collection.id}}">DELETE</button>
+          <button class="btn btn-sm btn-danger p-2" data-id="{{collection.id}}"><img class="h-8 m-auto" src="./assets/images/icons8-delete-48.png"
+          alt="A dark green delete icon">DELETE</button>
         </div>
       </div>
       {{/if}}
@@ -89,7 +96,6 @@
 
   // jQuery to add the click event to filterBtn with toggleFilterHide as the handler
   $(() => {
-    $('#filter').hide();
     $('#filterBtn').on('click', toggleFilterHide);
   })
 </script>

@@ -30,10 +30,13 @@
     <!-- We are not editing, diable inputs -->
     <div class="row mt-4 w-full flex flex-row flex-wrap justify-center rounded-lg p-10">
         <img class="rounded-lg" src="{{regular_url}}" alt="Image of {{common_name}}">
-        <form class="form signup-form flex flex-row flex-wrap p-2 w-96 rounded-lg bg-[#B7D55D]">
-            <input class="form-input" type="text" id="plantName" value="{{plant_name}}" disabled />
+        <form class="mt-4 form signup-form flex flex-row flex-wrap justify-center p-2 w-96 rounded-lg bg-[#B7D55D] text-center h-fit ">
+            
+        <label for="plantName" class="form-label w-40 bg-[#DBE9AD] rounded-t-lg px-2">Plant's Nickname </label>
+            <input class="form-input px-2  rounded-t-lg" type="text" id="plantName" value="{{plant_name}}" disabled />
 
-            <input class="form-input" type="text" id="commonName" value="{{common_name}}" disabled />
+        <label for="commonName" class="form-label w-40 bg-[#DBE9AD] rounded-b-lg px-2">Common Name </label>
+            <input class="form-input px-2 rounded-bgit-lg" type="text" id="commonName" value="{{common_name}}" disabled />
 
             {{!--
             <input class="form-input" type="text" id="regular-url" value="{{regular_url}}" disabled />
