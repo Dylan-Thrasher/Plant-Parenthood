@@ -3,7 +3,7 @@ const sequelize = require('../config/connection');
 
 class Collection extends Model { }
 /*
-  Eacg Collection row's user_id is refers to a specific user in the User table
+  Each Collection row's user_id is refers to a specific user in the User table
 */
 Collection.init({
   owned: {

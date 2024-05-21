@@ -1,7 +1,7 @@
 const router = require('express').Router();
 const { Plant, User, Collection } = require('../models');
 const withAuth = require('../utils/auth');
-// the best simple cli debug enhancer ive ever written
+// the best simple cli debug enhancer I've ever written
 const { log, error } = new (require('../utils/logger'))
 
 //Nav to homepage - there is an issue with passing proper login state that needs to be fixed
@@ -12,7 +12,8 @@ router.get('/', async (req, res) => {
     const plantData = await Plant.findAll();
     // Serialize data so the template can read it
     const plants = plantData.map((plant) => plant.get({ plain: true }));
-    log(plants.length, 'green', 'bgWhite');
+    // log(plants, 'white', 'bgGreen'); < commented out for better readability in troubleshooting
+    // log(plants.length, 'green', 'bgWhite'); < commented out for better readability in troubleshooting
     // Pass serialized data and session flag into template
     res.render('homepage', {
       plants,
@@ -23,7 +24,7 @@ router.get('/', async (req, res) => {
     res.status(500).json(err);
   }
 });
-let current_plant;
+let currentPlant;
 // navs to plants and gets data from associated id
 
 router.get('/collection', async (req, res) => {
@@ -62,7 +63,7 @@ router.get('/plant', async (req, res) => {
     // req.query.edit is only ever passed when navigating to a plant from the profile!
 
     const plant = plantData.get({ plain: true });
-    current_plant = plant;
+    currentPlant = plant;
 
     res.render('plant', {
       ...plant,
@@ -101,7 +102,7 @@ router.get('/profile', withAuth, async (req, res) => {
     let collections = collectionData.map((collection) => collection.get({ plain: true }));
   
     log(collections, 'white', 'bgGray')
-    // renders profile view to client with user's collections, user data. and logged_in: true 
+    // renders profile view to client with user's collections, user data, and logged_in: true 
     res.render('profile', {
       collections,
       user,
