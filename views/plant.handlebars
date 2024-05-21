@@ -10,41 +10,20 @@
       <div class="w-full filter-none p-4 text-5xl">{{scientific_name}}</div>
     </div>
   </div>
-  {{#if edit}}
-
-  <!-- If we are in editing mode, enable the inputs -->
-  <div class="row mt-4 w-full flex flex-row flex-wrap justify-center rounded-lg p-10">
-    <img class="rounded-lg" src="{{original_url}}" alt="Image of {{common_name}}">
-    <form class="form signup-form flex flex-row flex-wrap p-2 w-96 rounded-lg bg-[#B7D55D]">
-      <input class="form-input" type="text" id="cycle" value="{{cycle}}" />
-
-      <input class="form-input" type="text" id="watering" value="{{watering}}" />
-
-      <input class="form-input" type="text" id="sunlight" value="{{sunlight}}" />
-
-      <input class="form-input" type="text" id="plant-id" value="{{id}}" />
-
-      <input class="form-input" type="text" id="regular-url" value="{{regular_url}}" />
-
-      <input class="form-input" type="text" id="common-name" value="{{common_name}}" />
-
-      {{!-- added button to allow for updating collection --}}
-      <button class="p-2" type='post' id="addToCollectionBtn"><img class="h-8 m-auto"
-          src="./assets/images/icons8-save-48.png" alt="A dark green save icon">Add to Collection</button>
-    </form>
-    {{else}}
-    <!-- We are not editing, diable inputs -->
+  
+    <!-- we cheat and use inputs for display because we are lazy! -->
     <div class="row mt-4 w-full flex flex-row flex-wrap justify-center rounded-lg p-10">
-      <img class="rounded-lg" src="{{original_url}}" alt="Image of {{common_name}}">
-      <form class="form signup-form flex flex-row flex-wrap p-2 w-96 rounded-lg bg-[#B7D55D]">
-        <label for="cycle" class="form-label">Lifecycle: </label>
-        <input class="form-input" type="text" id="cycle" value="{{cycle}}" disabled />
+      <img class="rounded-lg max-w-3/4" src="{{original_url}}" alt="Image of {{common_name}}">
+      <form class="mt-4 form signup-form flex flex-row flex-wrap justify-center p-2 w-96 rounded-lg bg-[#B7D55D] text-center h-fit ">
 
-        <label for="watering" class="form-label">Watering Frequency: </label>
-        <input class="form-input" type="text" id="watering" value="{{watering}}" disabled />
+        <label for="cycle" class="form-label w-40 bg-[#DBE9AD] rounded-t-lg px-2">Lifecycle: </label>
+        <input class="form-input rounded-t-lg px-2" type="text" id="cycle" value="{{cycle}}" disabled />
 
-        <label for="sunlight" class="form-label">Sunlight needed: </label>
-        <input class="form-input" type="text" id="sunlight" value="{{sunlight}}" disabled />
+        <label for="watering" class="form-label w-40 bg-[#DBE9AD] h-fit px-2" >Watering Frequency: </label>
+        <input class="form-input  px-2"  type="text" id="watering" value="{{watering}}" disabled />
+
+        <label for="sunlight" class="form-label w-40 bg-[#DBE9AD]  h-fit px-2" >Sunlight needed: </label>
+        <input class="form-input  px-2"  type="text" id="sunlight" value="{{sunlight}}" disabled />
 
         <label for="plant-id" class="form-label hidden">Perenual Reference ID: </label>
         <input class="form-input hidden" type="text" id="plant-id" value="{{id}}" disabled />
@@ -52,16 +31,15 @@
         <label for="regular-url" class="form-label hidden">Image link: </label>
         <input class="form-input hidden" type="text" id="regular-url" value="{{regular_url}}" disabled />
 
-        <label for="common-name" class="form-label">Common name: </label>
-        <input class="form-input" type="text" id="common-name" value="{{common_name}}" disabled />
+        <label for="common-name" class="form-label w-40 bg-[#DBE9AD] rounded-b-lg h-fit px-2" >Common name: </label>
+        <input class="form-input rounded-b-lg px-2"  type="text" id="common-name" value="{{common_name}}" disabled />
 
         {{!-- added button to allow for updating collection --}}
-        <button class="p-2" type='post' id="addToCollectionBtn"><img class="h-8 m-auto"
+        <button class="p-2 " type='post' id="addToCollectionBtn"><img class="h-8 m-auto"
             src="./assets/images/icons8-save-48.png" alt="A dark green save icon">Add to Collection</button>
       </form>
 
     </div>
-    {{/if}}
 
   </div>
 </main>
