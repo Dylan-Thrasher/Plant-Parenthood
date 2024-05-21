@@ -36,13 +36,15 @@ const signupFormHandler = async (event) => {
       method: 'POST',
       body: JSON.stringify({ name, email, password }),
       headers: { 'Content-Type': 'application/json' },
+    }).then((res) =>{
+      if (res.ok) {
+        document.location.replace('/profile');
+      } else {
+        alert(res.statusText);
+      }
     });
     // if the request was good, nav to the user's profile
-    if (response.ok) {
-      document.location.replace('/profile');
-    } else {
-      alert(response.statusText);
-    }
+    
   }
 };
 
