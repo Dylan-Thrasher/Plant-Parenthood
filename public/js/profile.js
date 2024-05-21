@@ -108,7 +108,7 @@ const logout = async () => {
 // These should be ported to jQuery -Charles
 // Adds event listeners to handle click events to save-btn, logoutBtn, and collection-list
 //
-document.querySelector('#save-btn').addEventListener('click', saveBtnHandler);
+//document.querySelector('#save-btn').addEventListener('click', saveBtnHandler);
 document.querySelector('#logoutBtn').addEventListener('click', logout);
 document
   .querySelector('.collection-list')
