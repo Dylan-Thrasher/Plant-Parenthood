@@ -89,5 +89,4 @@ See LICENSE.txt for more information.
 
 [Ella Girin](https://github.com/ellafsd)
 
-## Acknowledgements
 
