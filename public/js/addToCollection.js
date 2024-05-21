@@ -45,7 +45,7 @@ const saveCollectionHandler = async (ev) => {
 
             $('[id=plantName]').prop('disabled', true);
 
-            //document.location.replace('/profile');
+            document.location.replace(`/collection?id=${id}`);
         } else {
             alert(response.statusText);
         }
