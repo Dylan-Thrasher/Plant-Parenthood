@@ -78,7 +78,7 @@ const sortAZ = () => {
 }
 
 const toggleSearchHide = (ev) => {
-
+    if(document.location.pathname != '/') document.location.replace('/');
     let hidden = $('#search');
 
     if (hidden.is(':hidden')) hidden.show();
@@ -115,7 +115,7 @@ const toggleFilterHide = (ev) => {
 }
 
 $(() => {
-
+    if(document.location.pathname != '/')$('#searchBtn').hide();
     $('[id=plantImg]').on('click', handleImageClick);
     $('[id=collectionImg]').on('click', handleCollectionImageClick);
     $('[id=edit-btn]').on('click', handleEditClick);
