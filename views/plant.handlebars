@@ -12,8 +12,9 @@
   </div>
   
     <!-- we cheat and use inputs for display because we are lazy! -->
-    <div class="row mt-4 w-full flex flex-row flex-wrap justify-center rounded-lg p-10">
-      <img class="rounded-lg max-w-3/4" src="{{original_url}}" alt="Image of {{common_name}}">
+        <div class="row mt-4 w-full flex flex-row flex-wrap justify-center items-center rounded-lg p-10">
+            <div class=" bg-[#DBE9AD] flex flex-col flex-wrap justify-center items-center rounded-lg">
+                <img class="rounded-lg max-w-96 " src="{{regular_url}}" alt="Image of {{common_name}}">
       <form class="mt-4 form signup-form flex flex-row flex-wrap justify-center p-2 w-96 rounded-lg bg-[#B7D55D] text-center h-fit ">
 
         <label for="cycle" class="form-label w-40 bg-[#DBE9AD] rounded-t-lg px-2">Lifecycle: </label>
@@ -35,12 +36,12 @@
         <input class="form-input rounded-b-lg px-2"  type="text" id="common-name" value="{{common_name}}" disabled />
 
         {{!-- added button to allow for updating collection --}}
-        <button class="p-2 " type='post' id="addToCollectionBtn"><img class="h-8 m-auto"
+        <button class="pt-2 " type='post' id="addToCollectionBtn"><img class="h-8 m-auto"
             src="./assets/images/icons8-save-48.png" alt="A dark green save icon">Add to Collection</button>
       </form>
 
     </div>
-
+</div>
   </div>
 </main>
 <!-- Yo, if this is working as expected on render, then this is the answer to my question.  Scripts ref'd in a specific handlebar must be linked in that handlebar. - Charles -->
