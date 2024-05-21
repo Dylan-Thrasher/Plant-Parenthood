@@ -1,3 +1,7 @@
+require('dotenv').config();
+const apik = process.env.KEY;
+
+
 let example = 
 {
   "id": 1,
@@ -31,7 +35,7 @@ let example =
   ],
   "seeds": 0,
   "maintenance": null,
-  "care-guides": "http://perenual.com/api/species-care-guide-list?species_id=1&key=sk-4J5W664232c727ead5452",
+  "care-guides": `http://perenual.com/api/species-care-guide-list?species_id=1&key=${apik}`,
   "soil": [],
   "growth_rate": "High",
   "indoor": false,

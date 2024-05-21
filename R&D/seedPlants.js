@@ -1,4 +1,6 @@
 //Imported required modules
+require('dotenv').config(); //pulls information from .env file
+const apik = process.env.KEY; //grabs the key within the .env
 const fs = require('fs');    //Node.js file system module for reading and writing files
 const path = require('path');   //imports the Node.js path
 const plantsFilePath = path.join(__dirname, 'plants.json');  //Path to plants.json
@@ -41,7 +43,7 @@ const readJSONFile = (filePath) => {
       reject(err);
     } else {
       let plantsData = JSON.parse(data);       //Reject the Promise if an error occurs while reading the file
-      const url = `https://perenual.com/api/species/details/${plantsData[0].id}?key=sk-4J5W664232c727ead5452`;
+      const url = `https://perenual.com/api/species/details/${plantsData[0].id}?key=${apik}`;
 
       axios       //axios make an API request to fetch additional details about the plant
         .get(url)
@@ -82,7 +84,7 @@ const describePlantAPI = () => {
 
     // Function to fetch plant details from the API
     const fetchPlantDetails = async () => {
-      const url = `https://perenual.com/api/species/details/[ID]?key=sk-4J5W664232c727ead5452`; // Placeholder URL
+      const url = `https://perenual.com/api/species/details/[ID]?key=${apik}`; // Placeholder URL
       try {
         const response = await axios.get(url);
         console.log(JSON.stringify(response.data, null, 2)); // Log the API response with pretty-printed JSON

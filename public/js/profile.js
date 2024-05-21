@@ -1,32 +1,32 @@
 // this is not currently being called anywhere - Charles
-// Can be refractored easily!
-const newFormHandler = async (event) => {
-  event.preventDefault();
+// Can be refractored easily! Commented out for now
+// const newFormHandler = async (event) => {
+//   event.preventDefault();
   // Gets values for body - NEEDS TO BE PORTED TO JQUERY
-  const name = document.querySelector('#project-name').value.trim();
-  const needed_funding = document.querySelector('#project-funding').value.trim();
-  const description = document.querySelector('#project-desc').value.trim();
+//   const name = document.querySelector('#project-name').value.trim();
+//   const needed_funding = document.querySelector('#project-funding').value.trim();
+//   const description = document.querySelector('#project-desc').value.trim();
 
-  if (name && needed_funding && description) {
-    const response = await fetch(`/api/projects`, {
-      method: 'POST',
-      body: JSON.stringify({ name, needed_funding, description }),
-      headers: {
-        'Content-Type': 'application/json',
-      },
-    });
+//   if (name && needed_funding && description) {
+//     const response = await fetch(`/api/projects`, {
+//       method: 'POST',
+//       body: JSON.stringify({ name, needed_funding, description }),
+//       headers: {
+//         'Content-Type': 'application/json',
+//       },
+//     });
 
-    if (response.ok) {
-      document.location.replace('/profile');
-    } else {
-      alert('Failed to create project');
-    }
-  }
-};
+//     if (response.ok) {
+//       document.location.replace('/profile');
+//     } else {
+//       alert('Failed to create project');
+//     }
+//   }
+// };
 
-// Handles deleting an every in the collection table tied to user_id and the selected plant from the grid
+// Handles deleting an plant in the collection table tied to user_id and the selected plant from the grid
 /* REMINDER: 
-  The Collection model represents a user's invididual plant.  User's may have several enteries in the Collection
+  The Collection model represents a user's individual plant.  Users may have several enteries in the Collection
   with user_id matching the User's id.  
 
   A ROW IN THE COLLECTION TABLE MAY ONLY EVER BE TIED TO A SINGLE USER BY user_id/
@@ -51,9 +51,9 @@ const delButtonHandler = async (event) => {
 // NEED RND: WHY WAS THIS FORCING A PASSWORD UPDATE EVEN WHEN WE DID NOT PASS newPass? - Charles
 const saveBtnHandler = async (ev) => {
   ev.preventDefault()
-  const newName = $('#name-edit').val().trim();
-  const newEmail = $('#email-edit').val().trim();
-  const newPass = $('#password-edit').val().trim();
+  const newName = $('#nameEdit').val().trim();
+  const newEmail = $('#emailEdit').val().trim();
+  const newPass = $('#passwordEdit').val().trim();
   console.log(newName)
   if (newName) {
     const response = await fetch('/api/users/edit', {
@@ -76,8 +76,8 @@ const saveBtnHandler = async (ev) => {
 }
 /*
 START HERE WITH EDITING LOGIC
-use jquery to select all edit buttons and attach even listeners instead of our own for each
-Have the listener handler do the fetch request, begin with a handler than simply logs the functino name to console and add logic from there
+use jquery to select all edit buttons and attach event listeners instead of our own for each
+Have the listener handler do the fetch request, begin with a handler than simply logs the function name to console and add logic from there
 -Charles
 */
 /*
@@ -91,7 +91,7 @@ const editButtons = document.querySelectorAll('.btn-edit')
   })
   */
 
-// Handles loggign out, if successful go to the hopmepage
+// Handles logging out, if successful go to the hopmepage
 const logout = async () => {
   const response = await fetch('/api/users/logout', {
     method: 'POST',

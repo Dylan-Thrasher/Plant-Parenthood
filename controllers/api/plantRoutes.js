@@ -17,7 +17,7 @@ router.post('/?', withAuth, async (req, res) => {
   }
 });
 
-// Delelets a plant - IS THIS DELETING A PLANT FROM OUR STATIC PLANT TABLE??? - Charles
+// Deletes a plant - IS THIS DELETING A PLANT FROM OUR STATIC PLANT TABLE??? - Charles
 router.delete('/:id', withAuth, async (req, res) => {
   try {
     const plantData = await Plant.destroy({
