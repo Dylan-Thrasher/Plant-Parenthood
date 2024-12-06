@@ -33,9 +33,11 @@
 
       </div>
 
-       <div id="pageInfo" class="flex flex-row flex-wrap justify-center items-center w-full h-12 bg-slate-800">
-          <h3 class="text-white text-xl text-center">{{pageData.currentPage}} / {{pageData.totalPages}}</h3>
-        </div>
+      <div id="pageInfo" class="flex flex-row flex-wrap justify-center items-center w-full h-12 bg-slate-800 [&_*]:p-2 text-white text-xl text-center" currentPage={{pageData.currentPage}}>
+        <button id="prevBtn">Prev</button>
+        <h3>{{pageData.currentPage}} / {{pageData.totalPages}}</h3>
+        <button id="nextBtn" >Next</button>
+      </div>
 
       <!-- results grid -->
       <div id="resultsGrid"
@@ -73,5 +75,6 @@ search.js not here when writing comments, could this be source of bad behvaior? 
   })
 </script>
 <script src="./js/imageGrid.js"></script>
+<script src="./js/pagination.js"></script>
 
 </html>

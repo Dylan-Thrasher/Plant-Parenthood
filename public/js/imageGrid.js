@@ -122,7 +122,6 @@ $(() => {
     $('[id=sortAZ]').on('click', handleAZSort);
     $('[id=sortZA]').on('click', handleZASort);
     let search = $('#searchBar');
-    debugger;
     $('#searchBar').on('keypress', function (event) {
         if (event.key === "Enter") {
             handleSearchInput(event);

@@ -2,10 +2,12 @@ const router = require('express').Router();
 const { Plant, User, Collection } = require('../models');
 const withAuth = require('../utils/auth');
 // the best simple cli debug enhancer I've ever written
-const {log, info} = require('../node_modules/@frenzie24/logger')
+const { log, info, error } = require('../node_modules/@frenzie24/logger')
 
 async function getPaginatedPlants(page, pageSize) {
-  const offset = (page - 1) * pageSize;
+  log(['page: ', page])
+  const _page = page < 1 ? 1 : page;
+  const offset = (_page - 1) * pageSize;
   const { count, rows } = await Plant.findAndCountAll({
     where: {},
     offset,
@@ -22,21 +24,22 @@ async function getPaginatedPlants(page, pageSize) {
 }
 
 //Nav to homepage - there is an issue with passing proper login state that needs to be fixed
-router.get('/', async (req, res) => {
+router.get('/?', async (req, res) => {
   console.log('get root')
+  log(req.query)
   try {
     // Get all plants and JOIN with user data
-    const plantData = await getPaginatedPlants(1, 20);
+    const plantData = await getPaginatedPlants(Number(req.query.page ? req.query.page : 1), 20);
     //const plantData = await Plant.findAll();
     //
-    log(['plantData: ',plantData]);
+
+
     //const plants = plantData.map((plant) => plant.get({ plain: true }));
     // Serialize data so the template can read it
-    const plants = plantData.data.map((plant) => plant.get({plain: true}));
-    const pageData = {total: plantData.total, totalPages: plantData.totalPages, currentPage: plantData.currentPage};
-    const page = plants[pageData.currentPage];
+    const plants = plantData.data.map((plant) => plant.get({ plain: true }));
+    const pageData = { total: plantData.total, totalPages: plantData.totalPages, currentPage: plantData.currentPage };
 
-    log(['page: ', page, 'pageData: ', pageData]);
+    info(['plants: ', plants, 'pageData: ', pageData]);
     // log(plants, 'white', 'bgGreen'); < commented out for better readability in troubleshooting
     // log(plants.length, 'green', 'bgWhite'); < commented out for better readability in troubleshooting
     // Pass serialized data and session flag into template
@@ -47,6 +50,7 @@ router.get('/', async (req, res) => {
 
     });
   } catch (err) {
+    error(err);
     res.status(500).json(err);
   }
 });
@@ -85,7 +89,7 @@ router.get('/collection', async (req, res) => {
 router.get('/plant', async (req, res) => {
   try {
 
-     const plantData = await Plant.findByPk(req.query.id);
+    const plantData = await Plant.findByPk(req.query.id);
     // req.query.edit is only ever passed when navigating to a plant from the profile!
 
     const plant = plantData.get({ plain: true });
