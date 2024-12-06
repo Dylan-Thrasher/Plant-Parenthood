@@ -1,27 +1,33 @@
 const handleNextClick = (ev => {
     ev.preventDefault();
-    // we use the name html attribute in profile view to track the collection id
-    const next = Number(ev.currentTarget.parentElement.attributes.currentPage.value) + 1;
 
-    debugger;
+    // we get the stored values for current and total pages from the parent element
+    const pageAttributes = ev.currentTarget.parentElement.attributes;
+    const current = Number(pageAttributes.currentPage.value);
+    const totalPages = Number(pageAttributes.totalPages.value);
+    const next = current < totalPages ?  current + 1 : 1;
+
+
     window.location.href = `/?page=${next}`;
 })
 
+const handlePrevClick = (ev => {
+    ev.preventDefault();
+    // we get the stored values for current and total pages from the parent element
+    const pageAttributes = ev.currentTarget.parentElement.attributes;
+    const current = Number(pageAttributes.currentPage.value);
+    const totalPages = Number(pageAttributes.totalPages.value);
+    const prev = current > 1 ?  current - 1 : totalPages;
+
+    //debugger;
+    window.location.href = `/?page=${prev}`;
+})
+
+
 
 $(() => {
-//   if(document.location.pathname != '/')$('#searchBtn').hide();
+    // add listeners to next and prev btns
     $('[id=nextBtn]').on('click', handleNextClick);
-    /*
-    $('[id=collectionImg]').on('click', handleCollectionImageClick);
-    $('[id=edit-btn]').on('click', handleEditClick);
-    $('[id=sortAZ]').on('click', handleAZSort);
-    $('[id=sortZA]').on('click', handleZASort);
-    let search = $('#searchBar');
-    debugger;
-    $('#searchBar').on('keypress', function (event) {
-        if (event.key === "Enter") {
-            handleSearchInput(event);
-        }
-    })
-        */
+    $('[id=prevBtn]').on('click', handlePrevClick);
+
 })

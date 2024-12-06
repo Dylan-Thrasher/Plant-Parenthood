@@ -33,7 +33,7 @@
 
       </div>
 
-      <div id="pageInfo" class="flex flex-row flex-wrap justify-center items-center w-full h-12 bg-slate-800 [&_*]:p-2 text-white text-xl text-center" currentPage={{pageData.currentPage}}>
+      <div id="pageInfo" class="flex flex-row flex-wrap justify-center items-center w-full h-12 bg-slate-800 [&_*]:p-2 text-white text-xl text-center" currentPage={{pageData.currentPage}} totalPages="{{pageData.totalPages}}">
         <button id="prevBtn">Prev</button>
         <h3>{{pageData.currentPage}} / {{pageData.totalPages}}</h3>
         <button id="nextBtn" >Next</button>
