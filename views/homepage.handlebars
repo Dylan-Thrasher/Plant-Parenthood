@@ -21,32 +21,37 @@
         <div class="flex flex-row flex-wrap rounded-lg bg-[#B7D55D] p-2">
           <!--<input type="checkbox" class="px-4" id="cycleFilter" value="Cycle"><label for="cycleFilter"
             class="px-2">Cycle</label>-->
-         <!-- <input type="checkbox" class="px-4" id="wateringFilter" value="Watering"><label for="wateringFilter"
+          <!-- <input type="checkbox" class="px-4" id="wateringFilter" value="Watering"><label for="wateringFilter"
             class="px-2">Watering</label>
 -->
           <button class="px-4 flex " id="sortAZ">Sort<img src="./assets/images/icons8-sort-48.png" class="px-2 h-6">
-            </button>
-          <button class="px-4 flex  " id="sortZA">Sort<img src="./assets/images/icons8-sort-alpha-up-48.png" class="px-2 h-6">
-            </button>
+          </button>
+          <button class="px-4 flex  " id="sortZA">Sort<img src="./assets/images/icons8-sort-alpha-up-48.png"
+              class="px-2 h-6">
+          </button>
         </div>
 
       </div>
 
-
+       <div id="pageInfo" class="flex flex-row flex-wrap justify-center items-center w-full h-12 bg-slate-800">
+          <h3 class="text-white text-xl text-center">{{pageData.currentPage}} / {{pageData.totalPages}}</h3>
+        </div>
 
       <!-- results grid -->
       <div id="resultsGrid"
         class=" grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-6 gap-6 w-full p-4 justify-center">
         {{#each plants as |plant|}}
         {{#if plant.regular_url}}
-       <div id="plantCard" name="{{collection.common_name}}"
-        class=" rounded-lg bg-[#BFD872] flex flex-wrap justify-center text-center transition ease-in-out duration-100 hover:translate-y-1 hover:scale-[110%] antialiased hover:subpixel-antialiased">
-        <img id="plantImg" name="{{plant.id}}" class="rounded-md" src={{plant.regular_url}} alt="Image of {{plant.common_name}}" />
+        <div id="plantCard" name="{{collection.common_name}}"
+          class=" rounded-lg bg-[#BFD872] flex flex-wrap justify-center text-center transition ease-in-out duration-100 hover:translate-y-1 hover:scale-[110%] antialiased hover:subpixel-antialiased">
+          <img id="plantImg" name="{{plant.id}}" class="rounded-md" src={{plant.regular_url}}
+            alt="Image of {{plant.common_name}}" />
 
           <div class="w-full pt-2 text-m font-semibold ">{{plant.common_name}}</div>
         </div>
         {{/if}}
         {{/each}}
+
 
 
       </div>

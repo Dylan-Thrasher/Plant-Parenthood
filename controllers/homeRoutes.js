@@ -2,21 +2,47 @@ const router = require('express').Router();
 const { Plant, User, Collection } = require('../models');
 const withAuth = require('../utils/auth');
 // the best simple cli debug enhancer I've ever written
-const { log, error } = new (require('../utils/logger'))
+const {log, info} = require('../node_modules/@frenzie24/logger')
+
+async function getPaginatedPlants(page, pageSize) {
+  const offset = (page - 1) * pageSize;
+  const { count, rows } = await Plant.findAndCountAll({
+    where: {},
+    offset,
+    limit: pageSize,
+  });
+
+  info(["rows: ", rows]);
+  return {
+    total: count,
+    totalPages: Math.ceil(count / pageSize),
+    currentPage: page,
+    data: rows,
+  };
+}
 
 //Nav to homepage - there is an issue with passing proper login state that needs to be fixed
 router.get('/', async (req, res) => {
   console.log('get root')
   try {
     // Get all plants and JOIN with user data
-    const plantData = await Plant.findAll();
+    const plantData = await getPaginatedPlants(1, 20);
+    //const plantData = await Plant.findAll();
+    //
+    log(['plantData: ',plantData]);
+    //const plants = plantData.map((plant) => plant.get({ plain: true }));
     // Serialize data so the template can read it
-    const plants = plantData.map((plant) => plant.get({ plain: true }));
+    const plants = plantData.data.map((plant) => plant.get({plain: true}));
+    const pageData = {total: plantData.total, totalPages: plantData.totalPages, currentPage: plantData.currentPage};
+    const page = plants[pageData.currentPage];
+
+    log(['page: ', page, 'pageData: ', pageData]);
     // log(plants, 'white', 'bgGreen'); < commented out for better readability in troubleshooting
     // log(plants.length, 'green', 'bgWhite'); < commented out for better readability in troubleshooting
     // Pass serialized data and session flag into template
     res.render('homepage', {
-      plants,
+      plants: plants,
+      pageData,
       logged_in: req.session.logged_in
 
     });
@@ -35,7 +61,7 @@ router.get('/collection', async (req, res) => {
     // req.query.edit is only ever passed when navigating to a plant from the profile!
     const edit = req.query.edit;
     const plant = plantData.get({ plain: true });
-    current_plant = plant;
+
     log(plant, 'white', 'bgBrightGreen');
     res.render('collection', {
       ...plant,
@@ -49,10 +75,10 @@ router.get('/collection', async (req, res) => {
   }
 });
 
-/* Handles client navigating to a specific plant 
+/* Handles client navigating to a specific plant
   Client URL query for /plant is ?id=NUMBER&edit=BOOL
   id=NUMBER defines which plant id to pull from DB/api, if naving from profile id will refer to collection_id
-  edit=BOOL defines whether we should allow this plant to be edited: 
+  edit=BOOL defines whether we should allow this plant to be edited:
     currently only enabled when naving from profile with specific plant selected
     n
  */
@@ -67,10 +93,10 @@ router.get('/plant', async (req, res) => {
 
     res.render('plant', {
       ...plant,
-    
+
       logged_in: req.session.logged_in
     });
-  
+
   } catch (err) {
     error(err);
     res.redirect('/profile');
@@ -100,9 +126,9 @@ router.get('/profile', withAuth, async (req, res) => {
     });
 
     let collections = collectionData.map((collection) => collection.get({ plain: true }));
-  
+
     log(collections, 'white', 'bgGray')
-    // renders profile view to client with user's collections, user data, and logged_in: true 
+    // renders profile view to client with user's collections, user data, and logged_in: true
     res.render('profile', {
       collections,
       user,
