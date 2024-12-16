@@ -1,4 +1,5 @@
-const handleNextClick = (ev => {
+// handles logic for pagination niceness
+ const handleNextClick = (ev => {
     ev.preventDefault();
 
     // we get the stored values for current and total pages from the parent element

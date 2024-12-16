@@ -30,7 +30,7 @@ const signupFormHandler = async (event) => {
   const email = document.querySelector('#emailSignup').value.trim();
   const password = document.querySelector('#passwordSignup').value.trim();
 
-  // name email and password must be defined 
+  // name email and password must be defined
   if (name && email && password) {
     const response = await fetch('/api/users/', {
       method: 'POST',
@@ -44,15 +44,13 @@ const signupFormHandler = async (event) => {
       }
     });
     // if the request was good, nav to the user's profile
-    
+
   }
 };
 
-// these should be ported to jQuery 
+// these should be ported to jQuery
 // adds submit listeners to login-form and signup-form
-document
-  .querySelector('.login-form')
-  .addEventListener('submit', loginFormHandler);
-document
-  .querySelector('.signup-form')
-  .addEventListener('submit', signupFormHandler);
+$(()=> {
+  $(`#login-form`).on('submit', loginFormHandler);
+  $('#login-btn').on('click', loginFormHandler);
+})

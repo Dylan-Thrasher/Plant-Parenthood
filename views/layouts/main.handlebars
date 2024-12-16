@@ -33,10 +33,10 @@
 </head>
 
 <body class="bg-[#e8f2ca] text-green-900  flex flex-row flex-wrap justify-center">
-  <main class="max-w-6xl">
+  <main>
     <div class="flex flex-col min-h-screen bg-[#e8f2ca]">
       <!-- header -->
-      <header class="sticky top-0 flex justify-between flex-row flex-wrap text-center px-4 bg-[#e8f2ca]">
+      <header class="sticky top-0 w-screen max-w-screen-xl flex justify-between flex-row flex-wrap text-center px-4 bg-[#e8f2ca]">
         <!-- left nav -->
         <nav class="flex flex-row flex-wrap">
           <a href="/"><button class="p-2"><img class="h-4 m-auto" src="./assets/images/icons8-leaf-48.png"
@@ -88,7 +88,8 @@
       {{{body}}}
     </div>
     {{!-- footer --}}
-    <footer class="h-32 w-full max-w-6xl mt-auto bg-cover rounded-t-lg bg-bottom bg-[url('./assets/images/forrest-log.jpg')] text-yellow-200">
+    <footer
+      class="px-4 0 w-screen max-w-screen-xl mt-auto bg-cover rounded-t-lg bg-bottom bg-[url('./assets/images/forrest-log.jpg')] text-yellow-200">
       <div class="p-4">
         <div class="text-xs">Plant Parenthood © 2024</div>
         {{!-- ICONS ATTRIBUTION NEEDS ATTENTION!!!!!! -Charles --}}
@@ -107,7 +108,10 @@
     imageGrid.js is being used by two views, but both of those views
     will also utilize search.js - Charles
     --}}
+    {{#if logged_in}}
+    {{else}}
     {{> cookies}}
+    {{/if}}
   </main>
 </body>
 
