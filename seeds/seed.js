@@ -10,6 +10,10 @@ const {log, info, warn, error} = require('@frenzie24/logger')
 const seedDatabase = async () => {
   await sequelize.sync({ force: true });
 
+  const users = await User.bulkCreate({userData}, {
+    individualHooks: true,
+    returning: true,
+  });
  // console.log('plantData:', plantData);
   for (const plant of plantData) {
     info(['plant: ',plant])
