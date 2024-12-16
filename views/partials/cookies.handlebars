@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<!-- TODO: ACCEPT AND DECLINE DON'T DO ANYTHING RIGHT NOW -->
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cookie Consent</title>
+    <style>
+        .cookie-consent {
+            position: fixed;
+            bottom: 20px;
+            padding: 15px;
+            background-color: #fff;
+            border: 1px solid #ccc;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+        }
+
+        .cookie-accept {
+            padding: 10px 20px;
+            margin-left: 10px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+
+        .cookie-decline {
+            padding: 10px 20px;
+            margin-left: 10px;
+            background-color: rgb(220 38 38);
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Handlebars Template for Cookie Consent Pop-up -->
+    <script id="cookie-template" type="text/x-handlebars-template">
+        <div class="cookie-consent flex flex-row flex-wrap justify-center">
+            <p class="w-full px- text-center">We use cookies to improve your experience. By using our site, you agree to our <a href="#">cookie policy</a>.</p>
+            <div>
+                <button id="acceptCookies" class="cookie-accept">Accept</button>
+            </div>
+            <div>
+                <button id="declineCookies" class="cookie-decline">Decline</button>
+            </div>
+    </div>
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/handlebars@latest/dist/handlebars.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            var template = Handlebars.compile(document.getElementById('cookie-template').innerHTML);
+            document.body.insertAdjacentHTML('beforeend', template());
+
+            document.getElementById('acceptCookies').addEventListener('click', function () {
+                document.querySelector('.cookie-consent').style.display = 'none';
+
+            });
+
+            document.getElementById('declineCookies').addEventListener('click', function () {
+                document.querySelector('.cookie-consent').style.display = 'none';
+
+            });
+        });
+    </script>
+
+</body>
+
+</html>
