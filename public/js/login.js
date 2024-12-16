@@ -53,4 +53,5 @@ const signupFormHandler = async (event) => {
 $(()=> {
   $(`#login-form`).on('submit', loginFormHandler);
   $('#login-btn').on('click', loginFormHandler);
+  $(`#signup`).on('click', ()=> { window.location.href = '/register';})
 })
