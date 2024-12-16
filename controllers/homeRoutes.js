@@ -2,8 +2,11 @@ const router = require('express').Router();
 const { Plant, User, Collection } = require('../models');
 const withAuth = require('../utils/auth');
 // the best simple cli debug enhancer I've ever written
-const { log, info, error } = require('../node_modules/@frenzie24/logger')
+const { log, info, error, warn } = require('../node_modules/@frenzie24/logger')
 
+// fucnction that returns the row of data corresponding to the passed page from the Plant table.
+// Does NOT check ownership
+// does this return plants that have owners too???
 async function getPaginatedPlants(page, pageSize) {
   log(['page: ', page])
   const _page = page < 1 ? 1 : page;
@@ -154,6 +157,18 @@ router.get('/login', (req, res) => {
   res.render('login');
 });
 
+router.get('/register', (req, res) => {
+  warn('Registration attempt');
+  // If the user is already logged in, redirect the request to another route
+  if (req.session.logged_in) {
+    res.redirect('/profile');
+    return;
+  }
+
+  res.render('register');
+});
+
+
 //post method for adding an item to the user's collection
 router.post('/add-to-collection', withAuth, async (req, res) => {
   log('adding to collection', 'white', 'bgBlue');
@@ -170,6 +185,10 @@ router.post('/add-to-collection', withAuth, async (req, res) => {
     console.error('Error adding item to collection:', err);
     res.status(500).json({ error: 'Could not add item to collection' });
   }
+});
+
+router.get('/cookies', (req, res) => {
+  res.render('cookies')
 });
 
 module.exports = router;

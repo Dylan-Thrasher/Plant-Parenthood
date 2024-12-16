@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "echo \"Begining build...\n\n\n\" && npm install && node seeds/seed.js ",
     "start": "node server.js",
     "seed": "node seeds/seed.js",
     "dev": "nodemon server.js"
