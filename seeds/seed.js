@@ -10,22 +10,11 @@ const {log, info, warn, error} = require('@frenzie24/logger')
 const seedDatabase = async () => {
   await sequelize.sync({ force: true });
 
-
-
   const users = await User.bulkCreate({userData}, {
     individualHooks: true,
     returning: true,
   });
  // console.log('plantData:', plantData);
-
- const plants = await plantData.map((plant) => {
-  info(['plant: ',plant])
-     return Plant.create({
-      ...plant,
-      //user_id: plant.user_id,
-    });
- })
- /*
   for (const plant of plantData) {
     info(['plant: ',plant])
     await Plant.create({
@@ -33,23 +22,15 @@ const seedDatabase = async () => {
       user_id: plant.user_id,
     });
   }
-    */
   console.log('collectionData:', collectionData);
-  const collections = await collectionData.map((collection)=>{
-    return Collection.create({
-      ...collection,
-      user_id: collection.user_id,
-    });
-  });
-  /*
-  for (const collection of collectionData) {
-    await Collection.create({
-      ...collection,
-      user_id: collection.user_id,
-    });
-  }*/
 
-    warn('done')
+  setTimeout(()=>{
+  for (const collection of collectionData) {
+    Collection.create({
+      ...collection,
+      user_id: collection.user_id,
+    });
+  }}, 2000);
 
   process.exit(0);
 };
