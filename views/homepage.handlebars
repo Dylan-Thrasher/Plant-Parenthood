@@ -1,14 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<body class="bg-[url('./assets/images/forrest-log.jpg') text-green-900 max-w-screen-xl [&_*]:max-w-screen-xl">
+<body class="bg-[url('./assets/images/forrest-log.jpg') [&-*]:text-green-900 max-w-screen-lg [&_*]:max-w-screen-lg">
   <div class="flex flex-col min-h-screen bg-[#e8f2ca]">
 
     <main class='w-full flex flex-row flex-wrap justify-center items-center'>
       <!-- banner for homepage -->
-      <div class="w-full max-w-screen-xl px-4 ">
+      <div class="w-full max-w-screen-lg ">
         <div
-          class="rounded-lg h-52 w-fullbg-center bg-cover bg-[url('./assets/images/forrest-log.jpg')] text-yellow-200">
+          class="rounded-lg h-52 w-full bg-center bg-cover bg-[url('./assets/images/forrest-log.jpg')] text-yellow-200">
           <div class="w-full filter-none p-4 text-5xl">All Plants</div>
         </div>
       </div>
@@ -20,7 +20,7 @@
          <button id="filterBtn" class="p-2"><img class="h-4 m-auto" src="./assets/images/icons8-filter-48.png"
             alt="A dark green login icon represented by an arrow leading into a rounded square">Sort</button>
             </div>
-      <div id="filter" class="w-full max-w-screen-xl flex flex-row flex-wrap justify-center items-center px-4">
+      <div id="filter" class="w-full max-w-screen-lg flex flex-row flex-wrap justify-center items-center px-4">
 
         <div class="w-fit flex flex-row flex-wrap rounded-lg bg-[#B7D55D] p-2">
           <!--<input type="checkbox" class="px-4" id="cycleFilter" value="Cycle"><label for="cycleFilter"
@@ -38,7 +38,7 @@
 
       </div>
       <div id="pageInfo"
-        class="flex flex-row flex-wrap justify-center items-center w-full max-w-screen-xl h-12 bg-green-900/90 [&_*]:p-2 text-white text-xl text-center mb-2 rounded-lg"
+        class="flex flex-row flex-wrap justify-center items-center w-full max-w-screen-lg h-12 bg-green-900/90 [&_*]:p-2 text-white text-xl text-center m-2 rounded-lg"
         currentPage={{pageData.currentPage}} totalPages="{{pageData.totalPages}}">
         <button id="prevBtn">Prev</button>
         <h3>{{pageData.currentPage}} / {{pageData.totalPages}}</h3>
@@ -48,7 +48,7 @@
 
       <!-- results grid -->
       <div id="resultsGrid"
-        class=" grid sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-1 p-4  max-w-screen-xl bg-lime-200/50 rounded-lg ">
+        class=" grid sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-1 p-4  max-w-screen-lg bg-lime-200/50 rounded-lg ">
         {{#each plants as |plant|}}
         {{#if plant.regular_url}}
         <div id="{{plant.id}}" name="{{collection.common_name}}"
@@ -87,7 +87,7 @@
       </div>
 
       <div id="pageInfo"
-        class="flex flex-row flex-wrap justify-center items-center w-full max-w-screen-xl h-12 bg-green-900/90 [&_*]:p-2 text-white text-xl text-center mb-2 rounded-lg"
+        class="flex flex-row flex-wrap justify-center items-center w-full max-w-screen-lg h-12 bg-green-900/90 [&_*]:p-2 text-white text-xl text-center mb-2 rounded-lg"
         currentPage={{pageData.currentPage}} totalPages="{{pageData.totalPages}}">
         <button id="prevBtn">Prev</button>
         <h3>{{pageData.currentPage}} / {{pageData.totalPages}}</h3>
