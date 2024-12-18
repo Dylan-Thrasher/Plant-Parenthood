@@ -48,12 +48,12 @@
 
       <!-- results grid -->
       <div id="resultsGrid"
-        class=" grid sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-1 p-4  max-w-screen-lg bg-lime-200/50 rounded-lg ">
+        class=" grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-1 p-4  max-w-screen-lg bg-lime-200/50 rounded-lg ">
         {{#each plants as |plant|}}
         {{#if plant.regular_url}}
         <div id="{{plant.id}}" name="{{collection.common_name}}"
           class="border-4 border-green-900 border-solid rounded-xl bg-[#BFD872] flex flex-wrap justify-center h-fit
-           transition ease-in duration-300 hover:translate-y-2 hover:scale-[105%] antialiased hover:subpixel-antialiased hover:drop-shadow-2xl hover:shadow-2xl hover:[&_*]-block group/{{plant.id}}">
+           transition ease-in duration-300 hover:-translate-y-8 hover:scale-[105%] antialiased hover:subpixel-antialiased hover:drop-shadow-2xl hover:shadow-2xl hover:[&_*]-block group/{{plant.id}}">
           <img id="plantImg" name="{{plant.id}}" class="rounded-b-md rounded-t-lg" src={{plant.regular_url}}
             alt="Image of {{plant.common_name}}" />
           <div class="w-full flex flex-row flex-wrap justify-start text-center">

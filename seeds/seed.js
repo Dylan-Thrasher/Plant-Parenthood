@@ -24,13 +24,14 @@ const seedDatabase = async () => {
   }
   console.log('collectionData:', collectionData);
 
-  setTimeout(()=>{
+  //setTimeout(()=>{
   for (const collection of collectionData) {
     Collection.create({
       ...collection,
-      user_id: collection.user_id,
+     // user_id: collection.user_id,
     });
-  }}, 2000);
+  }
+  //}}, 2000);
 
   process.exit(0);
 };
