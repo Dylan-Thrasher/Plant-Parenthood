@@ -6,19 +6,23 @@
 
     <main class='w-full flex flex-row flex-wrap justify-center items-center'>
       <!-- banner for homepage -->
-      <div class="w-full px-4 ">
+      <div class="w-full max-w-screen-xl px-4 ">
         <div
-          class="rounded-lg h-52 w-full max-w-screen-xl bg-center bg-cover bg-[url('./assets/images/forrest-log.jpg')] text-yellow-200">
+          class="rounded-lg h-52 w-fullbg-center bg-cover bg-[url('./assets/images/forrest-log.jpg')] text-yellow-200">
           <div class="w-full filter-none p-4 text-5xl">All Plants</div>
         </div>
       </div>
       <!-- sort -->
 
-      <button id="filterBtn" class="p-2"><img class="h-4 m-auto" src="./assets/images/icons8-filter-48.png"
-          alt="A dark green login icon represented by an arrow leading into a rounded square">Sort</button>
+
       <!-- search sort card -->
-      <div id="filter" class="w-full flex flex-row flex-wrap justify-center items-center px-4">
-        <div class="flex flex-row flex-wrap rounded-lg bg-[#B7D55D] p-2">
+      <div class="w-full flex justify-center">
+         <button id="filterBtn" class="p-2"><img class="h-4 m-auto" src="./assets/images/icons8-filter-48.png"
+            alt="A dark green login icon represented by an arrow leading into a rounded square">Sort</button>
+            </div>
+      <div id="filter" class="w-full max-w-screen-xl flex flex-row flex-wrap justify-center items-center px-4">
+
+        <div class="w-fit flex flex-row flex-wrap rounded-lg bg-[#B7D55D] p-2">
           <!--<input type="checkbox" class="px-4" id="cycleFilter" value="Cycle"><label for="cycleFilter"
             class="px-2">Cycle</label>-->
           <!-- <input type="checkbox" class="px-4" id="wateringFilter" value="Watering"><label for="wateringFilter"
@@ -29,21 +33,22 @@
           <button class="px-4 flex  " id="sortZA">Sort<img src="./assets/images/icons8-sort-alpha-up-48.png"
               class="px-2 h-6">
           </button>
+
         </div>
 
       </div>
-
       <div id="pageInfo"
-        class="flex flex-row flex-wrap justify-center items-center w-full h-12 bg-slate-800 [&_*]:p-2 text-white text-xl text-center"
+        class="flex flex-row flex-wrap justify-center items-center w-full max-w-screen-xl h-12 bg-green-900/90 [&_*]:p-2 text-white text-xl text-center mb-2 rounded-lg"
         currentPage={{pageData.currentPage}} totalPages="{{pageData.totalPages}}">
         <button id="prevBtn">Prev</button>
         <h3>{{pageData.currentPage}} / {{pageData.totalPages}}</h3>
         <button id="nextBtn">Next</button>
       </div>
 
+
       <!-- results grid -->
       <div id="resultsGrid"
-        class=" grid sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-2 p-4  max-w-screen-xl justify-center">
+        class=" grid sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-1 p-4  max-w-screen-xl bg-lime-200/50 rounded-lg ">
         {{#each plants as |plant|}}
         {{#if plant.regular_url}}
         <div id="{{plant.id}}" name="{{collection.common_name}}"
@@ -58,10 +63,10 @@
             </div>
           </div>
           <table id='plantTable{{plant.id}}'
-            class="table-auto text-[.8em] hidden group-hover/{{plant.id}}:block text-center px-1 pb-2 rounded-lg hover:transition-all ease-in duration-200 hover:scale-[103%] ">
+            class="table-auto text-[.8em] hidden group-hover/{{plant.id}}:transition-all ease-out-in duration-300 group-hover/{{plant.id}}:flex text-center px-1 pb-2 rounded-lg hover:transition-all ease-in duration-200 hover:scale-[103%] ">
             <tr class="">
-             <th class="w-fit bg-lime-100 rounded-tl-lg ">Cycle 🌱</th>
-             <th class="w-fit bg-lime-100 ">Water 💧</th>
+              <th class="w-fit bg-lime-100 rounded-tl-lg ">Cycle 🌱</th>
+              <th class="w-fit bg-lime-100 ">Water 💧</th>
               <th class="w-fit bg-lime-100 rounded-tr-md ">Sun 🌞</th>
             </tr>
             <tr></tr>
@@ -79,6 +84,14 @@
 
 
 
+      </div>
+
+      <div id="pageInfo"
+        class="flex flex-row flex-wrap justify-center items-center w-full max-w-screen-xl h-12 bg-green-900/90 [&_*]:p-2 text-white text-xl text-center mb-2 rounded-lg"
+        currentPage={{pageData.currentPage}} totalPages="{{pageData.totalPages}}">
+        <button id="prevBtn">Prev</button>
+        <h3>{{pageData.currentPage}} / {{pageData.totalPages}}</h3>
+        <button id="nextBtn">Next</button>
       </div>
     </main>
 
