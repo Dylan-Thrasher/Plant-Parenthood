@@ -128,7 +128,6 @@ router.get('/profile', withAuth, async (req, res) => {
       },
       include: [{
         model: Plant,
-        attributes: ['common_name', 'regular_url']
       }],
     });
 

@@ -1,14 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<body class="bg-[url('./assets/images/forrest-log.jpg') text-green-900 ">
+<body class="bg-[url('./assets/images/forrest-log.jpg') text-green-900 max-w-screen-xl [&_*]:max-w-screen-xl">
   <div class="flex flex-col min-h-screen bg-[#e8f2ca]">
 
     <main class='w-full flex flex-row flex-wrap justify-center items-center'>
       <!-- banner for homepage -->
       <div class="w-full px-4 ">
         <div
-          class="rounded-lg h-52 w-full bg-center bg-cover bg-[url('./assets/images/forrest-log.jpg')] text-yellow-200">
+          class="rounded-lg h-52 w-full max-w-screen-xl bg-center bg-cover bg-[url('./assets/images/forrest-log.jpg')] text-yellow-200">
           <div class="w-full filter-none p-4 text-5xl">All Plants</div>
         </div>
       </div>
@@ -33,24 +33,47 @@
 
       </div>
 
-      <div id="pageInfo" class="flex flex-row flex-wrap justify-center items-center w-full h-12 bg-slate-800 [&_*]:p-2 text-white text-xl text-center" currentPage={{pageData.currentPage}} totalPages="{{pageData.totalPages}}">
+      <div id="pageInfo"
+        class="flex flex-row flex-wrap justify-center items-center w-full h-12 bg-slate-800 [&_*]:p-2 text-white text-xl text-center"
+        currentPage={{pageData.currentPage}} totalPages="{{pageData.totalPages}}">
         <button id="prevBtn">Prev</button>
         <h3>{{pageData.currentPage}} / {{pageData.totalPages}}</h3>
-        <button id="nextBtn" >Next</button>
+        <button id="nextBtn">Next</button>
       </div>
 
       <!-- results grid -->
       <div id="resultsGrid"
-        class=" grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-6 gap-6 w-full p-4 justify-center">
+        class=" grid sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-2 p-4  max-w-screen-xl justify-center">
         {{#each plants as |plant|}}
         {{#if plant.regular_url}}
-        <div id="plantCard" name="{{collection.common_name}}"
-          class=" rounded-lg bg-[#BFD872] flex flex-wrap justify-center text-center transition ease-in-out duration-100 hover:translate-y-1 hover:scale-[110%] antialiased hover:subpixel-antialiased">
-          <img id="plantImg" name="{{plant.id}}" class="rounded-md" src={{plant.regular_url}}
+        <div id="{{plant.id}}" name="{{collection.common_name}}"
+          class="border-4 border-green-900 border-solid rounded-xl bg-[#BFD872] flex flex-wrap justify-center h-fit
+           transition ease-in duration-300 hover:translate-y-2 hover:scale-[105%] antialiased hover:subpixel-antialiased hover:drop-shadow-2xl hover:shadow-2xl hover:[&_*]-block group/{{plant.id}}">
+          <img id="plantImg" name="{{plant.id}}" class="rounded-b-md rounded-t-lg" src={{plant.regular_url}}
             alt="Image of {{plant.common_name}}" />
+          <div class="w-full flex flex-row flex-wrap justify-start text-center">
+            <div
+              class="w-full group-hover:px-1 group-hover:pt-1 p-1 text-sm font-bold capitalize group-hover/{{plant.id}}:transition-all ease-in-out duration-300 group-hover/{{plant.id}}:text-lg group-hover/{{plant.id}}:text-center">
+              {{plant.common_name}}
+            </div>
+          </div>
+          <table id='plantTable{{plant.id}}'
+            class="table-auto text-[.8em] hidden group-hover/{{plant.id}}:block text-center px-1 pb-2 rounded-lg hover:transition-all ease-in duration-200 hover:scale-[103%] ">
+            <tr class="">
+             <th class="w-fit bg-lime-100 rounded-tl-lg ">Cycle 🌱</th>
+             <th class="w-fit bg-lime-100 ">Water 💧</th>
+              <th class="w-fit bg-lime-100 rounded-tr-md ">Sun 🌞</th>
+            </tr>
+            <tr></tr>
+            <tr class="">
+              <td class="bg-lime-200 rounded-bl-lg ">{{plant.cycle}}</td>
+              <td class="bg-lime-200  ">{{plant.watering}}</td>
+              <td class="bg-lime-200 rounded-br-md ">{{plant.sunlight}}</td>
+            </tr>
 
-          <div class="w-full pt-2 text-m font-semibold ">{{plant.common_name}}</div>
+          </table>
         </div>
+
         {{/if}}
         {{/each}}
 

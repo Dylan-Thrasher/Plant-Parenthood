@@ -1,10 +1,17 @@
 
 @tailwind base;
 @tailwind components;
-@tailwind utilities;
 
 header, .project:not(:last-child) {
   border-bottom: 1px solid #ccc;
+}
+
+@keyframes alignTextCenterFromLEft {
+  0% { text-align: left; }
+  100% { text-align:center; }
+}
+.animate-align-text-center {
+  animation: alignTextCenterFromLEft 1s;
 }
 
 .no-button {
@@ -27,3 +34,5 @@ header, .project:not(:last-child) {
   font-weight: bold;
   margin-left: -5px;
 }
+
+@tailwind utilities;
