@@ -9,7 +9,8 @@
   <script src="https://cdn.tailwindcss.com"></script>
   <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tw-elements/css/tw-elements.min.css" />
-  <script src="https://cdn.tailwindcss.com/3.3.0"></script>
+  <link rel="stylesheet" href="./css/style.css" <script src="https://cdn.tailwindcss.com/3.3.0">
+  </script>
   <script>
     tailwind.config = {
       darkMode: "class",
@@ -32,19 +33,19 @@
   <title>Plant Parenthood</title>
 </head>
 
-<body class="bg-[#e8f2ca] text-green-900  flex flex-row flex-wrap justify-center">
+<body class="text-green-900 flex flex-row flex-wrap justify-center">
   <main>
-    <div class="flex flex-col min-h-screen bg-[#e8f2ca]">
-      <!-- header -->
-      <header class="sticky top-0 w-screen max-w-screen-xl flex justify-between flex-row flex-wrap text-center px-4 bg-[#e8f2ca]">
+    <!-- header -->
+    <header class="sticky top-0 w-screen bg-green-900/90  flex justify-center z-128 ">
+      <div class="w-full max-w-screen-lg justify-between flex flex-row flex-wrap text-center py-1">
         <!-- left nav -->
         <nav class="flex flex-row flex-wrap">
-          <a href="/"><button class="p-2"><img class="h-4 m-auto" src="./assets/images/icons8-leaf-48.png"
-                alt="A dark green leaf icon">Plants</button></a>
+          <a href="/"><button class="p-1 bg-[#e8f2ca] text-green-900/90 rounded-lg m-1"><img class="h-4 m-auto"
+                src="./assets/images/icons8-leaf-48.png" alt="A dark green leaf icon">Home</button></a>
 
         </nav>
         <!-- Title -->
-        <h3 class="font-normal text-4xl p-1">Plant Parenthoood</h3>
+        <h3 class="font-bold text-4xl text-[#e8f2ca] pt-2">Plant Parenthoood</h3>
         <!-- right nav -->
         <nav class="flex flex-row text-center">
           {{!-- buttons with icon and text on same line - needs text alignment fix
@@ -60,43 +61,48 @@
           THIS IS NOT BEHAVING AS EXPECTED AND NEEDS INVESTIGATION ON ALL VIEWS -Charles
           --}}
           {{#if logged_in}}
-          <a href="/login"><button class="p-2"><img class="h-4 m-auto" src="./assets/images/icons8-account-48.png"
+          <a href="/login"><button class="p-1 bg-[#e8f2ca] text-green-900/90 rounded-lg my-1"><img class="h-4 m-auto "
+                src="./assets/images/icons8-account-48.png"
                 alt="A dark green login icon represented by an arrow leading into a rounded square">Account</button>
           </a>
           {{else}}
-          <a href="/profile"><button class="p-2"><img class="h-4 m-auto" src="./assets/images/icons8-login-48.png"
+          <a href="/profile"><button class="p-1 bg-[#e8f2ca] text-green-900/90 rounded-lg m-1"><img class="h-4 m-auto"
+                src="./assets/images/icons8-login-48.png"
                 alt="A dark green login icon represented by an arrow leading into a rounded square">Login</button>
           </a>
           {{/if}}
-          <div id="search" class="hidden rounded-lg bg-[#B7D55D] px-2 py-1">
+          <div id="search" class="hidden rounded-lg bg-[#B7D55D] py-1 ">
             <input id="searchBar" type="text" class="h-full w-96 p-2" value="" placeholder="Search for plants">
           </div>
-          <button id="searchBtn" class="p-2"><img class="h-4 m-auto" src="./assets/images/icons8-search-48.png"
+          <button id="searchBtn" class="p-1 bg-[#e8f2ca] text-green-900/90 rounded-lg my-1"><img class="h-4 m-auto"
+              src="./assets/images/icons8-search-48.png"
               alt="A dark green search icon represented by a magnifying glass">Search</button>
 
         </nav>
-      </header>
-      {{!--
-      {{{body}}} will be the part of the page that updates when users nav to new views
-      for instance when landing on the site for the first time, {{{body}}} will be the contents of
-      homepage.handlebars
-
-      When users click on a plant in the gride displayed on homepage view, {{{body}}} will be the contents of
-      plant.handlebars with the associated relevant data - Charles
-      --}}
-
-      {{{body}}}
-    </div>
-    {{!-- footer --}}
-    <footer
-      class="px-4 0 w-screen max-w-screen-xl mt-auto bg-cover rounded-t-lg bg-bottom bg-[url('./assets/images/forrest-log.jpg')] text-yellow-200">
-      <div class="p-4">
-        <div class="text-xs">Plant Parenthood © 2024</div>
-        {{!-- ICONS ATTRIBUTION NEEDS ATTENTION!!!!!! -Charles --}}
-        <div class="text-[0.5em]">Icons provided by <a target="_blank" href="https://icons8.com">Icons8</a>
-        </div>
       </div>
-    </footer>
+    </header>
+    {{!--
+    {{{body}}} will be the part of the page that updates when users nav to new views
+    for instance when landing on the site for the first time, {{{body}}} will be the contents of
+    homepage.handlebars
+
+    When users click on a plant in the gride displayed on homepage view, {{{body}}} will be the contents of
+    plant.handlebars with the associated relevant data - Charles
+    --}}
+
+    {{{body}}}
+
+    <div class="bg-[#e8f2ca] flex w-full justify-center">
+      <footer
+        class="px-4 0 w-screen max-w-screen-lg mt-auto bg-cover rounded-t-lg bg-bottom bg-[url('./assets/images/forrest-log.jpg')] text-yellow-200">
+        <div class="p-4">
+          <div class="text-xs">Plant Parenthood © 2024</div>
+          {{!-- ICONS ATTRIBUTION NEEDS ATTENTION!!!!!! -Charles --}}
+          <div class="text-[0.5em]">Icons provided by <a target="_blank" href="https://icons8.com">Icons8</a>
+          </div>
+        </div>
+      </footer>
+    </div>
     <script>
       // jQuery to add the click event to searchBtn with toggleSearchHide as the handler
       $('#searchBtn').on('click', toggleSearchHide);
@@ -112,6 +118,8 @@
     {{else}}
     {{> cookies}}
     {{/if}}
+    {{!-- footer --}}
+
   </main>
 </body>
 
