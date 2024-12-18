@@ -20,7 +20,7 @@ const seedDatabase = async () => {
   // console.log('plantData:', plantData);
   try {
   } catch (e) { warn('Caught Error'); error(e); } for (const plant of plantData) {
-    info(['plant: ', plant])
+    info(['plant: \n', JSON.stringify(plant)])
     await Plant.create({
       ...plant,
       user_id: plant.user_id,
